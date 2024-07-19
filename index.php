@@ -20,6 +20,8 @@
     <!-- My CSS -->
     <link rel="stylesheet" href="style.css">
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+
     <title>FunRun - Lari Antar Geng</title>
 </head>
 <body>

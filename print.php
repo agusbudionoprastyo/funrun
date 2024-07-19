@@ -65,7 +65,7 @@
     margin-top: 12px;
   }
   .img-2 {
-    position: absolute;
+    position: relative;
     /* aspect-ratio: 9.09; */
     object-fit: auto;
     object-position: center;
@@ -105,7 +105,7 @@
   }
 
   .img-3 {
-    position: absolute;
+    position: relative;
     /* aspect-ratio: 6.67; */
     object-fit: auto;
     object-position: center;

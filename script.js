@@ -167,7 +167,7 @@ $(document).ready(function() {
 	
 							.shape {
 							position: absolute;
-							top: 72%; /* Adjust vertically */
+							top: 68%; /* Adjust vertically */
 							right: 7px;
 							transform: translate(-5%, -50%);
 							width: 80px;

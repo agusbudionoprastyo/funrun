@@ -13,57 +13,41 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Query to fetch data
-$sql = "SELECT * FROM Funrun'";
-$result = $conn->query($sql);
+        // Query to fetch data for table
+        $sql_data = "SELECT * FROM Funrun";
+        $result_data = $conn->query($sql_data);
 
-// Initialize variables for search and counts
-// $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
-$total_peserta = 0;
-$total_check = 0;
-$total_uncheck = 0;
+        // Query to fetch counts
+        $sql = "SELECT COUNT(*) AS total_peserta FROM Funrun";
+        $result = $conn->query($sql);
 
-// // Query to fetch data based on search term
-// $sql_search = "SELECT * FROM Funrun WHERE NAMA_GENG LIKE '%$searchTerm%' OR BIB_NUMBER LIKE '%$searchTerm%' OR status LIKE '%$searchTerm%'";
-// $result_search = $conn->query($sql_search);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $total_peserta = $row["total_peserta"];
+        } else {
+            $total_peserta = 0;
+        }
 
-// if (!$result_search) {
-//     die("Query failed: " . $conn->error);
-// }
+        // Query to fetch counts for check and uncheck (assuming 'status' column indicates checked or unchecked)
+        $sql_check = "SELECT COUNT(*) AS total_check FROM Funrun WHERE status = 'checked'";
+        $result_check = $conn->query($sql_check);
 
-// Query to fetch total number of participants
-$sql_total = "SELECT COUNT(*) AS total_peserta FROM Funrun";
-$result_total = $conn->query($sql_total);
+        if ($result_check->num_rows > 0) {
+            $row_check = $result_check->fetch_assoc();
+            $total_check = $row_check["total_check"];
+        } else {
+            $total_check = 0;
+        }
 
-if ($result_total) {
-    $row_total = $result_total->fetch_assoc();
-    $total_peserta = $row_total["total_peserta"];
-} else {
-    die("Query failed: " . $conn->error);
-}
+        $sql_uncheck = "SELECT COUNT(*) AS total_uncheck FROM Funrun WHERE status = 'unchecked'";
+        $result_uncheck = $conn->query($sql_uncheck);
 
-// Query to fetch number of participants checked
-$sql_checked = "SELECT COUNT(*) AS total_check FROM Funrun WHERE status = 'checked'";
-$result_checked = $conn->query($sql_checked);
+        if ($result_uncheck->num_rows > 0) {
+            $row_uncheck = $result_uncheck->fetch_assoc();
+            $total_uncheck = $row_uncheck["total_uncheck"];
+        } else {
+            $total_uncheck = 0;
+        }
 
-if ($result_checked) {
-    $row_checked = $result_checked->fetch_assoc();
-    $total_check = $row_checked["total_check"];
-} else {
-    die("Query failed: " . $conn->error);
-}
-
-// Query to fetch number of participants unchecked
-$sql_unchecked = "SELECT COUNT(*) AS total_uncheck FROM Funrun WHERE status = 'unchecked'";
-$result_unchecked = $conn->query($sql_unchecked);
-
-if ($result_unchecked) {
-    $row_unchecked = $result_unchecked->fetch_assoc();
-    $total_uncheck = $row_unchecked["total_uncheck"];
-} else {
-    die("Query failed: " . $conn->error);
-}
-
-// Close database connection
 $conn->close();
 ?>

@@ -590,3 +590,7 @@ body {
 		min-width: 420px;
 	}
 }
+
+.dataTables_wrapper .dataTables_filter {
+	display: none;
+}

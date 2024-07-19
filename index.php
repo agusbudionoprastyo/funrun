@@ -77,21 +77,21 @@
 
             <ul class="box-info">
                 <li>
-                    <i class='bx bxs-group bx-fade-up bx-rotate-90' ></i>
+                    <i class='bx bxs-group' ></i>
                     <span class="text">
                         <h3><?php echo $row["total_peserta"]; ?></h3>
                         <p>Peserta</p>
                     </span>
                 </li>
                 <li>
-                    <i class='bx bxs-calendar-check bx-tada bx-rotate-90' ></i>
+                    <i class='bx bxs-calendar-check' ></i>
                     <span class="text">
                         <h3><?php echo $row_check["total_check"]; ?></h3>
                         <p>Checked</p>
                     </span>
                 </li>
                 <li>
-                    <i class='bx bx-calendar-exclamation bx-burst bx-rotate-90' ></i>
+                    <i class='bx bx-calendar-exclamation' ></i>
                     <span class="text">
 						<h3><?php echo $row_uncheck["total_uncheck"]; ?></h3>
                         <p>Unchecked</p>

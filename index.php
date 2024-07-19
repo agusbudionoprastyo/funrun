@@ -4,8 +4,12 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<!-- Bootstrap CSS -->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
 	<!-- My CSS -->
 	<link rel="stylesheet" href="style.css">
 
@@ -96,18 +100,20 @@
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>Nama Geng</th>
-								<th>Nomor BIB</th>
-								<th>Status</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php include 'fetch_data.php'; ?>
-						</tbody>
-					</table>
+					<div class="table-responsive">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th scope="col">Nama Geng</th>
+									<th scope="col">Nomor BIB</th>
+									<th scope="col">Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php include 'fetch_data.php'; ?>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</main>
@@ -115,6 +121,10 @@
 	</section>
 	<!-- CONTENT -->
 	
+	<!-- Bootstrap JS and dependencies -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
 	<script src="script.js"></script>
 </body>
 </html>

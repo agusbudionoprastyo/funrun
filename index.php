@@ -145,43 +145,14 @@
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.tailwindcss.js"></script>
 
-	<!-- <script>
-		$(document).ready(function() {
-			var table = new DataTable('#example', {
-				searching: true, // Aktifkan pencarian
-			});
-
-			// Event listener untuk "Enter" pada #search-input
-			$('#search-input').keypress(function(event) {
-				if (event.which === 13) {
-					event.preventDefault(); // Mencegah form submit (jika ada)
-					var searchText = $(this).val();
-					table.search(searchText).draw();
-				}
-			});
-
-			// Event listener untuk klik pada tombol .search-btn
-			$('.search-btn').click(function(event) {
-				var searchText = $('#search-input').val();
-				table.search(searchText).draw();
-			});
-
-			// Event listener untuk klik pada tombol .clear-btn
-			$('.clear-btn').click(function(event) {
-				$('#search-input').val(''); // Mengosongkan nilai input pencarian
-				table.search('').draw(); // Mereset pencarian pada tabel
-			
-		});
-		
-		});
-
+	<script>
 			document.querySelectorAll('.print-btn').forEach(button => {
 			button.addEventListener('click', function() {
 				var row = this.closest('tr'); // Temukan baris terdekat dari tombol yang diklik
 
-            // Ambil nilai dari kolom "Nama Group" dan "Nomor BIB" di dalam baris
-            var namaGeng = row.cells[0].textContent; // Kolom pertama
-            var nomorBIB = row.cells[1].textContent; // Kolom kedua
+				// Ambil nilai dari kolom "Nama Group" dan "Nomor BIB" di dalam baris
+				var namaGeng = row.cells[0].textContent; // Kolom pertama
+				var nomorBIB = row.cells[1].textContent; // Kolom kedua
 
 				// Buat sebuah iframe secara dinamis
 				var iframe = document.createElement('iframe');
@@ -326,7 +297,7 @@
 				}, 1000); // Waktu tunggu sebelum menghapus iframe (1 detik)
 			});
 			});
-	</script> -->
+	</script>
 
     <script src="script.js"></script>
 </body>

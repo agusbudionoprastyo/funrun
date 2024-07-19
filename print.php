@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Print BIB</title>
     <style>
-  .div {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    position: relative;
-    min-height: 928px;
-    padding-top: 44px;
-    align-items: center;
-    color: #fff;
-  }
+.div {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  width: 200mm; /* Set width to 200mm */
+  height: 145mm; /* Set height to 145mm */
+  padding-top: 10mm; /* Adjust padding or margins as needed */
+  align-items: center;
+  color: #fff;
+}
+
+/* Adjust other styles as per your layout requirements */
   .img {
     position: absolute;
     inset: 0;

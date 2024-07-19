@@ -140,17 +140,20 @@ $(document).ready(function() {
 					var iframeDoc = iframe.contentWindow.document;
 					iframeDoc.open();
 					iframeDoc.write(`
-						<!DOCTYPE html>
-						<html lang="en">
-						<head>
-							<meta charset="UTF-8">
-							<title>Print BIB</title>
-							<style>
+							<html><head><style>
 							@font-face {
 								font-family: 'Adumu'; /* Nama font yang akan digunakan */
 								src: url('assets/Adumu.ttf') format('truetype'); /* Lokasi file TTF */
 								/* Opsional: tambahkan format lain jika diperlukan */
 							}
+
+							@font-face {
+								font-family: 'Adumu'; /* Nama font yang akan digunakan */
+								src: url('assets/Adumu.ttf') format('truetype'); /* Lokasi file TTF */
+								/* Opsional: tambahkan format lain jika diperlukan */
+							}
+
+							@page { size: 200mm 145mm; margin: 0; }
 	
 							body {
 							width: 200mm;

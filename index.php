@@ -352,12 +352,7 @@
 			var iframeDoc = iframe.contentWindow.document;
 			iframeDoc.open();
 			iframeDoc.write(`
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <title>Cetak Entri - ${entries[0].namaGeng}</title>
-            <style>
+				<html><head><style>
 				@font-face {
 					font-family: 'Adumu'; /* Nama font yang akan digunakan */
 					src: url('assets/Adumu.ttf') format('truetype'); /* Lokasi file TTF */

@@ -172,7 +172,7 @@
 				table.search('').draw(); // Mereset pencarian pada tabel
 			});
 			// Event listener untuk klik tombol print
-			$('.print-btn').click(function() {
+			document.getElementById('print-btn').addEventListener('click', function() {
 				var namaGeng = $(this).data('nama');
 				var nomorBIB = $(this).data('bib');
 

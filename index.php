@@ -105,7 +105,7 @@
 							</tr>
 						</thead>
 						<tbody>
-								<?php include 'fetch_data.php'; ?>
+							<?php include 'fetch_data.php'; ?>
 						</tbody>
 					</table>
 				</div>

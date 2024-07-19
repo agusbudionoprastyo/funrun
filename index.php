@@ -166,160 +166,153 @@
                 var nomorBIB = row.cells[1].textContent.trim(); // Kolom kedua
                 selectedEntries.push({ namaGeng: namaGeng, nomorBIB: nomorBIB });
             });
+			printSelectedEntries(selectedEntries);
 
-            // Buat konten HTML untuk semua baris yang dipilih
-            var htmlContent = generateAllSelectedEntriesHtml(selectedEntries);
+			// Fungsi untuk mencetak semua baris yang dipilih dalam dokumen HTML terpisah
+			function printSelectedEntries(entries) {
+				entries.forEach(function(entry) {
+					// Generate QR Code URL
+					var qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(entry.nomorBIB);
+					
+					// Buat elemen iframe secara dinamis
+					var iframe = document.createElement('iframe');
+					iframe.style.display = 'none'; // Sembunyikan iframe dari tampilan pengguna
+					document.body.appendChild(iframe);
 
-            // Buat sebuah iframe secara dinamis
-            var iframe = document.createElement('iframe');
-            iframe.style.display = 'none'; // Sembunyikan iframe dari tampilan pengguna
-            document.body.appendChild(iframe);
+					var iframeDoc = iframe.contentWindow.document;
+					iframeDoc.open();
+					iframeDoc.write(`
+						<!DOCTYPE html>
+						<html lang="en">
+						<head>
+							<meta charset="UTF-8">
+							<title>Print Entry - ${entry.namaGeng}</title>
+							<style>
+								@font-face {
+									font-family: 'Adumu'; /* Nama font yang akan digunakan */
+									src: url('assets/Adumu.ttf') format('truetype'); /* Lokasi file TTF */
+									/* Opsional: tambahkan format lain jika diperlukan */
+								}
+								body {
+									width: 200mm;
+									height: 145mm;
+									margin: 0;
+									padding: 0;
+									display: flex;
+									justify-content: center;
+									align-items: center;
+									position: relative;
+									font-weight: 700;
+									color: white;
+								}
+								.shape {
+									position: absolute;
+									top: 67%; /* Adjust vertically */
+									right: 7px;
+									transform: translate(-5%, -50%);
+									width: 80px;
+									height: 80px;
+									background-color: white;
+								}
+								.container {
+									position: relative;
+									width: 100%;
+									height: 100%;
+								}
+								.img,
+								.img-2,
+								.img-3 {
+									max-width: 100%;
+									height: auto;
+									display: block;
+									position: absolute;
+									left: 50%;
+									transform: translateX(-50%);
+								}
+								.img {
+									z-index: -1; /* Letakkan di belakang konten utama */
+								}
+								.img-2 {
+									top: 12mm; /* Adjust as needed */
+									width: 550px;
+								}
+								.img-3 {
+									bottom: 0; /* Adjust as needed */
+								}
+								.NameGroup {
+									position: absolute;
+									top: 50%; /* Adjust vertically */
+									left: 50%;
+									transform: translate(-50%, -50%);
+									text-align: center;
+									font-size: 88px;
+									font-family: 'Adumu';
+									line-height: 88px;
+									letter-spacing: 10px;
+								}
+								.headerTextLeft {
+									position: absolute;
+									top: 5%; /* Adjust vertically */
+									left: 5%;
+									transform: translate(-5%, -50%);
+									text-align: center;
+									font-size: 15px;
+									font-family: Arial, Helvetica, sans-serif;
+								}
+								.headerTextRight {
+									position: absolute;
+									top: 5%; /* Adjust vertically */
+									right: 5%;
+									transform: translate(5%, -50%);
+									text-align: center;
+									font-size: 15px;
+									font-family: Arial, Helvetica, sans-serif;
+								}
+								.BIBText {
+									position: absolute;
+									top: 73%; /* Adjust vertically */
+									left: 15px;
+									transform: translate(-5%, -50%);
+									text-align: center;
+									font-size: 45px;
+									font-family: 'Adumu';
+									letter-spacing: 5px;
+								}
+							</style>
+						</head>
+						<body>
+							<!-- Konten untuk pencetakan -->
+							<div class="container">
+								<div class="shape">
+									<img src="${qrCodeUrl}" alt="QR Code" style="max-width: 100%; height: auto;">
+								</div>
+								<img src="assets/bg.png" class="img" alt="Image for printing">
+								<div class="headerTextLeft">28 JULI 2024<br>HOTEL DAFAM SEMARANG</div>
+								<div class="headerTextRight">FUN RUN 6K<br>LARI ANTAR GENG</div>
+								<img src="assets/sponsor-atas.png" class="img-2" alt="Image for printing">
+								<div class="NameGroup">${entry.namaGeng}</div>
+								<div class="BIBText">${entry.nomorBIB}</div>
+								<img src="assets/sponsor-bawah.png" class="img-3" alt="Image for printing">
+							</div>
+						</body>
+						</html>
+					`);
+					iframeDoc.close();
 
-            var iframeDoc = iframe.contentWindow.document;
-            iframeDoc.open();
-            iframeDoc.write(`
-                <!DOCTYPE html>
-                <html lang="en">
-                <head>
-                    <meta charset="UTF-8">
-                    <title>Print Selected Entries</title>
-                    <style>
-                        @font-face {
-                            font-family: 'Adumu'; /* Nama font yang akan digunakan */
-                            src: url('assets/Adumu.ttf') format('truetype'); /* Lokasi file TTF */
-                            /* Opsional: tambahkan format lain jika diperlukan */
-                        }
-                        body {
-                            width: 200mm;
-                            height: 145mm;
-                            margin: 0;
-                            padding: 0;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            position: relative;
-                            font-weight: 700;
-                            color: white;
-                        }
-                        .shape {
-                            position: absolute;
-                            top: 67%; /* Adjust vertically */
-                            right: 7px;
-                            transform: translate(-5%, -50%);
-                            width: 80px;
-                            height: 80px;
-                            background-color: white;
-                        }
-                        .container {
-                            position: relative;
-                            width: 100%;
-                            height: 100%;
-                        }
-                        .img,
-                        .img-2,
-                        .img-3 {
-                            max-width: 100%;
-                            height: auto;
-                            display: block;
-                            position: absolute;
-                            left: 50%;
-                            transform: translateX(-50%);
-                        }
-                        .img {
-                            z-index: -1; /* Letakkan di belakang konten utama */
-                        }
-                        .img-2 {
-                            top: 12mm; /* Adjust as needed */
-                            width: 550px;
-                        }
-                        .img-3 {
-                            bottom: 0; /* Adjust as needed */
-                        }
-                        .NameGroup {
-                            position: absolute;
-                            top: 50%; /* Adjust vertically */
-                            left: 50%;
-                            transform: translate(-50%, -50%);
-                            text-align: center;
-                            font-size: 88px;
-                            font-family: 'Adumu';
-                            line-height: 88px;
-                            letter-spacing: 10px;
-                        }
-                        .headerTextLeft {
-                            position: absolute;
-                            top: 5%; /* Adjust vertically */
-                            left: 5%;
-                            transform: translate(-5%, -50%);
-                            text-align: center;
-                            font-size: 15px;
-                            font-family: Arial, Helvetica, sans-serif;
-                        }
-                        .headerTextRight {
-                            position: absolute;
-                            top: 5%; /* Adjust vertically */
-                            right: 5%;
-                            transform: translate(5%, -50%);
-                            text-align: center;
-                            font-size: 15px;
-                            font-family: Arial, Helvetica, sans-serif;
-                        }
-                        .BIBText {
-                            position: absolute;
-                            top: 73%; /* Adjust vertically */
-                            left: 15px;
-                            transform: translate(-5%, -50%);
-                            text-align: center;
-                            font-size: 45px;
-                            font-family: 'Adumu';
-                            letter-spacing: 5px;
-                        }
-                    </style>
-                </head>
-                <body>
-                    <!-- Konten untuk pencetakan -->
-                    <div class="container">
-                        ${htmlContent}
-                    </div>
-                </body>
-                </html>
-            `);
-            iframeDoc.close();
+					// Tambahkan jeda waktu sebelum mencetak
+					setTimeout(function() {
+						// Pencetakan konten di dalam iframe
+						iframe.contentWindow.focus(); // Fokuskan iframe untuk memastikan pencetakan berhasil
+						iframe.contentWindow.print();
 
-            // Tambahkan jeda waktu sebelum mencetak
-            setTimeout(function() {
-                // Pencetakan konten di dalam iframe
-                iframe.contentWindow.focus(); // Fokuskan iframe untuk memastikan pencetakan berhasil
-                iframe.contentWindow.print();
+						// Hapus iframe setelah pencetakan selesai
+						setTimeout(function() {
+							document.body.removeChild(iframe);
+						}, 1000); // Waktu tunggu sebelum menghapus iframe (1 detik)
+					}, 1000); // Waktu tunggu sebelum mencetak (1 detik)
+				});
+			}
 
-                // Hapus iframe setelah pencetakan selesai
-                setTimeout(function() {
-                    document.body.removeChild(iframe);
-                }, 1000); // Waktu tunggu sebelum menghapus iframe (1 detik)
-            }, 1000); // Waktu tunggu sebelum mencetak (1 detik)
-        });
-    });
-
-    // Fungsi untuk menghasilkan HTML untuk semua baris yang dipilih
-    function generateAllSelectedEntriesHtml(entries) {
-        var html = '';
-        entries.forEach(function(entry) {
-            var qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(entry.nomorBIB);
-            html += `
-                <div class="shape">
-                    <img src="${qrCodeUrl}" alt="QR Code" style="max-width: 100%; height: auto;">
-                </div>
-                <img src="assets/bg.png" class="img" alt="Image for printing">
-                <div class="headerTextLeft">28 JULI 2024<br>HOTEL DAFAM SEMARANG</div>
-                <div class="headerTextRight">FUN RUN 6K<br>LARI ANTAR GENG</div>
-                <img src="assets/sponsor-atas.png" class="img-2" alt="Image for printing">
-                <div class="NameGroup">${entry.namaGeng}</div>
-                <div class="BIBText">${entry.nomorBIB}</div>
-                <img src="assets/sponsor-bawah.png" class="img-3" alt="Image for printing">
-            `;
-        });
-        return html;
-    }
 </script>
 </body>
 </html>

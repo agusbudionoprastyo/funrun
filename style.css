@@ -592,6 +592,6 @@ body {
 }
 
     /* Hide the search input field */
-    .dataTables_filter {
+    .dt-search {
         display: none; /* This hides the default DataTables search input */
     }

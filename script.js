@@ -490,7 +490,7 @@ $(document).ready(function() {
 								document.body.removeChild(iframe);
 							}, 1000); // Tunggu 1 detik sebelum menghapus iframe
 						});
-					}, 500); // Tunggu 0.5 detik sebelum melakukan konversi untuk memastikan rendering selesai
+					}, 5000); // Tunggu 0.5 detik sebelum melakukan konversi untuk memastikan rendering selesai
 				}).catch(function() {
 					// Tangani kesalahan saat memuat gambar
 					console.error('Gagal memuat gambar.');

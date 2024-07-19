@@ -50,6 +50,7 @@
                 <div class="form-input">
                     <input type="search" id="search-input" placeholder="Search...">
                     <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+					<button type="button" class="clear-btn">Clear</button>
                 </div>
             </form>
             <input type="checkbox" id="switch-mode" hidden>
@@ -138,27 +139,33 @@
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.tailwindcss.js"></script>
 
 	<script>
-    $(document).ready(function() {
-        var table = new DataTable('#example', {
-            searching: true, // Aktifkan pencarian
-        });
+		$(document).ready(function() {
+			var table = new DataTable('#example', {
+				searching: true, // Aktifkan pencarian
+			});
 
-        // Event listener untuk "Enter" pada #search-input
-        $('#search-input').keypress(function(event) {
-            if (event.which === 13) {
-                event.preventDefault(); // Mencegah form submit (jika ada)
-                var searchText = $(this).val();
-                table.search(searchText).draw();
-            }
-        });
+			// Event listener untuk "Enter" pada #search-input
+			$('#search-input').keypress(function(event) {
+				if (event.which === 13) {
+					event.preventDefault(); // Mencegah form submit (jika ada)
+					var searchText = $(this).val();
+					table.search(searchText).draw();
+				}
+			});
 
-        // Event listener untuk klik pada tombol .search-btn
-        $('.search-btn').click(function(event) {
-            var searchText = $('#search-input').val();
-            table.search(searchText).draw();
-        });
-    });
-</script>
+			// Event listener untuk klik pada tombol .search-btn
+			$('.search-btn').click(function(event) {
+				var searchText = $('#search-input').val();
+				table.search(searchText).draw();
+			});
+
+			// Event listener untuk klik pada tombol .clear-btn
+			$('.clear-btn').click(function(event) {
+				$('#search-input').val(''); // Mengosongkan nilai input pencarian
+				table.search('').draw(); // Mereset pencarian pada tabel
+			});
+		});
+	</script>
 
     <script src="script.js"></script>
 </body>

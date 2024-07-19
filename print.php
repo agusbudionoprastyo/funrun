@@ -18,14 +18,15 @@
 }
 
 /* Adjust other styles as per your layout requirements */
-  .img {
-    position: absolute;
-    inset: 0;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
+.img {
+  position: absolute;
+  inset: 0;
+  width: 200mm; /* Sesuaikan dengan ukuran yang diinginkan */
+  height: 145mm; /* Sesuaikan dengan ukuran yang diinginkan */
+  object-fit: cover;
+  object-position: center;
+}
+
 
   .div-2 {
     position: relative;

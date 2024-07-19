@@ -46,9 +46,9 @@
         <!-- NAVBAR -->
         <nav>
             <i class='bx bx-menu' ></i>
-            <form action="fetch_data.php" method="get">
+            <form action="#">
                 <div class="form-input">
-                    <input type="search" placeholder="Search...">
+                    <input type="search" id="search-input" placeholder="Search...">
                     <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
                 </div>
             </form>
@@ -143,10 +143,15 @@
 				searching: true, // Aktifkan pencarian
 			});
 
-			// Handle pencarian dari form input
-			$('#form-search').on('submit', function(e) {
-				e.preventDefault();
-				table.search($('#search-input').val()).draw();
+            // Event listener untuk tombol "Enter" pada #search-input
+			$('#search-input').keypress(function(event) {
+				if (event.which === 13) {
+					// Ambil nilai pencarian dari #search-input
+					var searchText = $(this).val();
+
+					// Lakukan pencarian pada tabel
+					table.search(searchText).draw();
+				}
 			});
 		});
     </script>

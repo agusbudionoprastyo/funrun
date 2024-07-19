@@ -13,12 +13,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-        // Ambil nilai pencarian jika ada
-        $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
-        // Query untuk fetch data berdasarkan pencarian
-        $sql_data = "SELECT * FROM Funrun WHERE NAMA_GENG LIKE '%$searchTerm%' OR BIB_NUMBER LIKE '%$searchTerm%' OR status LIKE '%$searchTerm%'";
-        $result_data = $conn->query($sql_data);
-
         // Query to fetch data for table
         $sql_data = "SELECT * FROM Funrun";
         $result_data = $conn->query($sql_data);

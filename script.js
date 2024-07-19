@@ -83,11 +83,12 @@ $(document).ready(function() {
     $('.clear-btn').click(function(event) {
         $('#search-input').val(''); // Mengosongkan nilai input pencarian
         table.search('').draw(); // Mereset pencarian pada tabel
-    });
+		});
+	});
 
-    // Event listener untuk klik pada tombol .print-btn
-    $('.print-btn').click(function() {
-        var row = this.closest('tr'); // Temukan baris terdekat dari tombol yang diklik
+	document.querySelectorAll('.print-btn').forEach(button => {
+		button.addEventListener('click', function() {
+			var row = this.closest('tr'); // Temukan baris terdekat dari tombol yang diklik
 
         // Ambil nilai dari kolom "Nama Group" dan "Nomor BIB" di dalam baris
         var namaGeng = row.cells[0].textContent; // Kolom pertama

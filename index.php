@@ -110,7 +110,33 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php include 'fetch_data.php'; ?>
+							<?php
+							// Add pagination controls after fetching data
+
+							echo "</tbody></table>";
+
+							// Previous and Next buttons
+							echo "<nav aria-label='Page navigation'>";
+							echo "<ul class='pagination'>";
+
+							// Previous button
+							if ($page > 1) {
+								echo "<li class='page-item'><a class='page-link' href='index.php?page=".($page - 1)."'>Previous</a></li>";
+							}
+
+							// Numbered pages
+							for ($i = 1; $i <= $total_pages; $i++) {
+								echo "<li class='page-item ".($page == $i ? 'active' : '')."'><a class='page-link' href='index.php?page=".$i."'>".$i."</a></li>";
+							}
+
+							// Next button
+							if ($page < $total_pages) {
+								echo "<li class='page-item'><a class='page-link' href='index.php?page=".($page + 1)."'>Next</a></li>";
+							}
+
+							echo "</ul>";
+							echo "</nav>";
+							?>
 							</tbody>
 						</table>
 					</div>

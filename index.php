@@ -101,13 +101,12 @@
                     <div class="head">
                         <h3>Registration</h3>
                     </div>
-                    <div class="table-responsive">
-                        <table id="example" class="table-auto min-w-full divide-y divide-gray-200">
+                    <table id="example" class="display" style="width:100%">
                             <thead>
-                                <tr class="bg-gray-50">
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Geng</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nomor BIB</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <tr>
+                                    <th>Nama Geng</th>
+                                    <th>Nomor BIB</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -131,7 +130,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#example').DataTable();
+			new DataTable('#example');
         } );
     </script>
 

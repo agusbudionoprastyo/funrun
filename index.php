@@ -1,3 +1,7 @@
+<?php
+	require_once 'fetch_data.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,7 +114,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php include 'fetch_data.php'; ?>
+							<?php while($row = $result_data->fetch_assoc()): ?>
+                            <tr>
+                                <td><?php echo $row["NAMA_GENG"]; ?></td>
+                                <td><?php echo $row["BIB_NUMBER"]; ?></td>
+                                <td><?php echo $row["status"]; ?></td>
+                            </tr>
+                        	<?php endwhile; ?>
                             </tbody>
                         </table>
                     </div>

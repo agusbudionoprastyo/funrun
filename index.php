@@ -103,7 +103,8 @@
             <div class="table-data">
                 <div class="order">
                     <div class="head">
-                        <h3>Registration</h3>
+                        <h3>Daftar Peserta Fun Run</h3>
+						<i class='bx bx-search' ></i>
                     </div>
                     <table id="example" class="display" style="width:100%">
                             <thead>

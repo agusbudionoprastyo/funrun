@@ -175,120 +175,150 @@
 			$('.print-btn').click(function() {
 				var namaGeng = $(this).data('nama');
 				var nomorBIB = $(this).data('bib');
-				// Lakukan operasi pencetakan di sini, misalnya buka jendela baru untuk mencetak
-				// Membuka jendela popup
-				var popupWin = window.open('', '_blank');
-				popupWin.document.write('<head>');
-				popupWin.document.write('    <title>Print BIB</title>');
-				popupWin.document.write('    <style>');
-				popupWin.document.write('        @font-face {');
-				popupWin.document.write('            font-family: \'Adumu\'; /* Nama font yang akan digunakan */');
-				popupWin.document.write('            src: url(\'assets/Adumu.ttf\') format(\'truetype\'); /* Lokasi file TTF */');
-				popupWin.document.write('            /* Opsional: tambahkan format lain jika diperlukan */');
-				popupWin.document.write('        }');
-				popupWin.document.write('        body {');
-				popupWin.document.write('            width: 200mm;');
-				popupWin.document.write('            height: 145mm;');
-				popupWin.document.write('            margin: 0;');
-				popupWin.document.write('            padding: 0;');
-				popupWin.document.write('            display: flex;');
-				popupWin.document.write('            justify-content: center;');
-				popupWin.document.write('            align-items: center;');
-				popupWin.document.write('            position: relative;');
-				popupWin.document.write('            font-weight: 700;');
-				popupWin.document.write('            color: white;');
-				popupWin.document.write('        }');
-				popupWin.document.write('        .shape {');
-				popupWin.document.write('            position: absolute;');
-				popupWin.document.write('            top: 70%; /* Adjust vertically */');
-				popupWin.document.write('            right: 7px;');
-				popupWin.document.write('            transform: translate(-5%, -50%);');
-				popupWin.document.write('            width: 80px;');
-				popupWin.document.write('            height: 80px;');
-				popupWin.document.write('            background-color: white;');
-				popupWin.document.write('        }');
-				popupWin.document.write('        .container {');
-				popupWin.document.write('            position: relative;');
-				popupWin.document.write('            width: 100%;');
-				popupWin.document.write('            height: 100%;');
-				popupWin.document.write('        }');
-				popupWin.document.write('        .img, .img-2, .img-3 {');
-				popupWin.document.write('            max-width: 100%;');
-				popupWin.document.write('            height: auto;');
-				popupWin.document.write('            display: block;');
-				popupWin.document.write('            position: absolute;');
-				popupWin.document.write('            left: 50%;');
-				popupWin.document.write('            transform: translateX(-50%);');
-				popupWin.document.write('        }');
-				popupWin.document.write('        .img {');
-				popupWin.document.write('            z-index: -1; /* Letakkan di belakang konten utama */');
-				popupWin.document.write('        }');
-				popupWin.document.write('        .img-2 {');
-				popupWin.document.write('            top: 12mm; /* Adjust as needed */');
-				popupWin.document.write('            width: 550px;');
-				popupWin.document.write('        }');
-				popupWin.document.write('        .img-3 {');
-				popupWin.document.write('            bottom: 0; /* Adjust as needed */');
-				popupWin.document.write('        }');
-				popupWin.document.write('        .NameGroup {');
-				popupWin.document.write('            position: absolute;');
-				popupWin.document.write('            top: 50%; /* Adjust vertically */');
-				popupWin.document.write('            left: 50%;');
-				popupWin.document.write('            transform: translate(-50%, -50%);');
-				popupWin.document.write('            text-align: center;');
-				popupWin.document.write('            font-size: 88px;');
-				popupWin.document.write('            font-family: \'Adumu\';');
-				popupWin.document.write('            line-height: 88px;');
-				popupWin.document.write('            letter-spacing: 10px;');
-				popupWin.document.write('        }');
-				popupWin.document.write('        .headerTextLeft {');
-				popupWin.document.write('            position: absolute;');
-				popupWin.document.write('            top: 5%; /* Adjust vertically */');
-				popupWin.document.write('            left: 5%;');
-				popupWin.document.write('            transform: translate(-5%, -50%);');
-				popupWin.document.write('            text-align: center;');
-				popupWin.document.write('            font-size: 15px;');
-				popupWin.document.write('            font-family: Arial, Helvetica, sans-serif;');
-				popupWin.document.write('        }');
-				popupWin.document.write('        .headerTextRight {');
-				popupWin.document.write('            position: absolute;');
-				popupWin.document.write('            top: 5%; /* Adjust vertically */');
-				popupWin.document.write('            right: 5%;');
-				popupWin.document.write('            transform: translate(5%, -50%);');
-				popupWin.document.write('            text-align: center;');
-				popupWin.document.write('            font-size: 15px;');
-				popupWin.document.write('            font-family: Arial, Helvetica, sans-serif;');
-				popupWin.document.write('        }');
-				popupWin.document.write('        .BIBText {');
-				popupWin.document.write('            position: absolute;');
-				popupWin.document.write('            top: 73%; /* Adjust vertically */');
-				popupWin.document.write('            left: 15px;');
-				popupWin.document.write('            transform: translate(-5%, -50%);');
-				popupWin.document.write('            text-align: center;');
-				popupWin.document.write('            font-size: 45px;');
-				popupWin.document.write('            font-family: \'Adumu\';');
-				popupWin.document.write('            letter-spacing: 5px;');
-				popupWin.document.write('        }');
-				popupWin.document.write('    </style>');
-				popupWin.document.write('</head>');
-				popupWin.document.write('<body>');
-				popupWin.document.write('<div class="container">');
-				popupWin.document.write('    <div class="shape"></div>');
-				popupWin.document.write('    <img loading="lazy" srcset="assets/bg.png" class="img"/>');
-				popupWin.document.write('    <div class="headerTextLeft">28 JULI 2024<br>HOTEL DAFAM SEMARANG</div>');
-				popupWin.document.write('    <div class="headerTextRight">FUN RUN 6K<br>LARI ANTAR GENG</div>');
-				popupWin.document.write('    <img loading="lazy" srcset="assets/sponsor-atas.png" class="img-2"/>');
-				popupWin.document.write('    <div class="NameGroup">' + namaGeng +'</div>');
-				popupWin.document.write('    <div class="BIBText">' + nomorBIB +'</div>');
-				popupWin.document.write('    <img loading="lazy" srcset="assets/sponsor-bawah.png" class="img-3"/>');
-				popupWin.document.write('</div>');
-				popupWin.document.write('</body>');
-				popupWin.document.close();
 
-				// Cetak otomatis
-				popupWin.window.print();
+				// Buat sebuah iframe secara dinamis
+				var iframe = document.createElement('iframe');
+				iframe.style.display = 'none'; // Sembunyikan iframe dari tampilan pengguna
+				document.body.appendChild(iframe);
+
+				// Tulis konten HTML ke dalam iframe
+				var iframeDoc = iframe.contentWindow.document;
+				iframeDoc.open();
+				iframeDoc.write(`
+					<!DOCTYPE html>
+					<html lang="en">
+					<head>
+						<meta charset="UTF-8">
+						<title>Print BIB</title>
+						<style>
+						@font-face {
+							font-family: 'Adumu'; /* Nama font yang akan digunakan */
+							src: url('assets/Adumu.ttf') format('truetype'); /* Lokasi file TTF */
+							/* Opsional: tambahkan format lain jika diperlukan */
+						}
+
+						body {
+						width: 200mm;
+						height: 145mm;
+						margin: 0;
+						padding: 0;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						position: relative;
+						font-weight: 700;
+						color: white;
+						}
+
+						.shape {
+						position: absolute;
+						top: 70%; /* Adjust vertically */
+						right: 7px;
+						transform: translate(-5%, -50%);
+						width: 80px;
+						height: 80px;
+						background-color: white;
+						}
+
+						.container {
+						position: relative;
+						width: 100%;
+						height: 100%;
+						}
+
+						.img,
+						.img-2,
+						.img-3 {
+						max-width: 100%;
+						height: auto;
+						display: block;
+						position: absolute;
+						left: 50%;
+						transform: translateX(-50%);
+						}
+						.img {
+						z-index: -1; /* Letakkan di belakang konten utama */
+						}
+
+						.img-2 {
+						top: 12mm; /* Adjust as needed */
+						width: 550px;
+						}
+
+						.img-3 {
+						bottom: 0; /* Adjust as needed */
+						}
+
+						.NameGroup {
+						position: absolute;
+						top: 50%; /* Adjust vertically */
+						left: 50%;
+						transform: translate(-50%, -50%);
+						text-align: center;
+						font-size: 88px;
+						font-family: 'Adumu';
+						line-height: 88px;
+						letter-spacing: 10px;
+						}
+
+						.headerTextLeft {
+						position: absolute;
+						top: 5%; /* Adjust vertically */
+						left: 5%;
+						transform: translate(-5%, -50%);
+						text-align: center;
+						font-size: 15px;
+						font-family: Arial, Helvetica, sans-serif;
+						}
+
+						.headerTextRight {
+						position: absolute;
+						top: 5%; /* Adjust vertically */
+						right: 5%;
+						transform: translate(5%, -50%);
+						text-align: center;
+						font-size: 15px;
+						font-family: Arial, Helvetica, sans-serif;
+						}
+
+						.BIBText {
+						position: absolute;
+						top: 73%; /* Adjust vertically */
+						left: 15px;
+						transform: translate(-5%, -50%);
+						text-align: center;
+						font-size: 45px;
+						font-family: 'Adumu';
+						letter-spacing: 5px;
+						}
+						</style>
+					</head>
+					<body>
+						<div class="container">
+							<div class="shape"></div>
+							<img loading="lazy" srcset="assets/bg.png" class="img"/>
+							<div class="headerTextLeft">28 JULI 2024<br>HOTEL DAFAM SEMARANG</div>
+							<div class="headerTextRight">FUN RUN 6K<br>LARI ANTAR GENG</div>
+							<img loading="lazy" srcset="assets/sponsor-atas.png" class="img-2"/>
+							<div class="NameGroup">`+ namaGeng +`</div>
+							<div class="BIBText">`+ nomorBIB +`</div>
+							<img loading="lazy" srcset="assets/sponsor-bawah.png" class="img-3"/>
+						</div>
+					</body>
+					</html>
+				`);
+				iframeDoc.close();
+
+				// Pencetakan konten di dalam iframe
+				iframe.contentWindow.focus(); // Fokuskan iframe untuk memastikan pencetakan berhasil
+				iframe.contentWindow.print();
+
+				// Hapus iframe setelah pencetakan selesai
+				setTimeout(function() {
+					document.body.removeChild(iframe);
+				}, 1000); // Waktu tunggu sebelum menghapus iframe (1 detik)
 			});
-		});
+			});
 	</script>
 
     <script src="script.js"></script>

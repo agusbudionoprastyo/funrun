@@ -99,12 +99,10 @@
             <div class="table-data">
                 <div class="order">
                     <div class="head">
-                        <h3>Recent</h3>
-                        <i class='bx bx-search' ></i>
-                        <i class='bx bx-filter' ></i>
+                        <h3>Nomor Peserta</h3>
                     </div>
                     <div class="table-responsive">
-                        <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <table id="example" class="table table-striped" style="width:100%">
                             <thead>
                                 <tr>
                                     <th scope="col">Nama Geng</th>

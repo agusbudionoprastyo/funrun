@@ -51,7 +51,7 @@
                     <input type="search" id="search-input" placeholder="Search...">
                     <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
                 </div>
-				<button type="button" class="clear-btn">Clear</button>
+				<button type="button" class="btn-download"><box-icon type='solid' name='filter-alt'></box-icon></button>
             </form>
             <input type="checkbox" id="switch-mode" hidden>
             <label for="switch-mode" class="switch-mode"></label>
@@ -103,8 +103,8 @@
             <div class="table-data">
                 <div class="order">
                     <div class="head">
-                        <h3>Daftar Peserta Fun Run</h3>
-						<i class='bx bx-search' ></i>
+                        <h3>Daftar Peserta</h3>
+						<box-icon type='solid' name='printer'></box-icon> Print BIB
                     </div>
                     <table id="example" class="display" style="width:100%">
                             <thead>

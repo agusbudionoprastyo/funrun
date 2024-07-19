@@ -316,71 +316,86 @@
 
 </script> -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('printSelectedBtn').addEventListener('click', function() {
-            var checkboxes = document.querySelectorAll('.print-checkbox:checked');
-            if (checkboxes.length === 0) {
-                alert('Select at least one entry to print.');
-                return;
-            }
+		document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('printSelectedBtn').addEventListener('click', function() {
+        var checkboxes = document.querySelectorAll('.print-checkbox:checked');
+        if (checkboxes.length === 0) {
+            alert('Pilih setidaknya satu entri untuk dicetak.');
+            return;
+        }
 
-            var contentToPrint = ''; // String untuk menampung semua konten yang akan dicetak
-
-            checkboxes.forEach(function(checkbox) {
-                var row = checkbox.closest('tr');
-                var namaGeng = row.cells[0].textContent.trim();
-                var nomorBIB = row.cells[1].textContent.trim();
-                var qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(nomorBIB);
-
-                // Tambahkan konten untuk entri ini ke dalam contentToPrint
-                contentToPrint += `
-                    <div class="print-entry">
-                        <h1>${namaGeng}</h1>
-                        <p>BIB Number: ${nomorBIB}</p>
-                        <img src="${qrCodeUrl}" alt="QR Code">
-                    </div>
-                    <hr>
-                `;
-            });
-
-            // Buat dokumen HTML untuk mencetak semua entri yang dipilih
-            var printWindow = window.open('', '_blank');
-            printWindow.document.open();
-            printWindow.document.write(`
-                <!DOCTYPE html>
-                <html lang="en">
-                <head>
-                    <meta charset="UTF-8">
-                    <title>Print Selected Entries</title>
-                    <style>
-                        body {
-                            font-family: Arial, sans-serif;
-                        }
-                        .print-entry {
-                            margin-bottom: 20px;
-                        }
-                        img {
-                            max-width: 100%;
-                            height: auto;
-                        }
-                    </style>
-                </head>
-                <body>
-                    <h1>Selected Entries</h1>
-                    ${contentToPrint}
-                    <script>
-                        // Otomatis mulai pencetakan setelah konten dimuat
-                        window.onload = function() {
-                            window.print();
-                            window.setTimeout(function() { window.close(); }, 100); // Menutup jendela setelah selesai mencetak
-                        }
-                    </script>
-                </body>
-                </html>
-            `);
-            printWindow.document.close();
+        var selectedRows = [];
+        checkboxes.forEach(function(checkbox) {
+            var row = checkbox.closest('tr');
+            var namaGeng = row.cells[0].textContent.trim();
+            var nomorBIB = row.cells[1].textContent.trim();
+            selectedRows.push({ namaGeng: namaGeng, nomorBIB: nomorBIB });
         });
+
+        printSelectedQRCode(selectedRows);
     });
+});
+
+function printSelectedQRCode(selectedRows) {
+    if (selectedRows.length === 0) {
+        alert('Pilih setidaknya satu entri untuk dicetak.');
+        return;
+    }
+
+    // Membuat iframe element
+    var iframe = document.createElement('iframe');
+
+    // Menetapkan beberapa gaya untuk iframe
+    iframe.style.position = 'absolute';
+    iframe.style.left = '-9999px'; // Mengatur posisi di luar layar
+    iframe.style.width = '200mm'; // Menetapkan lebar iframe sesuai gaya label
+    iframe.style.height = '145mm'; // Menetapkan tinggi iframe sesuai gaya label
+    iframe.style.border = 'none'; // Menghapus border iframe
+
+    // Menambahkan iframe ke dalam body dokumen
+    document.body.appendChild(iframe);
+
+    // Mendapatkan dokumen di dalam iframe
+    var iframeDocument = iframe.contentWindow.document;
+
+    // Menuliskan HTML, CSS, dan konten label ke dalam dokumen iframe
+    iframeDocument.open();
+    iframeDocument.write('<html><head><style>' +
+                        '@page { size: 50mm 25mm; margin: 0; } ' +
+                        'body { font-family: Arial, sans-serif; margin: 0; padding: 0; } ' +
+                        '.label-container { width: 50mm; height: 25mm; padding: 0; box-sizing: border-box; page-break-after: always; display: flex; flex-direction: row; align-items: center; justify-content: space-between; overflow: hidden; position: relative; } ' +
+                        '.text-container { width: 25mm; height: 25mm; padding: 2mm; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; } ' +
+                        '.qrcode-container { width: 25mm; height: 25mm; padding: 2mm; box-sizing: border-box; display: flex; justify-content: center; align-items: center; } ' +
+                        '.qrcode img { max-width: 100%; max-height: 100%;} ' +
+                        '.text { font-size: 8pt; text-align: left; } ' +
+                        '</style>' +
+                        '<script src="https://kit.fontawesome.com/3595b79eb9.js" crossorigin="anonymous"></script>' + // Tambahkan link untuk FontAwesome di sini
+                        '</head><body>');
+
+    // Iterasi untuk setiap baris yang dipilih
+    selectedRows.forEach(function(row) {
+        var qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?data=https://ecard.dafam.cloud/?namaGeng=' + encodeURIComponent(row.namaGeng) + '&nomorBIB=' + encodeURIComponent(row.nomorBIB) + '&size=80x80';
+
+        iframeDocument.write('<div class="label-container">' +
+                            '<div class="text-container">' + 
+                            '<div class="text"><b>Nama Geng:</b> ' + row.namaGeng + '<br><b>Nomor BIB:</b> ' + row.nomorBIB + '</div>' +
+                            '</div>' +
+                            '<div class="qrcode-container"><div class="qrcode"><img src="' + qrCodeUrl + '"></div></div>' +
+                            '</div>');
+    });
+
+    // Menutup dokumen iframe setelah menulis semua konten
+    iframeDocument.write('</body></html>');
+    iframeDocument.close();
+
+    iframe.onload = function() {
+        iframe.contentWindow.print();
+        setTimeout(function() {
+            document.body.removeChild(iframe);
+        }, 100);
+    };
+}
+
 </script>
 
 </body>

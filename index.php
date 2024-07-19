@@ -46,7 +46,7 @@
         <!-- NAVBAR -->
         <nav>
             <i class='bx bx-menu' ></i>
-            <form action="#">
+            <form action="form-search">
                 <div class="form-input">
                     <input type="search" placeholder="Search...">
                     <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>

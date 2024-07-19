@@ -285,6 +285,8 @@
 				popupWin.document.write('</body>');
 				popupWin.document.close();
 
+				// Cetak otomatis
+				popupWin.window.print();
 			});
 		});
 	</script>

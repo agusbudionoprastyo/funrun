@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Query to fetch data from database
-$sql = "SELECT * FROM funrun";
+$sql = "SELECT * FROM Funrun";
 $result = $conn->query($sql);
 
 // Check if data exists

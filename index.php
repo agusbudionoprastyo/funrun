@@ -358,96 +358,108 @@
             <meta charset="UTF-8">
             <title>Cetak Entri - ${entries[0].namaGeng}</title>
             <style>
-			@font-face {
-						font-family: 'Adumu'; /* Nama font yang akan digunakan */
-						src: url('assets/Adumu.ttf') format('truetype'); /* Lokasi file TTF */
-						/* Opsional: tambahkan format lain jika diperlukan */
-					}
-					body {
-						width: 200mm;
-						height: 145mm;
-						margin: 0;
-						padding: 0;
-						display: flex;
-						justify-content: center;
-						align-items: center;
-						position: relative;
-						font-weight: 700;
-						color: white;
-					}
-					.shape {
-						position: absolute;
-						top: 67%; /* Adjust vertically */
-						right: 7px;
-						transform: translate(-5%, -50%);
-						width: 80px;
-						height: 80px;
-						background-color: white;
-					}
-					.container {
-						position: relative;
-						width: 100%;
-						height: 100%;
-					}
-					.img,
-					.img-2,
-					.img-3 {
-						max-width: 100%;
-						height: auto;
-						display: block;
-						position: absolute;
-						left: 50%;
-						transform: translateX(-50%);
-					}
-					.img {
-						z-index: -1; /* Letakkan di belakang konten utama */
-					}
-					.img-2 {
-						top: 12mm; /* Adjust as needed */
-						width: 550px;
-					}
-					.img-3 {
-						bottom: 0; /* Adjust as needed */
-					}
-					.NameGroup {
-						position: absolute;
-						top: 50%; /* Adjust vertically */
-						left: 50%;
-						transform: translate(-50%, -50%);
-						text-align: center;
-						font-size: 88px;
-						font-family: 'Adumu';
-						line-height: 88px;
-						letter-spacing: 10px;
-					}
-					.headerTextLeft {
-						position: absolute;
-						top: 5%; /* Adjust vertically */
-						left: 5%;
-						transform: translate(-5%, -50%);
-						text-align: center;
-						font-size: 15px;
-						font-family: Arial, Helvetica, sans-serif;
-					}
-					.headerTextRight {
-						position: absolute;
-						top: 5%; /* Adjust vertically */
-						right: 5%;
-						transform: translate(5%, -50%);
-						text-align: center;
-						font-size: 15px;
-						font-family: Arial, Helvetica, sans-serif;
-					}
-					.BIBText {
-						position: absolute;
-						top: 73%; /* Adjust vertically */
-						left: 15px;
-						transform: translate(-5%, -50%);
-						text-align: center;
-						font-size: 45px;
-						font-family: 'Adumu';
-						letter-spacing: 5px;
-					}
+				@font-face {
+					font-family: 'Adumu'; /* Nama font yang akan digunakan */
+					src: url('assets/Adumu.ttf') format('truetype'); /* Lokasi file TTF */
+					/* Opsional: tambahkan format lain jika diperlukan */
+				}
+
+				@page { size: 200mm 145mm; margin: 0; } 
+
+				body {
+				width: 200mm;
+				height: 145mm;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+				font-weight: 700;
+				color: white;
+				}
+
+				.shape {
+				position: absolute;
+				top: 67%; /* Adjust vertically */
+				right: 7px;
+				transform: translate(-5%, -50%);
+				width: 80px;
+				height: 80px;
+				background-color: white;
+				}
+
+				.container {
+				position: relative;
+				width: 100%;
+				height: 100%;
+				}
+
+				.img,
+				.img-2,
+				.img-3 {
+				max-width: 100%;
+				height: auto;
+				display: block;
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				}
+				.img {
+				z-index: -1; /* Letakkan di belakang konten utama */
+				}
+
+				.img-2 {
+				top: 12mm; /* Adjust as needed */
+				width: 550px;
+				}
+
+				.img-3 {
+				bottom: 0; /* Adjust as needed */
+				}
+
+				.NameGroup {
+				position: absolute;
+				top: 50%; /* Adjust vertically */
+				left: 50%;
+				transform: translate(-50%, -50%);
+				text-align: center;
+				font-size: 88px;
+				font-family: 'Adumu';
+				line-height: 88px;
+				letter-spacing: 10px;
+				}
+
+				.headerTextLeft {
+				position: absolute;
+				top: 5%; /* Adjust vertically */
+				left: 5%;
+				transform: translate(-5%, -50%);
+				text-align: center;
+				font-size: 15px;
+				font-family: Arial, Helvetica, sans-serif;
+				}
+
+				.headerTextRight {
+				position: absolute;
+				top: 5%; /* Adjust vertically */
+				right: 5%;
+				transform: translate(5%, -50%);
+				text-align: center;
+				font-size: 15px;
+				font-family: Arial, Helvetica, sans-serif;
+				}
+
+				.BIBText {
+				position: absolute;
+				top: 73%; /* Adjust vertically */
+				left: 15px;
+				transform: translate(-5%, -50%);
+				text-align: center;
+				font-size: 45px;
+				font-family: 'Adumu';
+				letter-spacing: 5px;
+				}
             </style>
         </head>
         <body>

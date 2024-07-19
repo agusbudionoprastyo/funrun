@@ -137,24 +137,28 @@
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.tailwindcss.js"></script>
 
-    <script>
-		$(document).ready(function() {
-			var table = new DataTable('#example', {
-				searching: true, // Aktifkan pencarian
-			});
+	<script>
+    $(document).ready(function() {
+        var table = new DataTable('#example', {
+            searching: true, // Aktifkan pencarian
+        });
 
-            // Event listener untuk tombol "Enter" pada #search-input
-			$('#search-input').keypress(function(event) {
-				if (event.which === 13) {
-					// Ambil nilai pencarian dari #search-input
-					var searchText = $(this).val();
+        // Event listener untuk "Enter" pada #search-input
+        $('#search-input').keypress(function(event) {
+            if (event.which === 13) {
+                event.preventDefault(); // Mencegah form submit (jika ada)
+                var searchText = $(this).val();
+                table.search(searchText).draw();
+            }
+        });
 
-					// Lakukan pencarian pada tabel
-					table.search(searchText).draw();
-				}
-			});
-		});
-    </script>
+        // Event listener untuk klik pada tombol .search-btn
+        $('.search-btn').click(function(event) {
+            var searchText = $('#search-input').val();
+            table.search(searchText).draw();
+        });
+    });
+</script>
 
     <script src="script.js"></script>
 </body>

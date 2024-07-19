@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Print BIB</title>
     <style>
-  /* .div {
+  .div {
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -22,26 +22,7 @@
     width: 100%;
     object-fit: cover;
     object-position: center;
-  } */
-  .div {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-  min-height: 928px;
-  padding-top: 44px;
-  align-items: center;
-  color: #fff;
-}
-
-.img {
-  position: absolute;
-  inset: 0;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  object-position: center;
-}
+  }
 
   .div-2 {
     position: relative;
@@ -158,17 +139,7 @@
 </style>
 </head>
 <body>
-<img
-    loading="lazy"
-    srcset="assets/sponsor-bawah.png"
-    class="img-3"
-  />
 <div class="div">
-<img
-    loading="lazy"
-    srcset="assets/sponsor-atas.png"
-    class="img-2"
-  />
   <img
     loading="lazy"
     srcset="assets/bg.png"
@@ -184,7 +155,11 @@
       <div class="div-8">LARI ANTAR GENG</div>
     </div>
   </div>
-
+  <img
+    loading="lazy"
+    srcset="assets/sponsor-atas.png"
+    class="img-2"
+  />
   <div class="div-9">
     NAME
     <br />
@@ -194,6 +169,11 @@
     <div class="div-11"></div>
     <div class="div-12">001</div>
   </div>
+  <img
+    loading="lazy"
+    srcset="assets/sponsor-bawah.png"
+    class="img-3"
+  />
 </div>
 </body>
 </html>

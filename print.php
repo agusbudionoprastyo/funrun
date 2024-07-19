@@ -66,7 +66,7 @@
   }
   .img-2 {
     position: absolute;
-    aspect-ratio: 9.09;
+    /* aspect-ratio: 9.09; */
     object-fit: auto;
     object-position: center;
     width: 845px;
@@ -105,7 +105,8 @@
   }
 
   .img-3 {
-    aspect-ratio: 6.67;
+    position: absolute;
+    /* aspect-ratio: 6.67; */
     object-fit: auto;
     object-position: center;
     width: 100%;

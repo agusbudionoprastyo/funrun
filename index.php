@@ -316,7 +316,6 @@
 
 </script> -->
 <script>
-    // Event listener untuk tombol Print Selected
     document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('printSelectedBtn').addEventListener('click', function() {
             var checkboxes = document.querySelectorAll('.print-checkbox:checked');
@@ -373,7 +372,7 @@
                         // Otomatis mulai pencetakan setelah konten dimuat
                         window.onload = function() {
                             window.print();
-                            window.close();
+                            window.setTimeout(function() { window.close(); }, 100); // Menutup jendela setelah selesai mencetak
                         }
                     </script>
                 </body>

@@ -13,6 +13,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Query to fetch data
+$sql = "SELECT * FROM Funrun'";
+$result = $conn->query($sql);
+
 // Initialize variables for search and counts
 $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 $total_peserta = 0;

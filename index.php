@@ -50,7 +50,7 @@
                 <div class="form-input">
                     <input type="search" id="search-input" placeholder="Search...">
                     <!-- <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button> -->
-					<button type="button" class="clear-btn"><i class='bx bx-reset' ></i></button>
+					<button type="button" class="clear-btn" style="color : red"><i class='bx bx-reset' ></i></button>
                 </div>
             </form>
             <input type="checkbox" id="switch-mode" hidden>
@@ -105,6 +105,10 @@
                     <div class="head">
                         <h3>Daftar Peserta</h3>
 						<i class='bx bxs-printer' ></i> Print BIB
+						<a href="#" class="btn-download">
+							<i class='bx bxs-cloud-download' ></i>
+							<span class="text">Download PDF</span>
+						</a>
                     </div>
                     <table id="example" class="display" style="width:100%">
                             <thead>

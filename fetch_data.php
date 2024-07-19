@@ -19,9 +19,9 @@ if ($conn->connect_error) {
         $sql = "SELECT * FROM Funrun WHERE NAMA_GENG LIKE '%$searchTerm%' OR BIB_NUMBER LIKE '%$searchTerm%' OR status LIKE '%$searchTerm%'";
         $result = $mysqli->query($sql);
 
-        // Query to fetch data from database
-        $sql = "SELECT * FROM Funrun";
-        $result = $conn->query($sql);
+        // // Query to fetch data from database
+        // $sql = "SELECT * FROM Funrun";
+        // $result = $conn->query($sql);
 
         // Query to fetch data for table
         $sql_data = "SELECT * FROM Funrun";

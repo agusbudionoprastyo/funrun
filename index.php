@@ -50,8 +50,8 @@
                 <div class="form-input">
                     <input type="search" id="search-input" placeholder="Search...">
                     <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-					<button type="button" class="clear-btn">Clear</button>
                 </div>
+				<button type="button" class="clear-btn">Clear</button>
             </form>
             <input type="checkbox" id="switch-mode" hidden>
             <label for="switch-mode" class="switch-mode"></label>

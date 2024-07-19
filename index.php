@@ -86,14 +86,14 @@
                 <li>
                     <i class='bx bxs-calendar-check bx-tada bx-rotate-90' ></i>
                     <span class="text">
-                        <h3><?php echo $row["total_check"]; ?></h3>
+                        <h3><?php echo $row_check["total_check"]; ?></h3>
                         <p>Check</p>
                     </span>
                 </li>
                 <li>
                     <i class='bx bx-calendar-exclamation bx-burst bx-rotate-90' ></i>
                     <span class="text">
-						<h3><?php echo $row["total_uncheck"]; ?></h3>
+						<h3><?php echo $row_uncheck["total_uncheck"]; ?></h3>
                         <p>UnCheck</p>
                     </span>
                 </li>

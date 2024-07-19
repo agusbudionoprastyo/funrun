@@ -148,7 +148,7 @@
 
     <script src="script.js"></script>
 	<!-- Script JavaScript -->
-	<script>
+	<!-- <script>
         // Event listener untuk tombol Print Selected
 		document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('printSelectedBtn').addEventListener('click', function() {
@@ -283,7 +283,6 @@
 							</style>
 						</head>
 						<body>
-							<!-- Konten untuk pencetakan -->
 							<div class="container">
 								<div class="shape">
 									<img src="${qrCodeUrl}" alt="QR Code" style="max-width: 100%; height: auto;">
@@ -315,6 +314,75 @@
 				});
 			}
 
+</script> -->
+<script>
+    // Event listener untuk tombol Print Selected
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('printSelectedBtn').addEventListener('click', function() {
+            var checkboxes = document.querySelectorAll('.print-checkbox:checked');
+            if (checkboxes.length === 0) {
+                alert('Select at least one entry to print.');
+                return;
+            }
+
+            var contentToPrint = ''; // String untuk menampung semua konten yang akan dicetak
+
+            checkboxes.forEach(function(checkbox) {
+                var row = checkbox.closest('tr');
+                var namaGeng = row.cells[0].textContent.trim();
+                var nomorBIB = row.cells[1].textContent.trim();
+                var qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(nomorBIB);
+
+                // Tambahkan konten untuk entri ini ke dalam contentToPrint
+                contentToPrint += `
+                    <div class="print-entry">
+                        <h1>${namaGeng}</h1>
+                        <p>BIB Number: ${nomorBIB}</p>
+                        <img src="${qrCodeUrl}" alt="QR Code">
+                    </div>
+                    <hr>
+                `;
+            });
+
+            // Buat dokumen HTML untuk mencetak semua entri yang dipilih
+            var printWindow = window.open('', '_blank');
+            printWindow.document.open();
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Print Selected Entries</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                        }
+                        .print-entry {
+                            margin-bottom: 20px;
+                        }
+                        img {
+                            max-width: 100%;
+                            height: auto;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h1>Selected Entries</h1>
+                    ${contentToPrint}
+                    <script>
+                        // Otomatis mulai pencetakan setelah konten dimuat
+                        window.onload = function() {
+                            window.print();
+                            window.close();
+                        }
+                    </script>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+        });
+    });
 </script>
+
 </body>
 </html>

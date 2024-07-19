@@ -7,6 +7,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
     <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 
@@ -101,7 +104,7 @@
                         <i class='bx bx-filter' ></i>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-striped">
+                        <table id="example" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
                                     <th scope="col">Nama Geng</th>
@@ -110,74 +113,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                // Assuming you have a MySQL database connection
-                                $servername = "localhost";
-                                $username = "dafm5634_ag";
-                                $password = "Ag7us777__";
-                                $dbname = "dafm5634_funrun";
-
-                                // Create connection
-                                $conn = new mysqli($servername, $username, $password, $dbname);
-
-                                // Check connection
-                                if ($conn->connect_error) {
-                                    die("Connection failed: " . $conn->connect_error);
-                                }
-
-                                // Pagination configuration
-                                $items_per_page = 20; // Number of records to display per page
-                                $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1; // Current page number, default is 1
-                                $start_from = ($page - 1) * $items_per_page; // Starting index for fetching records
-
-                                // Query to fetch data from database with pagination
-                                $sql = "SELECT * FROM Funrun LIMIT $start_from, $items_per_page";
-                                $result = $conn->query($sql);
-
-                                // Check if data exists
-                                if ($result->num_rows > 0) {
-                                    // Output data of each row
-                                    while($row = $result->fetch_assoc()) {
-                                        echo "<tr>";
-                                        echo "<td>" . htmlspecialchars($row["NAMA_GENG"]) . "</td>"; // Replace with actual column names
-                                        echo "<td>" . htmlspecialchars($row["BIB_NUMBER"]) . "</td>";
-                                        echo "<td>" . htmlspecialchars($row["status"]) . "</td>"; // Assuming 'status' is in your database
-                                        echo "</tr>";
-                                    }
-                                } else {
-                                    echo "<tr><td colspan='3'>No data found</td></tr>";
-                                }
-
-                                $conn->close();
-                                ?>
+                                <?php include 'fetch_data.php'; ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
-
-                <!-- Pagination -->
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <?php
-                        // Previous page link
-                        if ($page > 1) {
-                            echo '<li class="page-item"><a class="page-link" href="?page='.($page - 1).'">Previous</a></li>';
-                        }
-
-                        // Numbered pages
-                        for ($i = 1; $i <= $total_pages; $i++) {
-                            echo '<li class="page-item '.($page == $i ? 'active' : '').'"><a class="page-link" href="?page='.$i.'">'.$i.'</a></li>';
-                        }
-
-                        // Next page link
-                        if ($page < $total_pages) {
-                            echo '<li class="page-item"><a class="page-link" href="?page='.($page + 1).'">Next</a></li>';
-                        }
-                        ?>
-                    </ul>
-                </nav>
-                <!-- End Pagination -->
-
             </div>
         </main>
         <!-- MAIN -->
@@ -185,8 +125,18 @@
     <!-- CONTENT -->
     
     <!-- Bootstrap JS and dependencies -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>
 
     <script src="script.js"></script>
 </body>

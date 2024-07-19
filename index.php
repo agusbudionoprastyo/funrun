@@ -170,11 +170,17 @@
 			$('.clear-btn').click(function(event) {
 				$('#search-input').val(''); // Mengosongkan nilai input pencarian
 				table.search('').draw(); // Mereset pencarian pada tabel
-			});
-			// Event listener untuk klik tombol print
-			document.getElementById('print-btn').addEventListener('click', function() {
-				var namaGeng = $(this).data('nama');
-				var nomorBIB = $(this).data('bib');
+			
+			)
+		});
+		
+			document.querySelectorAll('.print-btn').forEach(button => {
+			button.addEventListener('click', function() {
+				var row = this.closest('tr'); // Temukan baris terdekat dari tombol yang diklik
+
+            // Ambil nilai dari kolom "Nama Group" dan "Nomor BIB" di dalam baris
+            var namaGeng = row.cells[0].textContent; // Kolom pertama
+            var nomorBIB = row.cells[1].textContent; // Kolom kedua
 
 				// Buat sebuah iframe secara dinamis
 				var iframe = document.createElement('iframe');
@@ -294,15 +300,15 @@
 						</style>
 					</head>
 					<body>
-						<div class="container">
-							<div class="shape"></div>
-							<img loading="lazy" srcset="assets/bg.png" class="img"/>
-							<div class="headerTextLeft">28 JULI 2024<br>HOTEL DAFAM SEMARANG</div>
-							<div class="headerTextRight">FUN RUN 6K<br>LARI ANTAR GENG</div>
-							<img loading="lazy" srcset="assets/sponsor-atas.png" class="img-2"/>
-							<div class="NameGroup">`+ namaGeng +`</div>
-							<div class="BIBText">`+ nomorBIB +`</div>
-							<img loading="lazy" srcset="assets/sponsor-bawah.png" class="img-3"/>
+                    <div class="container">
+                        <div class="shape"></div>
+                        <img loading="lazy" src="assets/bg.png" class="img"/>
+                        <div class="headerTextLeft">28 JULI 2024<br>HOTEL DAFAM SEMARANG</div>
+                        <div class="headerTextRight">FUN RUN 6K<br>LARI ANTAR GENG</div>
+                        <img loading="lazy" src="assets/sponsor-atas.png" class="img-2"/>
+                        <div class="NameGroup">${namaGeng}</div>
+                        <div class="BIBText">${nomorBIB}</div>
+                        <img loading="lazy" src="assets/sponsor-bawah.png" class="img-3"/>
 						</div>
 					</body>
 					</html>

@@ -46,13 +46,13 @@
   .div-4 {
     font-family: Inter, sans-serif;
     font-weight: 400;
-    font-size: 64px;
+    font-size: 32px;
     align-self: center;
   }
   .div-5 {
     font-family: Inter, sans-serif;
     font-weight: 700;
-    font-size: 64px;
+    font-size: 32px;
     margin-top: 12px;
   }
   .div-6 {
@@ -63,13 +63,13 @@
   .div-7 {
     font-family: Inter, sans-serif;
     font-weight: 400;
-    font-size: 64px;
+    font-size: 32px;
     align-self: center;
   }
   .div-8 {
     font-family: Inter, sans-serif;
     font-weight: 700;
-    font-size: 64px;
+    font-size: 32px;
     margin-top: 12px;
   }
   .img-2 {
@@ -77,7 +77,7 @@
     /* aspect-ratio: 9.09; */
     object-fit: auto;
     object-position: center;
-    width: 845px;
+    width: 445px;
     margin-top: 18px;
     max-width: 100%;
   }

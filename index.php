@@ -104,7 +104,7 @@
                 <div class="order">
                     <div class="head">
                         <h3>Daftar Peserta</h3>
-						<button type="button" id="printAllBtn" class="btn-download">
+						<button type="button" id="printSelectedBtn" class="btn-download">
 							<i class='bx bxs-printer' ></i>
 							<span class="text">BIB NUMBER</span>
 						</button>
@@ -122,6 +122,7 @@
                             <tr>
                                 <td><?php echo $row["NAMA_GENG"]; ?></td>
                                 <td>
+									<input type="checkbox" class="print-checkbox">
 									<?php echo $row["BIB_NUMBER"]; ?>
 									<button class="print-btn" data-nama="<?php echo $row["NAMA_GENG"]; ?>" data-bib="<?php echo $row["BIB_NUMBER"]; ?>"><i class='bx bxs-printer' ></i></button>
 								</td>
@@ -147,29 +148,32 @@
 
     <script src="script.js"></script>
 	<!-- Script JavaScript -->
-<!-- Script JavaScript -->
+	<!-- Script JavaScript -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Event listener untuk tombol Print All
-        document.getElementById('printAllBtn').addEventListener('click', function() {
-            var rows = document.querySelectorAll('#dataTable tr'); // Ambil semua baris dari tabel
+        // Event listener untuk tombol Print Selected
+        document.getElementById('printSelectedBtn').addEventListener('click', function() {
+            var checkboxes = document.querySelectorAll('.print-checkbox:checked');
+            if (checkboxes.length === 0) {
+                alert('Pilih setidaknya satu baris untuk dicetak.');
+                return;
+            }
 
-            // Buat array untuk menyimpan data nama grup dan nomor BIB dari setiap baris
+            // Buat array untuk menyimpan data nama grup dan nomor BIB dari baris yang dipilih
             var data = [];
-            rows.forEach(row => {
-                var namaGeng = row.cells[0].textContent.trim(); // Kolom pertama
-                var nomorBIB = row.cells[1].textContent.trim(); // Kolom kedua
+            checkboxes.forEach(checkbox => {
+                var row = checkbox.closest('tr');
+                var namaGeng = row.cells[1].textContent.trim(); // Kolom kedua
+                var nomorBIB = row.cells[2].textContent.trim(); // Kolom ketiga
                 data.push({ namaGeng: namaGeng, nomorBIB: nomorBIB });
             });
 
             // Buat array untuk menyimpan promise dari setiap iframe
             var iframePromises = [];
 
-            // Membagi data menjadi halaman-halaman A4 dengan 2 entri per halaman
-            for (var i = 0; i < data.length; i += 2) {
-                var pageData = data.slice(i, i + 2); // Ambil 2 entri untuk halaman ini
-
-                // Buat promise untuk setiap halaman
+            // Membuat konten cetak untuk setiap baris yang dipilih
+            data.forEach(entry => {
+                // Buat promise untuk setiap konten cetak
                 var promise = new Promise(function(resolve, reject) {
                     // Buat sebuah iframe secara dinamis
                     var iframe = document.createElement('iframe');
@@ -280,10 +284,7 @@
                         <body>
                             <!-- Konten untuk pencetakan -->
                             <div class="container">
-                                <!-- Baris pertama -->
-                                ${generateEntryHtml(pageData[0])}
-                                <!-- Baris kedua -->
-                                ${pageData[1] ? generateEntryHtml(pageData[1]) : ''}
+                                ${generateEntryHtml(entry)}
                             </div>
                         </body>
                         </html>
@@ -306,7 +307,7 @@
 
                 // Tambahkan promise ke array
                 iframePromises.push(promise);
-            }
+            });
 
             // Setelah semua halaman dibuat, tunggu hingga semua proses selesai
             Promise.all(iframePromises).then(function() {

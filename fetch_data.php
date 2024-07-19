@@ -18,18 +18,18 @@ $sql = "SELECT * FROM Funrun'";
 $result = $conn->query($sql);
 
 // Initialize variables for search and counts
-$searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
+// $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 $total_peserta = 0;
 $total_check = 0;
 $total_uncheck = 0;
 
-// Query to fetch data based on search term
-$sql_search = "SELECT * FROM Funrun WHERE NAMA_GENG LIKE '%$searchTerm%' OR BIB_NUMBER LIKE '%$searchTerm%' OR status LIKE '%$searchTerm%'";
-$result_search = $conn->query($sql_search);
+// // Query to fetch data based on search term
+// $sql_search = "SELECT * FROM Funrun WHERE NAMA_GENG LIKE '%$searchTerm%' OR BIB_NUMBER LIKE '%$searchTerm%' OR status LIKE '%$searchTerm%'";
+// $result_search = $conn->query($sql_search);
 
-if (!$result_search) {
-    die("Query failed: " . $conn->error);
-}
+// if (!$result_search) {
+//     die("Query failed: " . $conn->error);
+// }
 
 // Query to fetch total number of participants
 $sql_total = "SELECT COUNT(*) AS total_peserta FROM Funrun";

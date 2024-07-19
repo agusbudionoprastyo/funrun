@@ -591,6 +591,7 @@ body {
 	}
 }
 
-.dataTables_wrapper .dataTables_filter {
-	display: none;
-}
+    /* Hide the search input field */
+    .dataTables_filter {
+        display: none; /* This hides the default DataTables search input */
+    }

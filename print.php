@@ -46,11 +46,13 @@
   .div-4 {
     font-family: Inter, sans-serif;
     font-weight: 400;
+    font-size: 64px;
     align-self: center;
   }
   .div-5 {
     font-family: Inter, sans-serif;
     font-weight: 700;
+    font-size: 64px;
     margin-top: 12px;
   }
   .div-6 {
@@ -61,11 +63,13 @@
   .div-7 {
     font-family: Inter, sans-serif;
     font-weight: 400;
+    font-size: 64px;
     align-self: center;
   }
   .div-8 {
     font-family: Inter, sans-serif;
     font-weight: 700;
+    font-size: 64px;
     margin-top: 12px;
   }
   .img-2 {
@@ -81,7 +85,7 @@
     position: relative;
     text-align: center;
     margin-top: 31px;
-    font: 700 128px Inter, sans-serif;
+    font: 700 96px Inter, sans-serif;
   }
 
   .div-10 {

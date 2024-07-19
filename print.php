@@ -141,7 +141,7 @@
 <div class="div">
   <img
     loading="lazy"
-    srcset="assets/bg.png"
+    srcset="..."
     class="img"
   />
   <div class="div-2">

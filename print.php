@@ -141,7 +141,7 @@
 <div class="div">
   <img
     loading="lazy"
-    srcset="..."
+    srcset="assets/bg.png"
     class="img"
   />
   <div class="div-2">
@@ -156,7 +156,7 @@
   </div>
   <img
     loading="lazy"
-    srcset="..."
+    srcset="assets/sponsor-atas.png"
     class="img-2"
   />
   <div class="div-9">
@@ -170,7 +170,7 @@
   </div>
   <img
     loading="lazy"
-    srcset="..."
+    srcset="assets/sponsor-bawah.png"
     class="img-3"
   />
 </div>

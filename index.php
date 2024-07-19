@@ -79,21 +79,21 @@
                 <li>
                     <i class='bx bxs-group bx-fade-up bx-rotate-90' ></i>
                     <span class="text">
-                        <h3>0</h3>
+                        <h3><?php echo $row["total_peserta"]; ?></h3>
                         <p>Peserta</p>
                     </span>
                 </li>
                 <li>
                     <i class='bx bxs-calendar-check bx-tada bx-rotate-90' ></i>
                     <span class="text">
-                        <h3>0</h3>
+                        <h3><?php echo $row["total_check"]; ?></h3>
                         <p>Check</p>
                     </span>
                 </li>
                 <li>
                     <i class='bx bx-calendar-exclamation bx-burst bx-rotate-90' ></i>
                     <span class="text">
-                        <h3>0</h3>
+						<h3><?php echo $row["total_uncheck"]; ?></h3>
                         <p>UnCheck</p>
                     </span>
                 </li>

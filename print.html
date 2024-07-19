@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print BIB</title>
     <style>
         @font-face {
             font-family: 'Adumu'; /* Nama font yang akan digunakan */
             src: url('assets/Adumu.ttf') format('truetype'); /* Lokasi file TTF */
             /* Opsional: tambahkan format lain jika diperlukan */
         }
-
-        @page { size: 200mm 145mm; margin: 0; }
 
         body {
             width: 200mm;
@@ -19,13 +20,19 @@
             justify-content: center;
             align-items: center;
             position: relative;
+        }
+
+        .NameGroup,
+        .headerTextLeft,
+        .headerTextRight,
+        .BIBText {
+            color: #fff; /* Warna teks putih */
             font-weight: 700;
-            color: white;
         }
 
         .shape {
             position: absolute;
-            top: 67%; /* Adjust vertically */
+            top: 70%; /* Adjust vertically */
             right: 7px;
             transform: translate(-5%, -50%);
             width: 80px;
@@ -48,8 +55,6 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-        }
-        .img {
             z-index: -1; /* Letakkan di belakang konten utama */
         }
 
@@ -107,18 +112,43 @@
     </style>
 </head>
 <body>
-    <!-- Konten untuk pencetakan -->
-    <div class="container">
-        <div class="shape">
-            <img src="${qrCodeUrl}" alt="QR Code" style="max-width: 100%; height: auto;">
-        </div>
-        <img src="assets/bg.png" class="img" alt="Image for printing">
+    <div class="container" id="capture">
+        <div class="shape"></div>
+        <img loading="lazy" src="assets/bg.png" class="img"/>
         <div class="headerTextLeft">28 JULI 2024<br>HOTEL DAFAM SEMARANG</div>
         <div class="headerTextRight">FUN RUN 6K<br>LARI ANTAR GENG</div>
-        <img src="assets/sponsor-atas.png" class="img-2" alt="Image for printing">
-        <div class="NameGroup">${namaGeng}</div>
-        <div class="BIBText">${nomorBIB}</div>
-        <img src="assets/sponsor-bawah.png" class="img-3" alt="Image for printing">
+        <img loading="lazy" src="assets/sponsor-atas.png" class="img-2"/>
+        <div class="NameGroup">NAME GROUP</div>
+        <div class="BIBText">001</div>
+        <img loading="lazy" src="assets/sponsor-bawah.png" class="img-3"/>
     </div>
+
+    <!-- Include html2canvas library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+
+    <script>
+        // Fungsi untuk mengambil tangkapan layar dan menyimpannya sebagai gambar
+        function captureAndPrint() {
+            var element = document.getElementById('capture');
+            html2canvas(element, {
+                useCORS: true, // Enable CORS support for images
+                logging: true, // Enable logging to troubleshoot
+                allowTaint: true, // Allow taint on the canvas
+                scrollY: -window.scrollY // Fix for scrolling in Firefox
+            }).then(function(canvas) {
+                var img = canvas.toDataURL('image/png'); // Mengonversi canvas ke gambar PNG dengan kualitas default
+                // Membuat elemen <a> untuk men-download gambar
+                var link = document.createElement('a');
+                link.href = img;
+                link.download = 'print.png'; // Nama file saat di-download
+                document.body.appendChild(link); // Menambahkan link ke dalam body
+                link.click(); // Memicu proses download
+                document.body.removeChild(link); // Menghapus link setelah selesai
+            });
+        }
+    </script>
+
+    <!-- Tombol untuk memanggil fungsi captureAndPrint -->
+    <button onclick="captureAndPrint()">Cetak sebagai Gambar</button>
 </body>
 </html>

@@ -171,9 +171,10 @@
 				$('#search-input').val(''); // Mengosongkan nilai input pencarian
 				table.search('').draw(); // Mereset pencarian pada tabel
 			
-			)
 		});
 		
+		});
+
 			document.querySelectorAll('.print-btn').forEach(button => {
 			button.addEventListener('click', function() {
 				var row = this.closest('tr'); // Temukan baris terdekat dari tombol yang diklik

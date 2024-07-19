@@ -104,10 +104,10 @@
                 <div class="order">
                     <div class="head">
                         <h3>Daftar Peserta</h3>
-						<a href="#" class="btn-download">
+						<button type="button" id="printAllBtn" class="btn-download">
 							<i class='bx bxs-printer' ></i>
 							<span class="text">BIB NUMBER</span>
-						</a>
+						</button>
                     </div>
                     <table id="example" class="display" style="width:100%">
                             <thead>
@@ -146,5 +146,113 @@
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.tailwindcss.js"></script>
 
     <script src="script.js"></script>
+	<!-- Script JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Event listener untuk tombol Print All
+        document.getElementById('printAllBtn').addEventListener('click', function() {
+            var rows = document.querySelectorAll('tr'); // Ambil semua baris dari tabel
+
+            // Buat array untuk menyimpan data nama grup dan nomor BIB dari setiap baris
+            var data = [];
+            rows.forEach(row => {
+                var namaGeng = row.cells[0].textContent.trim(); // Kolom pertama
+                var nomorBIB = row.cells[1].textContent.trim(); // Kolom kedua
+                data.push({ namaGeng: namaGeng, nomorBIB: nomorBIB });
+            });
+
+            // Generate QR Code untuk setiap nomor BIB menggunakan layanan online
+            var qrCodePromises = data.map(entry => {
+                var qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(entry.nomorBIB);
+                return new Promise(function(resolve, reject) {
+                    var qrImage = new Image();
+                    qrImage.onload = function() {
+                        resolve({ namaGeng: entry.namaGeng, nomorBIB: entry.nomorBIB, qrCodeUrl: qrCodeUrl });
+                    };
+                    qrImage.onerror = function() {
+                        reject();
+                    };
+                    qrImage.src = qrCodeUrl;
+                });
+            });
+
+            // Setelah semua QR Code selesai dimuat, lanjutkan dengan membuat iframe dan mencetak
+            Promise.all(qrCodePromises).then(function(entries) {
+                // Semua QR Code telah dimuat
+                // Buat sebuah iframe secara dinamis
+                var iframe = document.createElement('iframe');
+                iframe.style.display = 'none'; // Sembunyikan iframe dari tampilan pengguna
+                document.body.appendChild(iframe);
+
+                var iframeDoc = iframe.contentWindow.document;
+                iframeDoc.open();
+                iframeDoc.write(`
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <title>Print BIB</title>
+                        <style>
+                            /* CSS gaya cetakan Anda di sini */
+                        </style>
+                    </head>
+                    <body>
+                        <!-- Konten untuk pencetakan -->
+                        <div class="container">
+                            <!-- Halaman 1 -->
+                            <div style="page-break-after: always;">
+                                ${generatePage(entries.slice(0, 2))}
+                            </div>
+                            <!-- Halaman 2 -->
+                            <div>
+                                ${generatePage(entries.slice(2, 4))}
+                            </div>
+                        </div>
+                    </body>
+                    </html>
+                `);
+                iframeDoc.close();
+
+                // Tambahkan jeda waktu sebelum mencetak
+                setTimeout(function() {
+                    // Pencetakan konten di dalam iframe
+                    iframe.contentWindow.focus(); // Fokuskan iframe untuk memastikan pencetakan berhasil
+                    iframe.contentWindow.print();
+
+                    // Hapus iframe setelah pencetakan selesai
+                    setTimeout(function() {
+                        document.body.removeChild(iframe);
+                    }, 1000); // Waktu tunggu sebelum menghapus iframe (1 detik)
+                }, 1000); // Waktu tunggu sebelum mencetak (1 detik)
+            }).catch(function() {
+                // Jika terjadi kesalahan dalam memuat QR Code
+                console.log('Gagal memuat QR Code.');
+            });
+        });
+    });
+
+    function generatePage(entries) {
+        var pageContent = '';
+        entries.forEach(entry => {
+            var qrCodeUrl = entry.qrCodeUrl;
+            pageContent += `
+                <div class="row">
+                    <div class="left-column">
+                        <img src="${qrCodeUrl}" alt="QR Code" style="max-width: 100%; height: auto;">
+                        <div class="BIBText">${entry.nomorBIB}</div>
+                    </div>
+                    <div class="right-column">
+                        <div class="headerTextLeft">28 JULI 2024<br>HOTEL DAFAM SEMARANG</div>
+                        <div class="headerTextRight">FUN RUN 6K<br>LARI ANTAR GENG</div>
+                        <img src="assets/sponsor-atas.png" class="img-2" alt="Image for printing">
+                        <div class="NameGroup">${entry.namaGeng}</div>
+                        <img src="assets/sponsor-bawah.png" class="img-3" alt="Image for printing">
+                    </div>
+                </div>
+            `;
+        });
+        return pageContent;
+    }
+</script>
 </body>
 </html>

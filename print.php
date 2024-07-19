@@ -158,7 +158,17 @@
 </style>
 </head>
 <body>
+<img
+    loading="lazy"
+    srcset="assets/sponsor-bawah.png"
+    class="img-3"
+  />
 <div class="div">
+<img
+    loading="lazy"
+    srcset="assets/sponsor-atas.png"
+    class="img-2"
+  />
   <img
     loading="lazy"
     srcset="assets/bg.png"
@@ -174,11 +184,7 @@
       <div class="div-8">LARI ANTAR GENG</div>
     </div>
   </div>
-  <img
-    loading="lazy"
-    srcset="assets/sponsor-atas.png"
-    class="img-2"
-  />
+
   <div class="div-9">
     NAME
     <br />
@@ -188,11 +194,6 @@
     <div class="div-11"></div>
     <div class="div-12">001</div>
   </div>
-  <img
-    loading="lazy"
-    srcset="assets/sponsor-bawah.png"
-    class="img-3"
-  />
 </div>
 </body>
 </html>

@@ -16,9 +16,9 @@ if ($conn->connect_error) {
         $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 
         // Query SQL dengan kondisi pencarian
-        $query = "SELECT * FROM nama_tabel WHERE NAMA_GENG LIKE '%$searchTerm%' OR BIB_NUMBER LIKE '%$searchTerm%' OR status LIKE '%$searchTerm%'";
-        $result_data = $mysqli->query($query);
-        
+        $sql = "SELECT * FROM Funrun WHERE NAMA_GENG LIKE '%$searchTerm%' OR BIB_NUMBER LIKE '%$searchTerm%' OR status LIKE '%$searchTerm%'";
+        $result = $mysqli->query($sql);
+
         // Query to fetch data from database
         $sql = "SELECT * FROM Funrun";
         $result = $conn->query($sql);

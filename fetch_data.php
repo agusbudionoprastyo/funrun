@@ -13,9 +13,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Query to fetch data from database
-$sql = "SELECT * FROM Funrun";
-$result = $conn->query($sql);
+        // Query to fetch data from database
+        $sql = "SELECT * FROM Funrun";
+        $result = $conn->query($sql);
 
         // Query to fetch data for table
         $sql_data = "SELECT * FROM Funrun";
@@ -52,6 +52,13 @@ $result = $conn->query($sql);
         } else {
             $total_uncheck = 0;
         }
+
+        // Ambil nilai pencarian jika ada
+        $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
+
+        // Query SQL dengan kondisi pencarian
+        $query = "SELECT * FROM nama_tabel WHERE NAMA_GENG LIKE '%$searchTerm%' OR BIB_NUMBER LIKE '%$searchTerm%' OR status LIKE '%$searchTerm%'";
+        $result_data = $mysqli->query($query);
 
 $conn->close();
 ?>

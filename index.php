@@ -46,7 +46,6 @@
         <!-- NAVBAR -->
         <nav>
             <i class='bx bx-menu' ></i>
-            <!-- <a href="#" class="nav-link">Categories</a> -->
             <form action="#">
                 <div class="form-input">
                     <input type="search" placeholder="Search...">
@@ -139,9 +138,17 @@
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.tailwindcss.js"></script>
 
     <script>
-        $(document).ready(function() {
-			new DataTable('#example');
-        } );
+		$(document).ready(function() {
+			var table = new DataTable('#example', {
+				searching: true, // Aktifkan pencarian
+			});
+
+			// Handle pencarian dari form input
+			$('#form-search').on('submit', function(e) {
+				e.preventDefault();
+				table.search($('#search-input').val()).draw();
+			});
+		});
     </script>
 
     <script src="script.js"></script>

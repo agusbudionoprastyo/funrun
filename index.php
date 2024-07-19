@@ -104,10 +104,9 @@
                 <div class="order">
                     <div class="head">
                         <h3>Daftar Peserta</h3>
-						<i class='bx bxs-printer' ></i> Print BIB
 						<a href="#" class="btn-download">
-							<i class='bx bxs-cloud-download' ></i>
-							<span class="text">Download PDF</span>
+							<i class='bx bxs-printer' ></i>
+							<span class="text">Print BIB</span>
 						</a>
                     </div>
                     <table id="example" class="display" style="width:100%">

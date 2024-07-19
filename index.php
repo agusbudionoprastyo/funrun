@@ -149,24 +149,26 @@
     <script src="script.js"></script>
 	<!-- Script JavaScript -->
 	<script>
-    document.addEventListener('DOMContentLoaded', function() {
         // Event listener untuk tombol Print Selected
-        document.getElementById('printSelectedBtn').addEventListener('click', function() {
-            var checkboxes = document.querySelectorAll('.print-checkbox:checked');
-            if (checkboxes.length === 0) {
-                alert('Pilih setidaknya satu baris untuk dicetak.');
-                return;
-            }
+		document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('printSelectedBtn').addEventListener('click', function() {
+                var checkboxes = document.querySelectorAll('.print-checkbox:checked');
+                if (checkboxes.length === 0) {
+                    alert('Select at least one entry to print.');
+                    return;
+                }
 
-            // Buat array untuk menyimpan data dari baris yang dipilih
-            var selectedEntries = [];
-            checkboxes.forEach(checkbox => {
-                var row = checkbox.closest('tr');
-                var namaGeng = row.cells[0].textContent.trim(); // Kolom pertama
-                var nomorBIB = row.cells[1].textContent.trim(); // Kolom kedua
-                selectedEntries.push({ namaGeng: namaGeng, nomorBIB: nomorBIB });
+                var selectedEntries = [];
+                checkboxes.forEach(function(checkbox) {
+                    var row = checkbox.closest('tr');
+                    var namaGeng = row.cells[0].textContent.trim();
+                    var nomorBIB = row.cells[1].textContent.trim();
+                    selectedEntries.push({ namaGeng: namaGeng, nomorBIB: nomorBIB });
+                });
+
+                printSelectedEntries(selectedEntries);
             });
-			printSelectedEntries(selectedEntries);
+        });
 
 			// Fungsi untuk mencetak semua baris yang dipilih dalam dokumen HTML terpisah
 			function printSelectedEntries(entries) {

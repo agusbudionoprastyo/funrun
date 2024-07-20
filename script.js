@@ -161,25 +161,24 @@ $(document).ready(function() {
 
 		  @page { 
 			size: A4;
-			margin-left: 5mm;
-			margin-right: 5mm;
 		  }
 
 		  body {
-			  padding: 0;
-			  flex-direction: column; /* Tampilkan konten secara vertikal */
-			  justify-content: space-between; /* Beri jarak antara dua bagian */
-			  height: 145mm; /* Ketinggian halaman */
-			  width: 200mm; /* Lebar halaman */
-			  color: white !important;
-			  -webkit-print-color-adjust: exact;
+			padding: 0;
+			flex-direction: column; /* Tampilkan konten secara vertikal */
+			justify-content: space-between; /* Beri jarak antara dua bagian */
+			width: 100%; /* Lebar penuh untuk memastikan konten mengisi halaman */
+			height: 100%; /* Setengah tinggi halaman untuk setiap konten */
+			color: white !important;
+			-webkit-print-color-adjust: exact;
 		  }
 
 		  .container {
-			  width: 100%; /* Lebar penuh untuk memastikan konten mengisi halaman */
-			  height: 100%; /* Setengah tinggi halaman untuk setiap konten */
-			  position: relative;
-			  margin: 0;
+			height: 145mm; /* Ketinggian halaman */
+			width: 200mm; /* Lebar halaman */
+			position: relative;
+			margin-left: 5mm;
+			margin-right: 5mm;
 		  }
 
 		  .img{

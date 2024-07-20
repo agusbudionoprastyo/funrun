@@ -176,7 +176,7 @@ $(document).ready(function() {
 			  width: 100%; /* Lebar penuh untuk memastikan konten mengisi halaman */
 			  height: 100%; /* Setengah tinggi halaman untuk setiap konten */
 			  position: relative;
-			  margin: 2.5mm;
+			  margin: 0;
 		  }
 
 		  .img{

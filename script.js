@@ -291,7 +291,6 @@ function printSelectedEntries(entries) {
                     margin: 0;
                     padding: 0;
                     display: flex;
-                    flex-wrap: wrap;
                     justify-content: space-between;
                     height: 145mm;
                     width: 200mm;
@@ -300,11 +299,10 @@ function printSelectedEntries(entries) {
                 }
 
                 .container {
-                    width: 100%; /* Setengah lebar halaman dengan jarak 5mm */
-                    height: calc(50% - 5mm); /* Setengah tinggi halaman untuk setiap konten */
+                    width: 100%; /* Lebar penuh untuk memastikan konten mengisi halaman */
+                    height: 50%; /* Setengah tinggi halaman untuk setiap konten */
                     position: relative;
                     page-break-after: always; /* Force page break after each container */
-                    margin-bottom: 5mm; /* Jarak antar konten */
                 }
 
                 .img {

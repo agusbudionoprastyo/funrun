@@ -121,7 +121,7 @@
                                     <th>Status</th>
 									<th>
 										<input type="checkbox" id="selectAllCheckbox" style="display:none">
-										<label for="selectAllCheckbox"  style="font-size:48px"><i class='bx bx-list-check' style='color:#3c91e6'></i></label>
+										<label for="selectAllCheckbox"  style="font-size:36px"><i class='bx bx-check-double'></i></label>
 									</th>
                                 </tr>
                             </thead>

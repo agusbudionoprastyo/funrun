@@ -108,7 +108,7 @@
                         <h3>Daftar Peserta</h3>
 						<button type="button" id="printSelectedBtn" class="btn-download">
 							<i class='bx bxs-printer' ></i>
-							<span class="text">BIB NUMBER</span>
+							<!-- <span class="text">BIB NUMBER</span> -->
 						</button>
                     </div>
                     <table id="example" class="display" style="width:100%">
@@ -124,11 +124,11 @@
                             <tr>
                                 <td><?php echo $row["NAMA_GENG"]; ?></td>
                                 <td>
+									<input type="checkbox" class="print-checkbox">
 									<?php echo $row["BIB_NUMBER"]; ?>
 								</td>
                                 <td>
 									<?php echo $row["status"]; ?>
-									<input type="checkbox" class="print-checkbox">
 								</td>
                             </tr>
                         	<?php endwhile; ?>

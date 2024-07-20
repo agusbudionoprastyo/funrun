@@ -224,8 +224,8 @@ $(document).ready(function() {
 entries.forEach(function(entry) {
 	// Membuat URL QR Code
 	// var qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(entry.nomorBIB);
-	// Membuat element untuk QR Code menggunakan QRCode.js
-	var qrCodeDiv = document.createElement('div');
+	// Membuat elemen untuk QR Code menggunakan QRCode.js di dalam iframe
+	var qrCodeDiv = iframeDoc.createElement('div');
 	var qrcode = new QRCode(qrCodeDiv, {
 		text: entry.nomorBIB,
 		width: 128,
@@ -235,13 +235,16 @@ entries.forEach(function(entry) {
 		correctLevel: QRCode.CorrectLevel.H
 	});
 
-	var qrCodeImage = qrCodeDiv.querySelector('img');
-	var qrCodeUrl = qrCodeImage.src;
+	// Menambahkan QR Code div ke dokumen iframe
+	iframeDoc.body.appendChild(qrCodeDiv);
+
+	// Mendapatkan URL QR Code
+	var qrCodeImageUrl = qrCodeDiv.querySelector('img').src;
 
 	iframeDoc.write(`
 		<div class="container">
-		<div class="shape">
-				<img src="${qrCodeUrl}" alt="QR Code" style="max-width: 100%; height: auto;">
+		<div class="shape"><div id="qrcode"></div>
+				<img src="${qrCodeImageUrl}" alt="QR Code" style="max-width: 100%; height: auto;">
 			</div>
 			<img src="assets/bg.png" class="img">
 			<div class="NameGroup">${entry.namaGeng}</div>

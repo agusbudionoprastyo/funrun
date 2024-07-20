@@ -239,6 +239,8 @@ entries.forEach(function(entry) {
     `;
     containerDiv.appendChild(qrCodeDiv);
 
+	iframeDoc.body.appendChild(containerDiv);
+
     // Tambahkan page break setelah setiap dua konten
     if ((index + 1) % 2 === 0 && index !== entries.length - 1) {
         var pageBreakDiv = document.createElement('div');

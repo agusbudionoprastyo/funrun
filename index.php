@@ -435,6 +435,16 @@
 			font-family: Arial, Helvetica, sans-serif;
 			}
 
+			.shape {
+				position: absolute;
+				top: 67%; /* Adjust vertically */
+				right: 7px;
+				transform: translate(-5%, -50%);
+				width: 80px;
+				height: 80px;
+				background-color: white;
+				}
+
 			.BIBText {
 			position: absolute;
 			top: 130%; /* Adjust vertically */

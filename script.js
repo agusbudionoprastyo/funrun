@@ -227,7 +227,7 @@ entries.forEach(function(entry) {
 
 	// Membuat elemen untuk QR Code menggunakan QRCode.js di dalam iframe
 	var qrCodeDiv = document.createElement('div');
-	qrCodeDiv.classList.add('qrcode');
+	// qrCodeDiv.classList.add('qrcode');
 
 	// Membuat QR Code menggunakan QRCode.js dengan latar belakang transparan
 	new QRCode(qrCodeDiv, {

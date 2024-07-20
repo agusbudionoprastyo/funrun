@@ -75,7 +75,7 @@ $(document).ready(function() {
     var table = new DataTable('#example', {
         searching: true, // Aktifkan pencarian
 		"columnDefs": [
-			{ "orderable": false, "targets": [3] } // Disable ordering for the third column (index 2)
+			{ "orderable": false, "targets": [1] } // Disable ordering for the third column (index 2)
 		]
     });
 	

@@ -112,16 +112,14 @@
                                 <tr>
                                     <th>Nama Geng</th>
                                     <th>
-										Nomor BIB
-									</th>
-                                    <th>Status</th>
-									<th>
 										<input type="checkbox" id="selectAllCheckbox" style="display:none">
 										<label for="selectAllCheckbox"  style="font-size:24px"><i class='bx bx-check-double'></i></label>
+										Nomor BIB
 										<button type="button" id="printSelectedBtn" class="btn-download">
 											<i class='bx bxs-printer' style="font-size:24px"></i>
 										</button>
 									</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -129,13 +127,11 @@
                             <tr>
                                 <td><?php echo $row["NAMA_GENG"]; ?></td>
                                 <td>
+									<input type="checkbox" class="print-checkbox">
 									<?php echo $row["BIB_NUMBER"]; ?>
 								</td>
                                 <td>
 									<?php echo $row["status"]; ?>
-								</td>
-								<td>
-									<input type="checkbox" class="print-checkbox">
 								</td>
                             </tr>
                         	<?php endwhile; ?>

@@ -215,7 +215,6 @@ $(document).ready(function() {
 			right: 5mm;
 			width: 80px;
 			height: 80px;
-			background-color: white;
 		}
 		</style>
 	</head>
@@ -229,13 +228,14 @@ entries.forEach(function(entry) {
 	// Membuat elemen untuk QR Code menggunakan QRCode.js di dalam iframe
 	var qrCodeDiv = document.createElement('div');
 	qrCodeDiv.classList.add('qrcode');
-	// Membuat QR Code menggunakan QRCode.js
+
+	// Membuat QR Code menggunakan QRCode.js dengan latar belakang transparan
 	new QRCode(qrCodeDiv, {
 		text: entry.nomorBIB,
 		width: 80,
 		height: 80,
-		colorDark: '#000000',
-		colorLight: '#ffffff',
+		colorDark: '#ffffff',
+		colorLight: 'rgba(255, 255, 255, 0)', // Warna putih dengan opacity 0 untuk latar belakang transparan
 		correctLevel: QRCode.CorrectLevel.H
 	});
 

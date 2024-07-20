@@ -264,8 +264,8 @@ function printSelectedEntries(entries) {
     var iframe = document.createElement('iframe');
     iframe.style.position = 'absolute';
     iframe.style.left = '-9999px'; // Mengatur posisi di luar layar
-    iframe.style.width = '200mm'; // Menetapkan lebar iframe sesuai gaya label
-    iframe.style.height = '145mm'; // Menetapkan tinggi iframe sesuai gaya label
+    iframe.style.width = '210mm'; // Menetapkan lebar iframe sesuai gaya label
+    iframe.style.height = '297mm'; // Menetapkan tinggi iframe sesuai gaya label
     iframe.style.border = 'none'; // Menghapus border iframe
     iframe.style.display = 'none'; // Sembunyikan iframe dari tampilan pengguna
     document.body.appendChild(iframe);
@@ -287,23 +287,25 @@ function printSelectedEntries(entries) {
 
                 @page { size: A4; margin: 5mm; }
 
-                body {
-                    margin: 0;
-                    padding: 0;
-                    display: flex;
-                    justify-content: space-between;
-                    height: 145mm;
-                    width: 200mm;
-                    color: white !important;
-                    -webkit-print-color-adjust: exact;
-                }
-
-                .container {
-                    width: 100%; /* Lebar penuh untuk memastikan konten mengisi halaman */
-                    height: 50%; /* Setengah tinggi halaman untuk setiap konten */
-                    position: relative;
-                    page-break-after: always; /* Force page break after each container */
-                }
+				body {
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: space-between;
+					width: 210mm; /* Lebar A4 dalam satuan mm */
+					height: 297mm; /* Tinggi A4 dalam satuan mm */
+					margin: 0;
+					padding: 0;
+					background-color: white; /* Background putih agar tidak tercetak pada halaman */
+				}
+			
+				.container {
+					width: 100%; /* Lebar setengah halaman */
+					height: 50%; /* Tinggi setengah halaman */
+					position: relative;
+					box-sizing: border-box;
+					border: 1px solid transparent; /* Garis untuk visualisasi batas konten */
+					page-break-after: always; /* Memaksa pemisahan setiap konten ke halaman baru */
+				}
 
                 .img {
                     max-width: 100%;

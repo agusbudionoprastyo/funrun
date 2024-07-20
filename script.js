@@ -236,6 +236,10 @@ entries.forEach(function(entry) {
         <img src="assets/bg.png" class="img">
         <div class="NameGroup">${entry.namaGeng}</div>
         <div class="BIBText">${entry.nomorBIB}</div>
+		<br>
+		<img src="assets/bg.png" class="img">
+        <div class="NameGroup">${entry.namaGeng}</div>
+        <div class="BIBText">${entry.nomorBIB}</div>
     `;
     containerDiv.appendChild(qrCodeDiv);
 

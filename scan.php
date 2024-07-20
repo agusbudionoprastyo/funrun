@@ -57,7 +57,7 @@
         }, function(err) {
             if (err) {
                 console.log(err);
-                return
+                return;
             }
             console.log("Initialization finished. Ready to start");
             Quagga.start();
@@ -69,6 +69,8 @@
                 console.log("Barcode detected and processed: ", result.codeResult.code);
                 // Display result
                 document.getElementById("result").textContent = result.codeResult.code;
+                // Optionally, you can redirect or perform other actions based on the scanned result
+                // Example: window.location.href = result.codeResult.code;
                 // Stop Quagga to end scanning
                 Quagga.stop();
             }

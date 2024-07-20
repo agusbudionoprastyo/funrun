@@ -159,7 +159,7 @@ $(document).ready(function() {
 						src: url('assets/Adumu.ttf') format('truetype'); /* Lokasi file TTF */
 					}
 
-		  @page { size: letter; margin: 0; }
+		  @page { size: A4; margin: 0; }
 
 		  body {
 			  margin: 0;
@@ -176,7 +176,7 @@ $(document).ready(function() {
 			  width: 100%; /* Lebar penuh untuk memastikan konten mengisi halaman */
 			  height: 100%; /* Setengah tinggi halaman untuk setiap konten */
 			  position: relative;
-			  margin: 5mm;
+			  margin: 2.5mm;
 		  }
 
 		  .img{

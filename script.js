@@ -221,41 +221,72 @@ $(document).ready(function() {
 	<body>
 `);
 
+// entries.forEach(function(entry) {
+// 	// Membuat URL QR Code
+// 	// var qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(entry.nomorBIB);
+
+// 	// Membuat elemen untuk QR Code menggunakan QRCode.js di dalam iframe
+// 	var qrCodeDiv = document.createElement('div');
+// 	// qrCodeDiv.classList.add('qrcode');
+// 	// Setelah membuat QR Code, tambahkan class atau styling langsung
+// 	qrCodeDiv.style.position = 'absolute'; // atau 'relative' tergantung dari kebutuhan layout
+// 	qrCodeDiv.style.top = '88mm'; // Atur posisi dari atas
+// 	qrCodeDiv.style.rigth = '5mm'; // Atur posisi dari kanan
+
+
+// 	// Membuat QR Code menggunakan QRCode.js dengan latar belakang transparan
+// 	new QRCode(qrCodeDiv, {
+// 		text: entry.nomorBIB,
+// 		width: 80,
+// 		height: 80,
+// 		colorDark: '#ffffff',
+// 		colorLight: 'rgba(255, 255, 255, 0)', // Warna putih dengan opacity 0 untuk latar belakang transparan
+// 		correctLevel: QRCode.CorrectLevel.H
+// 	});
+
+// 	// Menambahkan QR Code div ke dokumen iframe
+// 	iframeDoc.body.appendChild(qrCodeDiv);
+
+// 	iframeDoc.write(`
+// 		<div class="container">
+// 		<div id="qrcode"></div>
+// 			<img src="assets/bg.png" class="img">
+// 			<div class="NameGroup">${entry.namaGeng}</div>
+// 			<div class="BIBText">${entry.nomorBIB}</div>
+// 		</div>
+// 	`);
+// });
+
 entries.forEach(function(entry) {
-	// Membuat URL QR Code
-	// var qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(entry.nomorBIB);
+    var qrCodeDiv = document.createElement('div');
+    // Setting style for qrCodeDiv...
+	qrCodeDiv.style.position = 'absolute'; // atau 'relative' tergantung dari kebutuhan layout
+	qrCodeDiv.style.top = '88mm'; // Atur posisi dari atas
+	qrCodeDiv.style.rigth = '5mm'; // Atur posisi dari kanan
 
-	// Membuat elemen untuk QR Code menggunakan QRCode.js di dalam iframe
-	var qrCodeDiv = document.createElement('div');
-	// qrCodeDiv.classList.add('qrcode');
-	// Setelah membuat QR Code, tambahkan class atau styling langsung
-	qrCodeDiv.style.position = 'relative'; // atau 'relative' tergantung dari kebutuhan layout
-	qrCodeDiv.style.top = '88mm'; // Atur posisi dari atas (contoh 10px)
-	qrCodeDiv.style.left = '5mm'; // Atur posisi dari kiri (contoh 10px)
+    new QRCode(qrCodeDiv, {
+        text: entry.nomorBIB,
+        width: 80,
+        height: 80,
+        colorDark: '#ffffff',
+        colorLight: 'rgba(255, 255, 255, 0)',
+        correctLevel: QRCode.CorrectLevel.H
+    });
 
+    // Membuat container untuk setiap entri
+    var containerDiv = document.createElement('div');
+    containerDiv.classList.add('container');
+    containerDiv.innerHTML = `
+        <img src="assets/bg.png" class="img">
+        <div class="NameGroup">${entry.namaGeng}</div>
+        <div class="BIBText">${entry.nomorBIB}</div>
+    `;
+    containerDiv.appendChild(qrCodeDiv);
 
-	// Membuat QR Code menggunakan QRCode.js dengan latar belakang transparan
-	new QRCode(qrCodeDiv, {
-		text: entry.nomorBIB,
-		width: 80,
-		height: 80,
-		colorDark: '#ffffff',
-		colorLight: 'rgba(255, 255, 255, 0)', // Warna putih dengan opacity 0 untuk latar belakang transparan
-		correctLevel: QRCode.CorrectLevel.H
-	});
-
-	// Menambahkan QR Code div ke dokumen iframe
-	iframeDoc.body.appendChild(qrCodeDiv);
-
-	iframeDoc.write(`
-		<div class="container">
-		<div id="qrcode"></div>
-			<img src="assets/bg.png" class="img">
-			<div class="NameGroup">${entry.namaGeng}</div>
-			<div class="BIBText">${entry.nomorBIB}</div>
-		</div>
-	`);
+    // Menambahkan containerDiv ke dokumen iframe
+    iframeDoc.body.appendChild(containerDiv);
 });
+
 
 iframeDoc.write(`
 	</body>

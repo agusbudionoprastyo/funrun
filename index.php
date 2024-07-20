@@ -126,8 +126,10 @@
                                 <td>
 									<?php echo $row["BIB_NUMBER"]; ?>
 								</td>
-                                <td><?php echo $row["status"]; ?></td>
-								<input type="checkbox" class="print-checkbox">
+                                <td>
+									<?php echo $row["status"]; ?>
+									<input type="checkbox" class="print-checkbox">
+								</td>
                             </tr>
                         	<?php endwhile; ?>
                             </tbody>

@@ -161,12 +161,13 @@ $(document).ready(function() {
 
 		  @page { 
 			size: A4;
+			margin:3.5mm;
 		  }
 
 		  body {
 			padding: 0;
 			flex-direction: column; /* Tampilkan konten secara vertikal */
-			justify-content: space-between; /* Beri jarak antara dua bagian */
+			justify-content: center; 
 			width: 100%; /* Lebar penuh untuk memastikan konten mengisi halaman */
 			height: 100%; /* Setengah tinggi halaman untuk setiap konten */
 			color: white !important;
@@ -177,8 +178,6 @@ $(document).ready(function() {
 			height: 145mm; /* Ketinggian halaman */
 			width: 200mm; /* Lebar halaman */
 			position: relative;
-			margin-left: 5mm;
-			margin-right: 5mm;
 		  }
 
 		  .img{

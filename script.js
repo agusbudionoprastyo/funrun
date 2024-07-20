@@ -159,7 +159,7 @@ $(document).ready(function() {
 						src: url('assets/Adumu.ttf') format('truetype'); /* Lokasi file TTF */
 					}
 
-		  @page { size: A4; margin-top: 3.5mm; margin-left: 5mm; margin-bottom: 3.5mm; margin-right: 5mm; }
+		  @page { size: A4; margin: 3.5mm;}
 
 		  body {
 			  margin: 0;

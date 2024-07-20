@@ -132,257 +132,129 @@ $(document).ready(function() {
 		});
 	});
 
-// 		function printSelectedEntries(entries) {
-// 		// Buat elemen iframe secara dinamis
-// 		var iframe = document.createElement('iframe');
-// 		// Tetapkan beberapa gaya untuk iframe
-// 		iframe.style.position = 'absolute';
-// 		iframe.style.left = '-9999px'; // Mengatur posisi di luar layar
-// 		iframe.style.width = '200mm'; // Menetapkan lebar iframe sesuai gaya label
-// 		iframe.style.height = '145mm'; // Menetapkan tinggi iframe sesuai gaya label
-// 		iframe.style.border = 'none'; // Menghapus border iframe
-// 		iframe.style.display = 'none'; // Sembunyikan iframe dari tampilan pengguna
-// 		document.body.appendChild(iframe);
+		function printSelectedEntries(entries) {
+		// Buat elemen iframe secara dinamis
+		var iframe = document.createElement('iframe');
+		// Tetapkan beberapa gaya untuk iframe
+		iframe.style.position = 'absolute';
+		iframe.style.left = '-9999px'; // Mengatur posisi di luar layar
+		iframe.style.width = '200mm'; // Menetapkan lebar iframe sesuai gaya label
+		iframe.style.height = '145mm'; // Menetapkan tinggi iframe sesuai gaya label
+		iframe.style.border = 'none'; // Menghapus border iframe
+		iframe.style.display = 'none'; // Sembunyikan iframe dari tampilan pengguna
+		document.body.appendChild(iframe);
 
-// 		var iframeDoc = iframe.contentWindow.document;
-// 		iframeDoc.open();
-// 		iframeDoc.write(`
-// 		<!DOCTYPE html>
-// 		<html lang="en">
-// 		<head>
-// 			<meta charset="UTF-8">
-// 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-// 			<title>Print BIB</title>
-// 		<style>
-// 		@font-face {
-// 						font-family: 'Adumu'; /* Nama font yang akan digunakan */
-// 						src: url('assets/Adumu.ttf') format('truetype'); /* Lokasi file TTF */
-// 					}
+		var iframeDoc = iframe.contentWindow.document;
+		iframeDoc.open();
+		iframeDoc.write(`
+		<!DOCTYPE html>
+		<html lang="en">
+		<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<title>Print BIB</title>
+		<style>
+		@font-face {
+						font-family: 'Adumu'; /* Nama font yang akan digunakan */
+						src: url('assets/Adumu.ttf') format('truetype'); /* Lokasi file TTF */
+					}
 
-// 		  @page { size: A4; margin: 5mm; }
+		  @page { size: A4; margin: 5mm; }
 
-// 		  body {
-// 			  margin: 0;
-// 			  padding: 0;
-// 			  flex-direction: column; /* Tampilkan konten secara vertikal */
-// 			  justify-content: space-between; /* Beri jarak antara dua bagian */
-// 			  height: 145mm; /* Ketinggian halaman */
-// 			  width: 200mm; /* Lebar halaman */
-// 			  color: white !important;
-// 			  -webkit-print-color-adjust: exact;
-// 		  }
+		  body {
+			  margin: 0;
+			  padding: 0;
+			  flex-direction: column; /* Tampilkan konten secara vertikal */
+			  justify-content: space-between; /* Beri jarak antara dua bagian */
+			  height: 145mm; /* Ketinggian halaman */
+			  width: 200mm; /* Lebar halaman */
+			  color: white !important;
+			  -webkit-print-color-adjust: exact;
+		  }
 
-// 		  .container {
-// 			  width: 100%; /* Lebar penuh untuk memastikan konten mengisi halaman */
-// 			  height: 100%; /* Setengah tinggi halaman untuk setiap konten */
-// 			  position: relative;
-// 			  page-break-after: always; /* Force page break after each container */
-// 		  }
+		  .container {
+			  width: 100%; /* Lebar penuh untuk memastikan konten mengisi halaman */
+			  height: 100%; /* Setengah tinggi halaman untuk setiap konten */
+			  position: relative;
+			  page-break-after: always; /* Force page break after each container */
+		  }
 
-// 		  .img{
-// 			max-width: 100%;
-// 			height: auto;
-// 			display: block;
-// 			position: absolute;
-// 			z-index: -1; /* Letakkan di belakang konten utama */
-// 		  }
+		  .img{
+			max-width: 100%;
+			height: auto;
+			display: block;
+			position: absolute;
+			z-index: -1; /* Letakkan di belakang konten utama */
+		  }
 
-// 		  .NameGroup {
-// 			position: absolute;
-// 			top: 50%; /* Adjust vertically */
-// 			left: 50%;
-// 			transform: translate(-50%, -50%);
-// 			text-align: center;
-// 			font-size: 88px;
-// 			font-family: 'Adumu';
-// 			line-height: 88px;
-// 			letter-spacing: 10px;
-// 		  }
+		  .NameGroup {
+			position: absolute;
+			top: 50%; /* Adjust vertically */
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			font-size: 88px;
+			font-family: 'Adumu';
+			line-height: 88px;
+			letter-spacing: 10px;
+		  }
 
-// 		  .BIBText {
-// 			position: absolute;
-// 			top: 95mm; /* Adjust vertically */
-// 			left: 5mm;
-// 			text-align: center;
-// 			font-size: 45px;
-// 			font-family: 'Adumu';
-// 			letter-spacing: 5px;
-// 		  }
-// 		</style>
-// 	</head>
-// 	<body>
-// `);
+		  .BIBText {
+			position: absolute;
+			top: 95mm; /* Adjust vertically */
+			left: 5mm;
+			text-align: center;
+			font-size: 45px;
+			font-family: 'Adumu';
+			letter-spacing: 5px;
+		  }
+		</style>
+	</head>
+	<body>
+`);
 
-// entries.forEach(function(entry) {
-//     var qrCodeDiv = document.createElement('div');
-//     // Setting style for qrCodeDiv...
-// 	qrCodeDiv.style.position = 'absolute'; // atau 'relative' tergantung dari kebutuhan layout
-// 	qrCodeDiv.style.top = '88mm'; // Atur posisi dari atas
-// 	qrCodeDiv.style.right = '5mm'; // Atur posisi dari left
+entries.forEach(function(entry) {
+    var qrCodeDiv = document.createElement('div');
+    // Setting style for qrCodeDiv...
+	qrCodeDiv.style.position = 'absolute'; // atau 'relative' tergantung dari kebutuhan layout
+	qrCodeDiv.style.top = '88mm'; // Atur posisi dari atas
+	qrCodeDiv.style.right = '5mm'; // Atur posisi dari left
 
-//     new QRCode(qrCodeDiv, {
-//         text: entry.nomorBIB,
-//         width: 80,
-//         height: 80,
-//         colorDark: '#ffffff',
-//         colorLight: 'rgba(255, 255, 255, 0)',
-//         correctLevel: QRCode.CorrectLevel.H
-//     });
-
-//     // Membuat container untuk setiap entri
-//     var containerDiv = document.createElement('div');
-//     containerDiv.classList.add('container');
-//     containerDiv.innerHTML = `
-//         <img src="assets/bg.png" class="img">
-//         <div class="NameGroup">${entry.namaGeng}</div>
-//         <div class="BIBText">${entry.nomorBIB}</div>
-//     `;
-//     containerDiv.appendChild(qrCodeDiv);
-
-//     // Menambahkan containerDiv ke dokumen iframe
-//     iframeDoc.body.appendChild(containerDiv);
-// });
-
-
-// iframeDoc.write(`
-// 	</body>
-// 	</html>
-// `);
-
-// iframeDoc.close();
-
-// iframe.onload = function() {
-// 	iframe.contentWindow.print();
-// 	setTimeout(function() {
-// 		document.body.removeChild(iframe);
-// 	}, 100);
-// };
-// }
-
-function printSelectedEntries(entries) {
-    // Buat elemen iframe secara dinamis
-    var iframe = document.createElement('iframe');
-    iframe.style.position = 'absolute';
-    iframe.style.left = '-9999px'; // Mengatur posisi di luar layar
-    iframe.style.width = '200mm'; // Menetapkan lebar iframe sesuai gaya label
-    iframe.style.height = '145mm'; // Menetapkan tinggi iframe sesuai gaya label
-    iframe.style.border = 'none'; // Menghapus border iframe
-    iframe.style.display = 'none'; // Sembunyikan iframe dari tampilan pengguna
-    document.body.appendChild(iframe);
-
-    var iframeDoc = iframe.contentWindow.document;
-    iframeDoc.open();
-    iframeDoc.write(`
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Print BIB</title>
-            <style>
-                @font-face {
-                    font-family: 'Adumu'; /* Nama font yang akan digunakan */
-                    src: url('assets/Adumu.ttf') format('truetype'); /* Lokasi file TTF */
-                }
-
-                @page { size: A4; margin: 5mm; }
-
-				body {
-					display: flex;
-					flex-wrap: wrap;
-					justify-content: space-between;
-					width: 210mm; /* Lebar A4 dalam satuan mm */
-					height: 297mm; /* Tinggi A4 dalam satuan mm */
-					margin: 0;
-					padding: 0;
-					background-color: white; /* Background putih agar tidak tercetak pada halaman */
-				}
-			
-				.container {
-					width: 100%; /* Lebar setengah halaman */
-					height: 50%; /* Tinggi setengah halaman */
-					position: relative;
-					box-sizing: border-box;
-					border: 1px solid transparent; /* Garis untuk visualisasi batas konten */
-					page-break-after: always; /* Memaksa pemisahan setiap konten ke halaman baru */
-				}
-
-                .img {
-                    max-width: 100%;
-                    height: auto;
-                    display: block;
-                    position: absolute;
-                    z-index: -1;
-                }
-
-                .NameGroup {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    text-align: center;
-                    font-size: 88px;
-                    font-family: 'Adumu';
-                    line-height: 88px;
-                    letter-spacing: 10px;
-                }
-
-                .BIBText {
-                    position: absolute;
-                    top: 95mm;
-                    left: 5mm;
-                    text-align: center;
-                    font-size: 45px;
-                    font-family: 'Adumu';
-                    letter-spacing: 5px;
-                }
-            </style>
-        </head>
-        <body>
-    `);
-
-    entries.forEach(function(entry, index) {
-        if (index > 0 && index % 2 === 0) {
-            iframeDoc.write('<div style="page-break-after: always;"></div>');
-        }
-
-        var qrCodeDiv = document.createElement('div');
-        qrCodeDiv.style.position = 'absolute';
-        qrCodeDiv.style.top = '88mm';
-        qrCodeDiv.style.right = '5mm';
-
-        new QRCode(qrCodeDiv, {
-            text: entry.nomorBIB,
-            width: 80,
-            height: 80,
-            colorDark: '#ffffff',
-            colorLight: 'rgba(255, 255, 255, 0)',
-            correctLevel: QRCode.CorrectLevel.H
-        });
-
-        var containerDiv = document.createElement('div');
-        containerDiv.classList.add('container');
-        containerDiv.innerHTML = `
-            <img src="assets/bg.png" class="img">
-            <div class="NameGroup">${entry.namaGeng}</div>
-            <div class="BIBText">${entry.nomorBIB}</div>
-        `;
-        containerDiv.appendChild(qrCodeDiv);
-
-        iframeDoc.body.appendChild(containerDiv);
+    new QRCode(qrCodeDiv, {
+        text: entry.nomorBIB,
+        width: 80,
+        height: 80,
+        colorDark: '#ffffff',
+        colorLight: 'rgba(255, 255, 255, 0)',
+        correctLevel: QRCode.CorrectLevel.H
     });
 
-    iframeDoc.write(`
-        </body>
-        </html>
-    `);
+    // Membuat container untuk setiap entri
+    var containerDiv = document.createElement('div');
+    containerDiv.classList.add('container');
+    containerDiv.innerHTML = `
+        <img src="assets/bg.png" class="img">
+        <div class="NameGroup">${entry.namaGeng}</div>
+        <div class="BIBText">${entry.nomorBIB}</div>
+    `;
+    containerDiv.appendChild(qrCodeDiv);
 
-    iframeDoc.close();
+    // Menambahkan containerDiv ke dokumen iframe
+    iframeDoc.body.appendChild(containerDiv);
+});
 
-    iframe.onload = function() {
-        iframe.contentWindow.print();
-        setTimeout(function() {
-            document.body.removeChild(iframe);
-        }, 100);
-    };
+
+iframeDoc.write(`
+	</body>
+	</html>
+`);
+
+iframeDoc.close();
+
+iframe.onload = function() {
+	iframe.contentWindow.print();
+	setTimeout(function() {
+		document.body.removeChild(iframe);
+	}, 100);
+};
 }

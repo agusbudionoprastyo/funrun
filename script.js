@@ -301,7 +301,7 @@ function printSelectedEntries(entries) {
                 .container {
                     width: 100%; /* Lebar penuh untuk memastikan konten mengisi halaman */
                     height: 50%; /* Setengah tinggi halaman untuk setiap konten */
-                    position: absolute;
+                    position: relative;
                     page-break-after: always; /* Force page break after each container */
                 }
 

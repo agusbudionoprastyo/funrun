@@ -228,6 +228,11 @@ entries.forEach(function(entry) {
 	// Membuat elemen untuk QR Code menggunakan QRCode.js di dalam iframe
 	var qrCodeDiv = document.createElement('div');
 	// qrCodeDiv.classList.add('qrcode');
+	// Setelah membuat QR Code, tambahkan class atau styling langsung
+	qrCodeDiv.style.position = 'absolute'; // atau 'relative' tergantung dari kebutuhan layout
+	qrCodeDiv.style.top = '88mm'; // Atur posisi dari atas (contoh 10px)
+	qrCodeDiv.style.right = '5mm'; // Atur posisi dari kiri (contoh 10px)
+
 
 	// Membuat QR Code menggunakan QRCode.js dengan latar belakang transparan
 	new QRCode(qrCodeDiv, {
@@ -244,7 +249,6 @@ entries.forEach(function(entry) {
 
 	iframeDoc.write(`
 		<div class="container">
-		<div class="qrcode"></div>
 		<div id="qrcode"></div>
 			<img src="assets/bg.png" class="img">
 			<div class="NameGroup">${entry.namaGeng}</div>

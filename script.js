@@ -114,7 +114,16 @@ $(document).ready(function() {
 			var selectedEntries = [];
 			checkboxes.forEach(function(checkbox) {
 				var row = checkbox.closest('tr');
-				var namaGeng = row.cells[0].textContent.trim();
+				var text = row.cells[0].textContent.trim();
+				// Potong teks menjadi array kata-kata
+				var words = text.split(' ');
+
+				// Ambil hanya 3 kata pertama
+				var firstThreeWords = words.slice(0, 3);
+
+				// Gabungkan 3 kata tersebut kembali dengan spasi di antara mereka
+				var namaGeng = firstThreeWords.join(' ');
+
 				var nomorBIB = row.cells[1].textContent.trim();
 				selectedEntries.push({ namaGeng: namaGeng, nomorBIB: nomorBIB });
 			});

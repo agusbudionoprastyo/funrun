@@ -148,7 +148,6 @@ $(document).ready(function() {
 		@font-face {
 						font-family: 'Adumu'; /* Nama font yang akan digunakan */
 						src: url('assets/Adumu.ttf') format('truetype'); /* Lokasi file TTF */
-						/* Opsional: tambahkan format lain jika diperlukan */
 					}
 
 		  @page { size: 200mm 145mm; margin: 0; }
@@ -161,6 +160,7 @@ $(document).ready(function() {
 			  height: 145mm; /* Ketinggian halaman */
 			  width: 200mm; /* Lebar halaman */
 			  color: white !important;
+			  -webkit-print-color-adjust: exact;
 		  }
 
 		  .container {

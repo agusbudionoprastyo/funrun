@@ -209,7 +209,7 @@ $(document).ready(function() {
 			letter-spacing: 5px;
 		  }
 
-		  .shape {
+		  .qrcode {
 			position: absolute;
 			top: 88mm; /* Adjust vertically */
 			right: 5mm;
@@ -236,11 +236,11 @@ entries.forEach(function(entry) {
 	});
 
 	// Menambahkan QR Code div ke dokumen iframe
-	iframeDoc.body.appendChild(qrcode);
+	iframeDoc.body.appendChild(qrCodeDiv);
 
 	iframeDoc.write(`
 		<div class="container">
-		<div class="shape" id="qrcode">
+		<div class="qrcode" id="qrcode">
 			</div>
 			<img src="assets/bg.png" class="img">
 			<div class="NameGroup">${entry.namaGeng}</div>

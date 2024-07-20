@@ -166,15 +166,16 @@ $(document).ready(function() {
 			  padding: 0;
 			  flex-direction: column; /* Tampilkan konten secara vertikal */
 			  justify-content: space-between; /* Beri jarak antara dua bagian */
+			  height: 145mm; /* Ketinggian halaman */
+			  width: 200mm; /* Lebar halaman */
 			  color: white !important;
 			  -webkit-print-color-adjust: exact;
 		  }
 
 		  .container {
-			height: 145mm; /* Ketinggian halaman */
-			width: 200mm; /* Lebar halaman */
-			position: relative;
-			page-break-after: always; /* Force page break after each container */
+			  width: 100%; /* Lebar penuh untuk memastikan konten mengisi halaman */
+			  height: 100%; /* Setengah tinggi halaman untuk setiap konten */
+			  position: relative;
 		  }
 
 		  .img{

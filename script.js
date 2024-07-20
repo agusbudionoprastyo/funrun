@@ -213,7 +213,7 @@ $(document).ready(function() {
 	<body>
 `);
 
-entries.forEach(function(entry) {
+entries.forEach(function(entry, index) {
     var qrCodeDiv = document.createElement('div');
     // Setting style for qrCodeDiv...
 	qrCodeDiv.style.position = 'absolute'; // atau 'relative' tergantung dari kebutuhan layout

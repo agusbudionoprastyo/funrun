@@ -116,11 +116,13 @@
                                 <tr>
                                     <th>Nama Geng</th>
                                     <th>
-										<input type="checkbox" id="selectAllCheckbox">
-										<label for="selectAllCheckbox">Select All</label>
 										Nomor BIB
 									</th>
                                     <th>Status</th>
+									<th>
+										<input type="checkbox" id="selectAllCheckbox">
+										<label for="selectAllCheckbox">Select All</label>
+									</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -128,11 +130,14 @@
                             <tr>
                                 <td><?php echo $row["NAMA_GENG"]; ?></td>
                                 <td>
-									<input type="checkbox" class="print-checkbox">
 									<?php echo $row["BIB_NUMBER"]; ?>
 								</td>
                                 <td>
+									<input type="checkbox" class="print-checkbox">
 									<?php echo $row["status"]; ?>
+								</td>
+								<td>
+
 								</td>
                             </tr>
                         	<?php endwhile; ?>

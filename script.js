@@ -209,13 +209,14 @@ $(document).ready(function() {
 			letter-spacing: 5px;
 		  }
 
-		  .qrcode {
+		  .shape {
 			position: absolute;
 			top: 88mm; /* Adjust vertically */
 			right: 5mm;
 			width: 80px;
 			height: 80px;
-				}
+			background-color: white;
+		}
 		</style>
 	</head>
 	<body>
@@ -231,8 +232,8 @@ entries.forEach(function(entry) {
 	// Membuat QR Code menggunakan QRCode.js
 	new QRCode(qrCodeDiv, {
 		text: entry.nomorBIB,
-		width: 150,
-		height: 150,
+		width: 128,
+		height: 128,
 		colorDark: '#000000',
 		colorLight: '#ffffff',
 		correctLevel: QRCode.CorrectLevel.H
@@ -243,7 +244,7 @@ entries.forEach(function(entry) {
 
 	iframeDoc.write(`
 		<div class="container">
-		<div class="qrcode"></div>
+		<div class="shape"></div>
 			<img src="assets/bg.png" class="img">
 			<div class="NameGroup">${entry.namaGeng}</div>
 			<div class="BIBText">${entry.nomorBIB}</div>

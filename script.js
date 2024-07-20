@@ -262,7 +262,7 @@ entries.forEach(function(entry) {
     // Setting style for qrCodeDiv...
 	qrCodeDiv.style.position = 'absolute'; // atau 'relative' tergantung dari kebutuhan layout
 	qrCodeDiv.style.top = '88mm'; // Atur posisi dari atas
-	qrCodeDiv.style.rigth = '5mm'; // Atur posisi dari kanan
+	qrCodeDiv.style.left = '5mm'; // Atur posisi dari kanan
 
     new QRCode(qrCodeDiv, {
         text: entry.nomorBIB,

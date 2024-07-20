@@ -215,7 +215,6 @@ $(document).ready(function() {
 			right: 5mm;
 			width: 80px;
 			height: 80px;
-			background-color: transparent;
 				}
 		</style>
 	</head>

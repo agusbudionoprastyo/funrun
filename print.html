@@ -67,14 +67,16 @@
 							right: 5mm;
 							width: 80px;
 							height: 80px;
-							background-color: white;
+							/* background-color: white; */
 							}
 </style>
 </head>
 
 <body>
+var qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0001';
+
 <div class="container">
-  <div class="shape"></div>
+  <div class="shape"><img src="${qrCodeUrl}" alt="QR Code" style="max-width: 100%; height: auto;"></div>
   <img src="assets/bg.png" class="img"/>
   <div class="NameGroup">NAME GROUP</div>
   <div class="BIBText">001</div>

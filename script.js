@@ -210,12 +210,12 @@ $(document).ready(function() {
 		  }
 
 		  .shape {
-						position: absolute;
-		  top: 88mm; /* Adjust vertically */
-						right: 5mm;
-						width: 80px;
-						height: 80px;
-						background-color: white;
+			position: absolute;
+			top: 88mm; /* Adjust vertically */
+			right: 5mm;
+			width: 80px;
+			height: 80px;
+			background-color: transparent;
 				}
 		</style>
 	</head>
@@ -229,7 +229,7 @@ entries.forEach(function(entry) {
 	iframeDoc.write(`
 		<div class="container">
 		<div class="shape">
-				<img src="${qrCodeUrl}" alt="QR Code" style="max-width: 100%; height: auto;">
+				<img src="${qrCodeUrl}" alt="QR Code" style="max-width: 100%; height: auto; color:white">
 			</div>
 			<img src="assets/bg.png" class="img">
 			<div class="NameGroup">${entry.namaGeng}</div>

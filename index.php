@@ -121,7 +121,7 @@
                                     <th>Status</th>
 									<th>
 										<input type="checkbox" id="selectAllCheckbox">
-										<label for="selectAllCheckbox">Select All</label>
+										<label for="selectAllCheckbox">*</label>
 									</th>
                                 </tr>
                             </thead>
@@ -133,11 +133,10 @@
 									<?php echo $row["BIB_NUMBER"]; ?>
 								</td>
                                 <td>
-									<input type="checkbox" class="print-checkbox">
 									<?php echo $row["status"]; ?>
 								</td>
 								<td>
-
+									<input type="checkbox" class="print-checkbox">
 								</td>
                             </tr>
                         	<?php endwhile; ?>

@@ -124,11 +124,10 @@
                             <tr>
                                 <td><?php echo $row["NAMA_GENG"]; ?></td>
                                 <td>
-									<input type="checkbox" class="print-checkbox">
 									<?php echo $row["BIB_NUMBER"]; ?>
-									<button class="print-btn" data-nama="<?php echo $row["NAMA_GENG"]; ?>" data-bib="<?php echo $row["BIB_NUMBER"]; ?>"><i class='bx bxs-printer' ></i></button>
 								</td>
                                 <td><?php echo $row["status"]; ?></td>
+								<input type="checkbox" class="print-checkbox">
                             </tr>
                         	<?php endwhile; ?>
                             </tbody>

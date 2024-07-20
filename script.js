@@ -292,8 +292,8 @@ function printSelectedEntries(entries) {
                     padding: 0;
                     display: flex;
                     justify-content: space-between;
-                    height: 145mm;
-                    width: 200mm;
+                    height: 100%;
+                    width: 100%;
                     color: white !important;
                     -webkit-print-color-adjust: exact;
                 }

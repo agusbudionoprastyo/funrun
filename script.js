@@ -239,8 +239,12 @@ entries.forEach(function(entry) {
     `;
     containerDiv.appendChild(qrCodeDiv);
 
-    // Menambahkan containerDiv ke dokumen iframe
-    iframeDoc.body.appendChild(containerDiv);
+    // Tambahkan page break setelah setiap dua konten
+    if ((index + 1) % 2 === 0 && index !== entries.length - 1) {
+        var pageBreakDiv = document.createElement('div');
+        pageBreakDiv.style.pageBreakAfter = 'always';
+        iframeDoc.body.appendChild(pageBreakDiv);
+    }
 });
 
 

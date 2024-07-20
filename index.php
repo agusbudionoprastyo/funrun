@@ -450,15 +450,14 @@
         iframeDoc.write(`
             <div class="container">
 			<div class="shape">
-					<img src="${qrCodeUrl}" alt="QR Code" style="max-width: 100%; height: auto;">
 				</div>
-				<img src="assets/bg.png" class="img" alt="Image for printing">
+				<img src="assets/bg.png" class="img">
 				<div class="headerTextLeft">28 JULI 2024<br>HOTEL DAFAM SEMARANG</div>
 				<div class="headerTextRight">FUN RUN 6K<br>LARI ANTAR GENG</div>
-				<img src="assets/sponsor-atas.png" class="img-2" alt="Image for printing">
+				<img src="assets/sponsor-atas.png" class="img-2">
 				<div class="NameGroup">${entry.namaGeng}</div>
 				<div class="BIBText">${entry.nomorBIB}</div>
-				<img src="assets/sponsor-bawah.png" class="img-3" alt="Image for printing">
+				<img src="assets/sponsor-bawah.png" class="img-3">
             </div>
         `);
     });

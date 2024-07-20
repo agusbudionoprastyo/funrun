@@ -154,22 +154,6 @@
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.tailwindcss.js"></script>
 
     <script src="script.js"></script>
-	<sript>
-		$(document).ready(function() {
-		// Select All functionality
-		$('#selectAllCheckbox').change(function() {
-			var isChecked = $(this).prop('checked');
-			$('.print-checkbox').prop('checked', isChecked);
-		});
-
-		// Handle individual checkbox change
-		$('.print-checkbox').change(function() {
-			var allChecked = $('.print-checkbox:checked').length === $('.print-checkbox').length;
-			$('#selectAllCheckbox').prop('checked', allChecked);
-		});
-	});
-	</sript>
-
 
 </body>
 </html>

@@ -60,6 +60,18 @@ switchMode.addEventListener('change', function () {
 })
 
 $(document).ready(function() {
+	// Select All functionality
+	$('#selectAllCheckbox').change(function() {
+		var isChecked = $(this).prop('checked');
+		$('.print-checkbox').prop('checked', isChecked);
+	});
+
+	// Handle individual checkbox change
+	$('.print-checkbox').change(function() {
+		var allChecked = $('.print-checkbox:checked').length === $('.print-checkbox').length;
+		$('#selectAllCheckbox').prop('checked', allChecked);
+	});
+
     var table = new DataTable('#example', {
         searching: true, // Aktifkan pencarian
     });

@@ -292,8 +292,8 @@ function printSelectedEntries(entries) {
                     padding: 0;
                     display: flex;
                     justify-content: space-between;
-                    height: 100%;
-                    width: 100%;
+                    height: 145mm;
+                    width: 200mm;
                     color: white !important;
                     -webkit-print-color-adjust: exact;
                 }
@@ -301,7 +301,7 @@ function printSelectedEntries(entries) {
                 .container {
                     width: 100%; /* Lebar penuh untuk memastikan konten mengisi halaman */
                     height: 50%; /* Setengah tinggi halaman untuk setiap konten */
-                    position: relative;
+                    position: absolute;
                     page-break-after: always; /* Force page break after each container */
                 }
 

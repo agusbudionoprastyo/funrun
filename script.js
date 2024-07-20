@@ -239,12 +239,11 @@ entries.forEach(function(entry) {
 	iframeDoc.body.appendChild(qrCodeDiv);
 
 	// Mendapatkan URL QR Code
-	var qrCodeImageUrl = qrCodeDiv.querySelector('img').src;
+	// var qrCodeImageUrl = qrCodeDiv.querySelector('img').src;
 
 	iframeDoc.write(`
 		<div class="container">
-		<div class="shape"><div id="qrcode"></div>
-				<img src="${qrCodeImageUrl}" alt="QR Code" style="max-width: 100%; height: auto;">
+		<div class="shape" id="qrcode">
 			</div>
 			<img src="assets/bg.png" class="img">
 			<div class="NameGroup">${entry.namaGeng}</div>

@@ -221,12 +221,37 @@ $(document).ready(function() {
 	<body>
 `);
 
+// entries.forEach(function(entry) {
+// 	// Membuat URL QR Code
+// 	// var qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(entry.nomorBIB);
+// 	// Membuat elemen untuk QR Code menggunakan QRCode.js di dalam iframe
+// 	var qrCodeDiv = iframeDoc.createElement('div');
+// 	var qrcode = new QRCode(qrCodeDiv, {
+// 		text: entry.nomorBIB,
+// 		width: 128,
+// 		height: 128,
+// 		colorDark: '#000000',
+// 		colorLight: '#ffffff',
+// 		correctLevel: QRCode.CorrectLevel.H
+// 	});
+
+// 	// Menambahkan QR Code div ke dokumen iframe
+// 	iframeDoc.body.appendChild(qrCodeDiv);
+
+// 	iframeDoc.write(`
+// 		<div class="container">
+// 		<div class="qrcode" id="qrcode">
+// 			</div>
+// 			<img src="assets/bg.png" class="img">
+// 			<div class="NameGroup">${entry.namaGeng}</div>
+// 			<div class="BIBText">${entry.nomorBIB}</div>
+// 		</div>
+// 	`);
+// });
+
 entries.forEach(function(entry) {
-	// Membuat URL QR Code
-	// var qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(entry.nomorBIB);
-	// Membuat elemen untuk QR Code menggunakan QRCode.js di dalam iframe
 	var qrCodeDiv = iframeDoc.createElement('div');
-	var qrcode = new QRCode(qrCodeDiv, {
+	var qrCode = new QRCode(qrCodeDiv, {
 		text: entry.nomorBIB,
 		width: 128,
 		height: 128,
@@ -235,18 +260,23 @@ entries.forEach(function(entry) {
 		correctLevel: QRCode.CorrectLevel.H
 	});
 
-	// Menambahkan QR Code div ke dokumen iframe
-	iframeDoc.body.appendChild(qrCodeDiv);
-
-	iframeDoc.write(`
-		<div class="container">
-		<div class="qrcode" id="qrcode">
+	// Wait for QR Code generation to complete before accessing its image
+	qrCodeDiv.addEventListener('qrcode_ready', function() {
+		var qrCodeImg = qrCodeDiv.getElementsByTagName('img')[0].src;
+		iframeDoc.write(`
+			<div class="container">
+				<img src="assets/bg.png" class="img">
+				<div class="qrcode">
+					<img src="${qrCodeImg}" alt="QR Code">
+				</div>
+				<div class="NameGroup">${entry.namaGeng}</div>
+				<div class="BIBText">${entry.nomorBIB}</div>
 			</div>
-			<img src="assets/bg.png" class="img">
-			<div class="NameGroup">${entry.namaGeng}</div>
-			<div class="BIBText">${entry.nomorBIB}</div>
-		</div>
-	`);
+		`);
+	});
+
+	// Trigger QR Code generation
+	qrCode.makeCode(entry.nomorBIB);
 });
 
 iframeDoc.write(`

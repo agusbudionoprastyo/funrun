@@ -231,7 +231,7 @@ entries.forEach(function(entry) {
 	// Setelah membuat QR Code, tambahkan class atau styling langsung
 	qrCodeDiv.style.position = 'relative'; // atau 'relative' tergantung dari kebutuhan layout
 	qrCodeDiv.style.top = '88mm'; // Atur posisi dari atas (contoh 10px)
-	qrCodeDiv.style.right = '5mm'; // Atur posisi dari kiri (contoh 10px)
+	qrCodeDiv.style.left = '5mm'; // Atur posisi dari kiri (contoh 10px)
 
 
 	// Membuat QR Code menggunakan QRCode.js dengan latar belakang transparan
@@ -239,7 +239,7 @@ entries.forEach(function(entry) {
 		text: entry.nomorBIB,
 		width: 80,
 		height: 80,
-		colorDark: '#000000',
+		colorDark: '#ffffff',
 		colorLight: 'rgba(255, 255, 255, 0)', // Warna putih dengan opacity 0 untuk latar belakang transparan
 		correctLevel: QRCode.CorrectLevel.H
 	});

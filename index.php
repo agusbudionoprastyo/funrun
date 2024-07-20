@@ -354,90 +354,97 @@
 			var iframeDoc = iframe.contentWindow.document;
 			iframeDoc.open();
 			iframeDoc.write(`
-				<html><head><style>
-				@page { size: 200mm 145mm; margin: 0; }
+			<!DOCTYPE html>
+			<html lang="en">
+			<head>
+				<meta charset="UTF-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Print BIB</title>
+				<style>
 
-				body {
-					margin: 0;
-					padding: 0;
-					display: flex;
-					flex-direction: column; /* Tampilkan konten secara vertikal */
-					justify-content: space-between; /* Beri jarak antara dua bagian */
-					height: 145mm; /* Ketinggian halaman */
-					width: 200mm; /* Lebar halaman */
-					color: white;
-				}
+			@page { size: 200mm 145mm; margin: 0; }
 
-				.container {
-					width: 100%; /* Lebar penuh untuk memastikan konten mengisi halaman */
-					height: 50%; /* Setengah tinggi halaman untuk setiap konten */
-					position: relative;
-					page-break-after: always; /* Force page break after each container */
-				}
+			body {
+				margin: 0;
+				padding: 0;
+				display: flex;
+				flex-direction: column; /* Tampilkan konten secara vertikal */
+				justify-content: space-between; /* Beri jarak antara dua bagian */
+				height: 145mm; /* Ketinggian halaman */
+				width: 200mm; /* Lebar halaman */
+				color: white;
+			}
 
-				.img,
-				.img-2,
-				.img-3 {
-				max-width: 100%;
-				height: auto;
-				display: block;
-				position: absolute;
-				left: 50%;
-				transform: translateX(-50%);
-				z-index: -1; /* Letakkan di belakang konten utama */
-				}
+			.container {
+				width: 100%; /* Lebar penuh untuk memastikan konten mengisi halaman */
+				height: 50%; /* Setengah tinggi halaman untuk setiap konten */
+				position: relative;
+				page-break-after: always; /* Force page break after each container */
+			}
 
-				.img-2 {
-				top: 12mm; /* Adjust as needed */
-				width: 550px;
-				}
+			.img,
+			.img-2,
+			.img-3 {
+			max-width: 100%;
+			height: auto;
+			display: block;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			z-index: -1; /* Letakkan di belakang konten utama */
+			}
 
-				.img-3 {
-				top: 160%; /* Adjust as needed */
-				}
+			.img-2 {
+			top: 12mm; /* Adjust as needed */
+			width: 550px;
+			}
 
-				.NameGroup {
-				position: absolute;
-				top: 80%; /* Adjust vertically */
-				left: 50%;
-				transform: translate(-50%, -50%);
-				text-align: center;
-				font-size: 88px;
-				font-family: 'Adumu';
-				line-height: 88px;
-				letter-spacing: 10px;
-				}
+			.img-3 {
+			top: 160%; /* Adjust as needed */
+			}
 
-				.headerTextLeft {
-				position: absolute;
-				top: 10%; /* Adjust vertically */
-				left: 5%;
-				transform: translate(-5%, -50%);
-				text-align: center;
-				font-size: 15px;
-				font-family: Arial, Helvetica, sans-serif;
-				}
+			.NameGroup {
+			position: absolute;
+			top: 80%; /* Adjust vertically */
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			font-size: 88px;
+			font-family: 'Adumu';
+			line-height: 88px;
+			letter-spacing: 10px;
+			}
 
-				.headerTextRight {
-				position: absolute;
-				top: 10%; /* Adjust vertically */
-				right: 5%;
-				transform: translate(5%, -50%);
-				text-align: center;
-				font-size: 15px;
-				font-family: Arial, Helvetica, sans-serif;
-				}
+			.headerTextLeft {
+			position: absolute;
+			top: 10%; /* Adjust vertically */
+			left: 5%;
+			transform: translate(-5%, -50%);
+			text-align: center;
+			font-size: 15px;
+			font-family: Arial, Helvetica, sans-serif;
+			}
 
-				.BIBText {
-				position: absolute;
-				top: 130%; /* Adjust vertically */
-				left: 15px;
-				transform: translate(-5%, -50%);
-				text-align: center;
-				font-size: 45px;
-				font-family: 'Adumu';
-				letter-spacing: 5px;
-				}
+			.headerTextRight {
+			position: absolute;
+			top: 10%; /* Adjust vertically */
+			right: 5%;
+			transform: translate(5%, -50%);
+			text-align: center;
+			font-size: 15px;
+			font-family: Arial, Helvetica, sans-serif;
+			}
+
+			.BIBText {
+			position: absolute;
+			top: 130%; /* Adjust vertically */
+			left: 15px;
+			transform: translate(-5%, -50%);
+			text-align: center;
+			font-size: 45px;
+			font-family: 'Adumu';
+			letter-spacing: 5px;
+			}
             </style>
         </head>
         <body>
@@ -450,6 +457,7 @@
         iframeDoc.write(`
             <div class="container">
 			<div class="shape">
+					<img src="${qrCodeUrl}" alt="QR Code" style="max-width: 100%; height: auto;">
 				</div>
 				<img src="assets/bg.png" class="img">
 				<div class="headerTextLeft">28 JULI 2024<br>HOTEL DAFAM SEMARANG</div>

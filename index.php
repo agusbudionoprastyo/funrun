@@ -106,6 +106,9 @@
                 <div class="order">
                     <div class="head">
                         <h3>Daftar Peserta</h3>
+						<button type="button" id="printSelectedBtn" class="btn-download">
+							<i class='bx bxs-printer' style="font-size:24px"></i>
+						</button>
                     </div>
                     <table id="example" class="display" style="width:100%">
                             <thead>
@@ -115,9 +118,6 @@
 										<input type="checkbox" id="selectAllCheckbox" style="display:none">
 										<label for="selectAllCheckbox"  style="font-size:24px"><i class='bx bx-check-double'></i></label>
 										Nomor BIB
-										<button type="button" id="printSelectedBtn" class="btn-download">
-											<i class='bx bxs-printer' style="font-size:24px"></i>
-										</button>
 									</th>
                                     <th>Status</th>
                                 </tr>

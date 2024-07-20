@@ -159,10 +159,12 @@ $(document).ready(function() {
 						src: url('assets/Adumu.ttf') format('truetype'); /* Lokasi file TTF */
 					}
 
-		  @page { size: A4; margin-left:5mm; margin-right:5mm}
+		  @page { size: A4;}
 
 		  body {
-			  margin: 0;
+			  margin-left: 5mm;
+			  margin-right: 5mm;
+			  margin-top: 3.5mm;
 			  padding: 0;
 			  flex-direction: column; /* Tampilkan konten secara vertikal */
 			  justify-content: space-between; /* Beri jarak antara dua bagian */

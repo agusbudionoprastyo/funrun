@@ -264,8 +264,8 @@ function printSelectedEntries(entries) {
     var iframe = document.createElement('iframe');
     iframe.style.position = 'absolute';
     iframe.style.left = '-9999px'; // Mengatur posisi di luar layar
-    iframe.style.width = '210mm'; // Menetapkan lebar iframe sesuai gaya label
-    iframe.style.height = '297mm'; // Menetapkan tinggi iframe sesuai gaya label
+    iframe.style.width = '200mm'; // Menetapkan lebar iframe sesuai gaya label
+    iframe.style.height = '145mm'; // Menetapkan tinggi iframe sesuai gaya label
     iframe.style.border = 'none'; // Menghapus border iframe
     iframe.style.display = 'none'; // Sembunyikan iframe dari tampilan pengguna
     document.body.appendChild(iframe);

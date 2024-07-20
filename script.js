@@ -234,7 +234,7 @@ entries.forEach(function(entry) {
 		text: entry.nomorBIB,
 		width: 80,
 		height: 80,
-		colorDark: '#000000',
+		colorDark: '#ffffff',
 		colorLight: 'rgba(255, 255, 255, 0)', // Warna putih dengan opacity 0 untuk latar belakang transparan
 		correctLevel: QRCode.CorrectLevel.H
 	});

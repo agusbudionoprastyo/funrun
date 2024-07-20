@@ -245,6 +245,7 @@ entries.forEach(function(entry) {
 	iframeDoc.write(`
 		<div class="container">
 		<div class="qrcode"></div>
+		<div id="qrcode"></div>
 			<img src="assets/bg.png" class="img">
 			<div class="NameGroup">${entry.namaGeng}</div>
 			<div class="BIBText">${entry.nomorBIB}</div>

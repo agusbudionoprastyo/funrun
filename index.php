@@ -120,8 +120,8 @@
 									</th>
                                     <th>Status</th>
 									<th>
-										<input type="checkbox" id="selectAllCheckbox">
-										<label for="selectAllCheckbox">*</label>
+										<input type="checkbox" id="selectAllCheckbox" style="display:none">
+										<label for="selectAllCheckbox"><i class='bx bx-list-check'></i></label>
 									</th>
                                 </tr>
                             </thead>

@@ -355,13 +355,89 @@
 			iframeDoc.open();
 			iframeDoc.write(`
 				<html><head><style>
-				@font-face {
-					font-family: 'Adumu'; /* Nama font yang akan digunakan */
-					src: url('assets/Adumu.ttf') format('truetype'); /* Lokasi file TTF */
-					/* Opsional: tambahkan format lain jika diperlukan */
+				@page { size: 200mm 145mm; margin: 0; }
+
+				body {
+					margin: 0;
+					padding: 0;
+					display: flex;
+					flex-direction: column; /* Tampilkan konten secara vertikal */
+					justify-content: space-between; /* Beri jarak antara dua bagian */
+					height: 145mm; /* Ketinggian halaman */
+					width: 200mm; /* Lebar halaman */
+					color: white;
 				}
 
-				@page { size: 200mm 145mm; margin: 0; } 
+				.container {
+					width: 100%; /* Lebar penuh untuk memastikan konten mengisi halaman */
+					height: 50%; /* Setengah tinggi halaman untuk setiap konten */
+					position: relative;
+					page-break-after: always; /* Force page break after each container */
+				}
+
+				.img,
+				.img-2,
+				.img-3 {
+				max-width: 100%;
+				height: auto;
+				display: block;
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				z-index: -1; /* Letakkan di belakang konten utama */
+				}
+
+				.img-2 {
+				top: 12mm; /* Adjust as needed */
+				width: 550px;
+				}
+
+				.img-3 {
+				top: 160%; /* Adjust as needed */
+				}
+
+				.NameGroup {
+				position: absolute;
+				top: 80%; /* Adjust vertically */
+				left: 50%;
+				transform: translate(-50%, -50%);
+				text-align: center;
+				font-size: 88px;
+				font-family: 'Adumu';
+				line-height: 88px;
+				letter-spacing: 10px;
+				}
+
+				.headerTextLeft {
+				position: absolute;
+				top: 10%; /* Adjust vertically */
+				left: 5%;
+				transform: translate(-5%, -50%);
+				text-align: center;
+				font-size: 15px;
+				font-family: Arial, Helvetica, sans-serif;
+				}
+
+				.headerTextRight {
+				position: absolute;
+				top: 10%; /* Adjust vertically */
+				right: 5%;
+				transform: translate(5%, -50%);
+				text-align: center;
+				font-size: 15px;
+				font-family: Arial, Helvetica, sans-serif;
+				}
+
+				.BIBText {
+				position: absolute;
+				top: 130%; /* Adjust vertically */
+				left: 15px;
+				transform: translate(-5%, -50%);
+				text-align: center;
+				font-size: 45px;
+				font-family: 'Adumu';
+				letter-spacing: 5px;
+				}
             </style>
         </head>
         <body>

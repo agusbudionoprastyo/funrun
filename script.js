@@ -147,12 +147,6 @@ $(document).ready(function() {
 								/* Opsional: tambahkan format lain jika diperlukan */
 							}
 
-							@font-face {
-								font-family: 'Adumu'; /* Nama font yang akan digunakan */
-								src: url('assets/Adumu.ttf') format('truetype'); /* Lokasi file TTF */
-								/* Opsional: tambahkan format lain jika diperlukan */
-							}
-
 							@page { size: 200mm 145mm; margin: 0; }
 	
 							body {

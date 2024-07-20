@@ -164,7 +164,6 @@ $(document).ready(function() {
 		  body {
 			  margin-left: 5mm;
 			  margin-right: 5mm;
-			  margin-top: 3.5mm;
 			  padding: 0;
 			  flex-direction: column; /* Tampilkan konten secara vertikal */
 			  justify-content: space-between; /* Beri jarak antara dua bagian */

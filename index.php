@@ -117,9 +117,9 @@
                                     <th>Status</th>
 									<th>
 										<input type="checkbox" id="selectAllCheckbox" style="display:none">
-										<label for="selectAllCheckbox"  style="font-size:36px"><i class='bx bx-check-double'></i></label>
+										<label for="selectAllCheckbox"  style="font-size:24px"><i class='bx bx-check-double'></i></label>
 										<button type="button" id="printSelectedBtn" class="btn-download">
-											<i class='bx bxs-printer' style="font-size:36px"></i>
+											<i class='bx bxs-printer' style="font-size:24px"></i>
 										</button>
 									</th>
                                 </tr>

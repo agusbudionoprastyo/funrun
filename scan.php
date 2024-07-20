@@ -32,7 +32,7 @@
 
         if (navigator.getUserMedia) {
             // Request access to video stream
-            navigator.getUserMedia({ video: true }, function(stream) {
+            navigator.getUserMedia({ video: { facingMode: "environment" } }, function(stream) {
                 // Display video stream on the video element
                 var video = document.getElementById("scanner");
                 video.srcObject = stream;

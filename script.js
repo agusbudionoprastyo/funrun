@@ -236,10 +236,7 @@ entries.forEach(function(entry) {
 	});
 
 	// Menambahkan QR Code div ke dokumen iframe
-	iframeDoc.body.appendChild(qrCodeDiv);
-
-	// Mendapatkan URL QR Code
-	// var qrCodeImageUrl = qrCodeDiv.querySelector('img').src;
+	iframeDoc.body.appendChild(qrcode);
 
 	iframeDoc.write(`
 		<div class="container">

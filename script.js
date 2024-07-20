@@ -223,12 +223,25 @@ $(document).ready(function() {
 
 entries.forEach(function(entry) {
 	// Membuat URL QR Code
-	var qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(entry.nomorBIB);
+	// var qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(entry.nomorBIB);
+	// Membuat element untuk QR Code menggunakan QRCode.js
+	var qrCodeDiv = document.createElement('div');
+	var qrcode = new QRCode(qrCodeDiv, {
+		text: entry.nomorBIB,
+		width: 128,
+		height: 128,
+		colorDark: '#000000',
+		colorLight: '#ffffff',
+		correctLevel: QRCode.CorrectLevel.H
+	});
+
+	var qrCodeImage = qrCodeDiv.querySelector('img');
+	var qrCodeUrl = qrCodeImage.src;
 
 	iframeDoc.write(`
 		<div class="container">
 		<div class="shape">
-				<img src="${qrCodeUrl}" alt="QR Code" style="max-width: 100%; height: auto; color:white">
+				<img src="${qrCodeUrl}" alt="QR Code" style="max-width: 100%; height: auto;">
 			</div>
 			<img src="assets/bg.png" class="img">
 			<div class="NameGroup">${entry.namaGeng}</div>

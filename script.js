@@ -300,8 +300,8 @@ function printSelectedEntries(entries) {
                 }
 
                 .container {
-                    width: calc(50% - 5mm); /* Setengah lebar halaman dengan jarak 5mm */
-                    height: 50%; /* Setengah tinggi halaman untuk setiap konten */
+                    width: 100%; /* Setengah lebar halaman dengan jarak 5mm */
+                    height: calc(50% - 5mm); /* Setengah tinggi halaman untuk setiap konten */
                     position: relative;
                     page-break-after: always; /* Force page break after each container */
                     margin-bottom: 5mm; /* Jarak antar konten */

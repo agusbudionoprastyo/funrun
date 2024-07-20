@@ -229,7 +229,7 @@ entries.forEach(function(entry) {
 	var qrCodeDiv = document.createElement('div');
 	// qrCodeDiv.classList.add('qrcode');
 	// Setelah membuat QR Code, tambahkan class atau styling langsung
-	qrCodeDiv.style.position = 'absolute'; // atau 'relative' tergantung dari kebutuhan layout
+	qrCodeDiv.style.position = 'relative'; // atau 'relative' tergantung dari kebutuhan layout
 	qrCodeDiv.style.top = '88mm'; // Atur posisi dari atas (contoh 10px)
 	qrCodeDiv.style.right = '5mm'; // Atur posisi dari kiri (contoh 10px)
 

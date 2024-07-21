@@ -1,6 +1,6 @@
-<?php
+<!-- <?php
 	require_once 'fetch_data.php';
-?>
+?> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -150,7 +150,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-							<?php while($row = $result_data->fetch_assoc()): ?>
+							<!-- <?php while($row = $result_data->fetch_assoc()): ?>
                             <tr>
                                 
                                 <td>
@@ -161,14 +161,14 @@
 									<?php echo $row["BIB_NUMBER"]; ?>
 								</td>
                                 <td>
-                                    <!-- <?php if ($row["status"] === 'checked'): ?>
+                                    <?php if ($row["status"] === 'checked'): ?>
                                         <i class='bx bxs-badge-check bx-tada bx-md' style='color:#ffce26' ></i>
                                     <?php else: ?>  
                                         <i class='bx bxs-alarm-exclamation bx-md' style='color:#fd7237'></i> 
-                                    <?php endif; ?> -->
+                                    <?php endif; ?>
 								</td>
                             </tr>
-                        	<?php endwhile; ?>
+                        	<?php endwhile; ?> -->
                             </tbody>
                         </table>
                     </div>

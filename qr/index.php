@@ -66,7 +66,7 @@ function updateStatus(bibNumber, status) {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: `bib_number=${encodeURIComponent(bibNumber)}&timestamp=${encodeURIComponent(timestamp)}`
+        body: `bib_number=${encodeURIComponent(bibNumber)}`
     })
     .then(response => response.json())
     .then(data => {

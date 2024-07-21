@@ -1,4 +1,3 @@
-// update_status.php
 <?php
 // Menyertakan file koneksi
 include 'conn.php';
@@ -6,7 +5,7 @@ include 'conn.php';
 // Memeriksa apakah data POST diterima
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $bibNumber = $_POST['bib_number'];
-    $timeStamp = $_POST['timestamp'];
+    $timeStamp = date('Y-m-d H:i:s'); // Membuat timestamp di sisi server
     $status = 'checked';
 
     // Membuat koneksi
@@ -17,9 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Koneksi gagal: " . $conn->connect_error);
     }
 
-    // Mengupdate status berdasarkan bib_number
-    $stmt = $conn->prepare("UPDATE funrun SET status, timestamp = ? WHERE bib_number = ?");
-    $stmt->bind_param('sss', $status, $timeStamp $bibNumber);
+    // Mengupdate status dan timestamp berdasarkan bib_number
+    $stmt = $conn->prepare("UPDATE funrun SET status = ?, timestamp = ? WHERE bib_number = ?");
+    $stmt->bind_param('sss', $status, $timeStamp, $bibNumber);
 
     if ($stmt->execute()) {
         echo json_encode(['success' => true]);

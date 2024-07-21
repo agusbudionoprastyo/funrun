@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Scanner using Instascan</title>
+    <title>QR Code Scanner with Instascan</title>
     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <style>
-        /* CSS styling for video element */
+        /* Styling for video element */
         #scanner {
             width: 100%;
             max-width: 600px;
             margin: 0 auto;
+            border: 5px solid #333; /* Border style */
         }
-        /* CSS styling for result display */
+        /* Styling for result display */
         #result {
             margin-top: 20px;
             font-size: 18px;
@@ -42,7 +43,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             Instascan.Camera.getCameras().then(function(cameras) {
                 if (cameras.length > 0) {
-                    scanner.start(cameras[0]);
+                    // Use back camera (assuming last index is back camera)
+                    let selectedCamera = cameras[cameras.length - 1];
+                    scanner.start(selectedCamera);
                 } else {
                     console.error('No cameras found.');
                     alert('No cameras found.');

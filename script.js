@@ -108,7 +108,10 @@ document.addEventListener('DOMContentLoaded', function() {
 				icon: 'info',
 				showConfirmButton: false, // Tidak ada tombol konfirmasi
 				timer: 5000, // Durasi notifikasi 5 detik
-				timerProgressBar: true // Tampilkan progress bar
+				timerProgressBar: true, // Tampilkan progress bar
+				willClose: () => {
+					window.location.reload(); // Reload halaman setelah notifikasi menghilang
+				}
 			});
 
 			// Simpan data terbaru

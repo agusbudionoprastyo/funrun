@@ -11,7 +11,12 @@
             width: 100%;
             max-width: 600px;
             margin: 0 auto;
-            border: 5px solid #333; /* Border style */
+            border-radius: 10px; /* Border radius */
+            /* Transform to flip video horizontally */
+            transform: scaleX(-1);
+            -webkit-transform: scaleX(-1);
+            -moz-transform: scaleX(-1);
+            -ms-transform: scaleX(-1);
         }
         /* Styling for result display */
         #result {
@@ -28,7 +33,7 @@
 
     <script>
         // Initialize Instascan
-        let scanner = new Instascan.Scanner({ video: document.getElementById('scanner') });
+        let scanner = new Instascan.Scanner({ video: document.getElementById('scanner'), mirror: false });
 
         // Function to start scanning
         scanner.addListener('scan', function(content) {

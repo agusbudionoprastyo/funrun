@@ -3,32 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Scanner with html5-qrcode</title>
+    <title>FunRun</title>
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
-    <style>
-        /* Styling for video element */
-        #qr-reader-video {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            border-radius: 10px; /* Border radius */
-        }
-        /* Styling for result display */
-        #result {
-            margin-top: 20px;
-            font-size: 18px;
-        }
-    </style>
 </head>
 <body>
-    <!-- Video element for camera feed -->
-    <video id="qr-reader-video"></video>
-    <!-- Element to display scanned result -->
-    <div id="result">Scanning...</div>
+<div id="reader" width="600px"></div>
 
     <script>
         // Initialize html5-qrcode
-        let html5QrCode = new Html5Qrcode('qr-reader-video');
+        let html5QrCode = new Html5Qrcode('reader');
 
         // Function to handle QR code detection
         function onScanSuccess(qrCodeMessage) {

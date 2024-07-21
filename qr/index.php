@@ -25,9 +25,8 @@
     function onScanSuccess(qrCodeMessage) {
         console.log('QR Code detected and processed:', qrCodeMessage);
         // Display result
-        alert('QR Code detected: ' + qrCodeMessage);
-        // document.getElementById('result').textContent = qrCodeMessage;
         playAudio();
+        alert('QR Code detected: ' + qrCodeMessage);
     }
 
     // Function to play audio
@@ -42,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Start the QR code scanner
     html5QrCode.start(
         { facingMode: 'environment' }, // Use facingMode: 'environment' for back camera
-        { fps: 10, qrbox: 250, aspectRatio: 16/9 }, // Optional parameters
+        { fps: 10, qrbox: 250, aspectRatio: 18/9 }, // Optional parameters
         onScanSuccess // Callback function
     ).catch(function(err) {
         // Catch any errors that occur during initialization

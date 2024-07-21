@@ -151,7 +151,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-							<?php while($row = $result_data->fetch_assoc()): ?>
+							<!-- <?php while($row = $result_data->fetch_assoc()): ?>
                             <tr>
                                 
                                 <td>
@@ -169,7 +169,7 @@
                                     <?php endif; ?>
 								</td>
                             </tr>
-                        	<?php endwhile; ?>
+                        	<?php endwhile; ?> -->
                             </tbody>
                         </table>
                     </div>

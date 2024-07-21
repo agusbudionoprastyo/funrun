@@ -1,32 +1,29 @@
 <?php
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
-    // Koneksi ke database
-    $servername = "localhost";
-    $username = "dafm5634_ag";
-    $password = "Ag7us777__";
-    $dbname = "dafm5634_funrun";
-    
-    // Buat koneksi
-    $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Periksa koneksi
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+// Koneksi ke database
+$servername = "localhost";
+$username = "dafm5634_ag";
+$password = "Ag7us777__";
+$dbname = "dafm5634_funrun";
 
-    // Fungsi untuk mendapatkan data terbaru dari database
+// Buat koneksi
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Periksa koneksi
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fungsi untuk mendapatkan data terbaru dari database
 function getData() {
     global $conn;
 
-    // Query untuk mengambil data dari tabel
-    $sql_data = "SELECT * FROM Funrun";
-    $result_data = $conn->query($sql_data);
-
-    $data = [];
-    while ($row = $result_data->fetch_assoc()) {
-        $data[] = $row;
-    }
+    // Query untuk mengambil baris dengan timestamp terbaru dari tabel
+    $sql_timestamp = "SELECT timestamp, BIB_NUMBER, NAMA_GENG FROM Funrun ORDER BY timestamp DESC LIMIT 1";
+    $result_timestamp = $conn->query($sql_timestamp);
+    $latest_data = ($result_timestamp->num_rows > 0) ? $result_timestamp->fetch_assoc() : null;
 
     // Query untuk menghitung jumlah peserta
     $sql = "SELECT COUNT(*) AS total_peserta FROM Funrun";
@@ -43,24 +40,31 @@ function getData() {
     $result_uncheck = $conn->query($sql_uncheck);
     $total_uncheck = ($result_uncheck->num_rows > 0) ? $result_uncheck->fetch_assoc()["total_uncheck"] : 0;
 
-
     return [
-        'data' => $data,
+        'latest_timestamp' => $latest_data['timestamp'],
+        'BIB_NUMBER' => $latest_data['BIB_NUMBER'],
+        'NAMA_GENG' => $latest_data['NAMA_GENG'],
         'total_peserta' => $total_peserta,
         'total_check' => $total_check,
         'total_uncheck' => $total_uncheck
     ];
 }
 
+$last_timestamp = null;
+
 // Kirim data setiap beberapa detik
 while (true) {
     $data = getData();
-    echo "data: " . json_encode($data) . "\n\n";
-    flush();
+    if ($data['latest_timestamp'] !== $last_timestamp) {
+        echo "data: " . json_encode($data) . "\n\n";
+        flush();
+        $last_timestamp = $data['latest_timestamp'];
+    }
 
     // Tunggu beberapa detik sebelum mengirim data lagi
     sleep(10); // Sesuaikan interval sesuai kebutuhan
 }
-    // Tutup koneksi
-    $conn->close();
+
+// Tutup koneksi
+$conn->close();
 ?>

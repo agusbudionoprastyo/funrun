@@ -1,9 +1,6 @@
 <?php
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
-
-// Fungsi untuk mendapatkan data terbaru dari database
-function getData() {
     // Koneksi ke database
     $servername = "localhost";
     $username = "dafm5634_ag";
@@ -17,6 +14,10 @@ function getData() {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
+
+    // Fungsi untuk mendapatkan data terbaru dari database
+function getData() {
+    global $conn;
 
     // Query untuk mengambil data dari tabel
     $sql_data = "SELECT * FROM Funrun";
@@ -42,8 +43,6 @@ function getData() {
     $result_uncheck = $conn->query($sql_uncheck);
     $total_uncheck = ($result_uncheck->num_rows > 0) ? $result_uncheck->fetch_assoc()["total_uncheck"] : 0;
 
-    // Tutup koneksi
-    $conn->close();
 
     return [
         'data' => $data,
@@ -62,4 +61,6 @@ while (true) {
     // Tunggu beberapa detik sebelum mengirim data lagi
     sleep(10); // Sesuaikan interval sesuai kebutuhan
 }
+    // Tutup koneksi
+    $conn->close();
 ?>

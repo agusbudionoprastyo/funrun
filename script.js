@@ -59,6 +59,47 @@ switchMode.addEventListener('change', function () {
 	}
 })
 
+// script.js
+
+document.addEventListener('DOMContentLoaded', function() {
+    const eventSource = new EventSource('sse.php');
+
+    eventSource.onmessage = function(event) {
+        const data = JSON.parse(event.data);
+
+        // Update statistik
+        document.getElementById('totalPeserta').innerText = data.total_peserta;
+        document.getElementById('totalCheck').innerText = data.total_check;
+        document.getElementById('totalUncheck').innerText = data.total_uncheck;
+
+        // Kosongkan tbody sebelum menambah data baru
+        $('#example tbody').empty();
+
+        // Iterasi data dan tambahkan ke tabel
+        data.data.forEach(row => {
+            const statusIcon = row.status === 'checked' 
+                ? "<i class='bx bxs-badge-check bx-tada bx-md' style='color:#ffce26'></i>" 
+                : "<i class='bx bxs-alarm-exclamation bx-md' style='color:#fd7237'></i>";
+
+            $('#example tbody').append(
+                "<tr>" +
+                "<td><input type='checkbox' class='print-checkbox'> " + row.NAMA_GENG + "</td>" +
+                "<td>" + row.BIB_NUMBER + "</td>" +
+                "<td>" + statusIcon + "</td>" +
+                "</tr>"
+            );
+        });
+
+        // Reinitialize DataTables
+        $('#example').DataTable().destroy();
+        $('#example').DataTable();
+    };
+
+    eventSource.onerror = function(event) {
+        console.error('Error with SSE:', event);
+    };
+});
+
 $(document).ready(function() {
 	// Select All functionality
 	$('#selectAllCheckbox').change(function() {

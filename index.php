@@ -77,7 +77,7 @@
                 </div>
             </div>
 
-            <ul class="box-info">
+            <!-- <ul class="box-info">
                 <li>
                     <i class='bx bxs-group bx-lg' ></i>
                     <span class="text">
@@ -86,7 +86,6 @@
                     </span>
                 </li>
                 <li>
-                    <!-- <i class='bx bxs-calendar-check' ></i> -->
                     <i class='bx bxs-badge-check bx-lg' ></i>
                     <span class="text">
                         <h3><?php echo $row_check["total_check"]; ?></h3>
@@ -94,14 +93,38 @@
                     </span>
                 </li>
                 <li>
-                    <!-- <i class='bx bx-calendar-exclamation' ></i> -->
                     <i class='bx bxs-alarm-exclamation bx-lg'></i>
                     <span class="text">
 						<h3><?php echo $row_uncheck["total_uncheck"]; ?></h3>
                         <p>Unchecked</p>
                     </span>
                 </li>
-            </ul>
+            </ul> -->
+
+<ul class="box-info">
+    <li>
+        <i class='bx bxs-group bx-lg' ></i>
+        <span class="text">
+            <h3 id="totalPeserta">0</h3>
+            <p>Peserta</p>
+        </span>
+    </li>
+    <li>
+        <i class='bx bxs-badge-check bx-lg' ></i>
+        <span class="text">
+            <h3 id="totalCheck">0</h3>
+            <p>Checked</p>
+        </span>
+    </li>
+    <li>
+        <i class='bx bxs-alarm-exclamation bx-lg'></i>
+        <span class="text">
+            <h3 id="totalUncheck">0</h3>
+            <p>Unchecked</p>
+        </span>
+    </li>
+</ul>
+
 
 
             <div class="table-data">

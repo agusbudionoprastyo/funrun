@@ -80,6 +80,15 @@ switchMode.addEventListener('change', function () {
 // });
 
 document.addEventListener('DOMContentLoaded', function() {
+	const audio = document.getElementById('audio');
+
+	// Function to play audio
+	function playAudio() {
+		audio.play().catch(function(error) {
+			console.error('Error playing audio:', error);
+		});
+	}
+
 	const eventSource = new EventSource('sse.php');
 
 	// Ambil data terakhir dari sessionStorage
@@ -123,15 +132,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		console.error('Error dengan SSE:', event);
 	};
 });
-
-let audio = document.getElementById('audio');
-
-// Function to play audio
-function playAudio() {
-	audio.play().catch(function(error) {
-		console.error('Error playing audio:', error);
-	});
-}
 
 $(document).ready(function() {
 	// table initialize

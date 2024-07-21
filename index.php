@@ -138,15 +138,17 @@
                     <table id="example" class="display" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>
-                                        <input type="checkbox" id="selectAllCheckbox" style="display:none">
-										<label for="selectAllCheckbox"  style="font-size:24px"><i class='bx bx-check-double'></i></label>
+                                    <th style="text-align: left;">
                                         Nama Geng
                                     </th>
-                                    <th>
+                                    <th style="text-align: center;">
 										Nomor BIB
 									</th>
-                                    <th style="text-align: center;">Status</th>
+                                    <th style="text-align: center;">
+                                    <input type="checkbox" id="selectAllCheckbox" style="display:none">
+										<label for="selectAllCheckbox"  style="font-size:24px"><i class='bx bx-check-double'></i></label>
+                                    Status
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>

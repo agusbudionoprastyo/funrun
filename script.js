@@ -90,6 +90,10 @@ $(document).ready(function() {
 				"targets": [2] // Disable ordering for the first column (index 0)
 			},
 			{ 
+				"targets": 1,  // Kolom ke-2 (indeks mulai dari 0)
+				"className": "text-center" 
+			},
+			{ 
 				"targets": 2,  // Kolom ke-3 (indeks mulai dari 0)
 				"className": "text-center" 
 			}

@@ -8,7 +8,7 @@
 </head>
 <body>
 <div id="reader" width="600px"></div>
-
+<div id="result"></div>
     <script>
         // Initialize html5-qrcode
         let html5QrCode = new Html5Qrcode('reader');

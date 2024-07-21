@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FunRun</title>
+    <link rel="manifest" href="./manifest.json">
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
@@ -16,7 +17,7 @@
 </head>
 <body>
 <div id="reader"></div>
-<audio id="audio" src="success.mp3"></audio>
+<audio id="audio" src="beep.wav"></audio>
   <script>
     // Initialize
     let html5QrCode = new Html5Qrcode('reader');
@@ -38,7 +39,7 @@
                 title: 'Fun Run',
                 html: `Registrasi ulang dengan nomor BIB <b>${qrCodeMessage}</b> berhasil<br><small>${timestamp}</small>`,
                 icon: 'success',
-                timer: 3000, // Optional, time in milliseconds after which the alert will be automatically closed
+                timer: 10000, // Optional, time in milliseconds after which the alert will be automatically closed
                 timerProgressBar: true, // Optional, shows progress bar for the timer
                 showConfirmButton: false // Optional, hides the confirm button
             }).then(function() {
@@ -69,5 +70,18 @@
         });
     });
 </script>
+
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('./service-worker.js').then(function(registration) {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function(err) {
+                console.error('ServiceWorker registration failed: ', err);
+            });
+        });
+    }
+</script>
+
 </body>
 </html>

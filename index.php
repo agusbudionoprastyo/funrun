@@ -137,12 +137,15 @@
 									<?php echo $row["BIB_NUMBER"]; ?>
 								</td>
                                 <td>
-                                <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                                     <?php if ($status === 'checked'): ?>
-                                        <i class='bx bx-badge-check'></i>
+                                        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                        <i class='bx bxs-badge-check' ></i>
+                                        </a>
+                                    <?php else: ?>
+                                        <a class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                        <i class='bx bxs-alarm-exclamation'></i>
+                                        </a>
                                     <?php endif; ?>
-                                    <?php echo $status; ?>
-                                </a>
 								</td>
                             </tr>
                         	<?php endwhile; ?>

@@ -25,6 +25,7 @@
     function onScanSuccess(qrCodeMessage) {
         console.log('QR Code detected and processed:', qrCodeMessage);
         // Display result
+        alert('QR Code detected: ' + qrCodeMessage);
         // document.getElementById('result').textContent = qrCodeMessage;
         playAudio();
     }
@@ -36,17 +37,21 @@
         });
     }
 
-    // Start scanning when document is loaded
-    document.addEventListener('DOMContentLoaded', function() {
-        html5QrCode.start(
-            { facingMode: 'environment' }, // Use facingMode: 'environment' for back camera
-            { fps: 10, qrbox: 250, aspectRatio: 16:9 }, // Optional parameters
-            onScanSuccess // Callback function
-        ).catch(function(err) {
-            console.error('Error initializing QR Code scanner:', err);
-            alert('Error initializing QR Code scanner: ' + err);
-        });
+// Start scanning when document is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Start the QR code scanner
+    html5QrCode.start(
+        { facingMode: 'environment' }, // Use facingMode: 'environment' for back camera
+        { fps: 10, qrbox: 250, aspectRatio: 16/9 }, // Optional parameters
+        onScanSuccess // Callback function
+    ).catch(function(err) {
+        // Catch any errors that occur during initialization
+        console.error('Error initializing QR Code scanner:', err);
+        alert('Error initializing QR Code scanner: ' + err);
     });
+});
+
+
 </script>
 </body>
 </html>

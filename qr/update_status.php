@@ -17,17 +17,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    // Mengupdate status dan timestamp berdasarkan bib_number
-    $stmt = $conn->prepare("UPDATE Funrun SET status = ?, timestamp = ? WHERE bib_number = ?");
-    $stmt->bind_param('sss', $status, $timeStamp, $bibNumber);
+    // Memeriksa apakah BIB_NUMBER ada dalam tabel
+    $checkStmt = $conn->prepare("SELECT COUNT(*) FROM Funrun WHERE BIB_NUMBER = ?");
+    $checkStmt->bind_param('s', $bibNumber);
+    $checkStmt->execute();
+    $checkStmt->bind_result($count);
+    $checkStmt->fetch();
+    $checkStmt->close();
 
-    if ($stmt->execute()) {
-        echo json_encode(['success' => true]);
+    if ($count > 0) {
+        // BIB_NUMBER ada, lakukan pembaruan
+        $stmt = $conn->prepare("UPDATE Funrun SET status = ?, timestamp = ? WHERE BIB_NUMBER = ?");
+        $stmt->bind_param('sss', $status, $timeStamp, $bibNumber);
+
+        if ($stmt->execute()) {
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'error' => $stmt->error]);
+        }
+
+        $stmt->close();
     } else {
-        echo json_encode(['success' => false, 'error' => $stmt->error]);
+        // BIB_NUMBER tidak ditemukan
+        echo json_encode(['success' => false, 'error' => 'Nomor BIB tidak ditemukan']);
     }
 
-    $stmt->close();
     $conn->close();
 } else {
     echo json_encode(['success' => false, 'error' => 'Invalid request method']);

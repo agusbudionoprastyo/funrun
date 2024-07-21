@@ -122,7 +122,7 @@ function onScanSuccess(qrCodeMessage) {
         // Send AJAX request to update status
         updateStatus(qrCodeMessage, function(success, error) {
             if (success) {
-                // Display result with timestamp
+                // Display success result with timestamp
                 swal.fire({
                     title: 'Fun Run',
                     html: `Registrasi ulang dengan nomor BIB <b>${qrCodeMessage}</b> berhasil<br><small>${timestamp}</small>`,
@@ -171,13 +171,16 @@ function updateStatus(bibNumber, callback) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
+            // Call callback with success = true
             callback(true);
         } else {
+            // Call callback with success = false and error message
             console.error('Error updating status:', data.error);
             callback(false, data.error);
         }
     })
     .catch(error => {
+        // Call callback with success = false and error message
         console.error('Error:', error);
         callback(false, error.message);
     });
@@ -209,5 +212,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 </script>
+
 </body>
 </html>

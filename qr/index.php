@@ -17,26 +17,37 @@
 <body>
 <div id="reader"></div>
 <audio id="audio" src="beep.wav"></audio>
-<script>
+  <script>
     // Initialize
     let html5QrCode = new Html5Qrcode('reader');
     let audio = document.getElementById('audio');
+    let scanningPaused = false;
 
     // Function to handle QR code detection
     function onScanSuccess(qrCodeMessage) {
-        console.log('QR Code detected and processed:', qrCodeMessage);
-        // Display result
-        swal.fire({
-            title: 'QR Code Detected',
-            text: qrCodeMessage,
-            icon: 'success',
-            timer: 3000, // Optional, time in milliseconds after which the alert will be automatically closed
-            timerProgressBar: true, // Optional, shows progress bar for the timer
-            showConfirmButton: false // Optional, hides the confirm button
-        });
-        playAudio();
-    }
+        if (!scanningPaused) {
+            console.log('QR Code detected and processed:', qrCodeMessage);
+            // Pause scanning
+            scanningPaused = true;
 
+            // Get current timestamp
+            let timestamp = new Date().toLocaleString();
+
+            // Display result with timestamp
+            swal.fire({
+                title: 'Fun Run',
+                html: `Registrasi ulang dengan nomor BIB <b>${qrCodeMessage}</b> berhasil<br><small>${timestamp}</small>`,
+                icon: 'success',
+                timer: 3000, // Optional, time in milliseconds after which the alert will be automatically closed
+                timerProgressBar: true, // Optional, shows progress bar for the timer
+                showConfirmButton: false // Optional, hides the confirm button
+            }).then(function() {
+                // Resume scanning after the alert is closed
+                scanningPaused = false;
+                playAudio();
+            });
+        }
+    }
 
     // Function to play audio
     function playAudio() {
@@ -45,21 +56,19 @@
         });
     }
 
-// Start scanning when document is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Start the QR code scanner
-    html5QrCode.start(
-        { facingMode: 'environment' }, // Use facingMode: 'environment' for back camera
-        { fps: 10, qrbox: 250, aspectRatio: 18/9 }, // Optional parameters
-        onScanSuccess // Callback function
-    ).catch(function(err) {
-        // Catch any errors that occur during initialization
-        console.error('Error initializing QR Code scanner:', err);
-        alert('Error initializing QR Code scanner: ' + err);
+    // Start scanning when document is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Start the QR code scanner
+        html5QrCode.start(
+            { facingMode: 'environment' }, // Use facingMode: 'environment' for back camera
+            { fps: 10, qrbox: 250, aspectRatio: 18/9 }, // Optional parameters
+            onScanSuccess // Callback function
+        ).catch(function(err) {
+            // Catch any errors that occur during initialization
+            console.error('Error initializing QR Code scanner:', err);
+            alert('Error initializing QR Code scanner: ' + err);
+        });
     });
-});
-
-
 </script>
 </body>
 </html>

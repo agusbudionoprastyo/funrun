@@ -12,7 +12,7 @@ function getData() {
     global $conn; // Gunakan koneksi dari conn.php
     
     // Query untuk mengambil data dari tabel
-    $sql_data = "SELECT * FROM Funrun ORDER BY BIB_NUMBER ASC";
+    $sql_data = "SELECT * FROM Funrun";
     $result_data = $conn->query($sql_data);
 
     $data = [];

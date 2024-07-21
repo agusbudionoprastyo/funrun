@@ -113,10 +113,13 @@
                     <table id="example" class="display" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Nama Geng</th>
                                     <th>
-										<input type="checkbox" id="selectAllCheckbox" style="display:none">
+                                        <input type="checkbox" id="selectAllCheckbox" style="display:none">
 										<label for="selectAllCheckbox"  style="font-size:24px"><i class='bx bx-check-double'></i></label>
+                                        Nama Geng
+                                    </th>
+                                    <th>
+
 										Nomor BIB
 									</th>
                                     <th>Status</th>
@@ -125,13 +128,18 @@
                             <tbody>
 							<?php while($row = $result_data->fetch_assoc()): ?>
                             <tr>
-                                <td><?php echo $row["NAMA_GENG"]; ?></td>
+                                
                                 <td>
-									<input type="checkbox" class="print-checkbox">
+                                    <input type="checkbox" class="print-checkbox">    
+                                    <?php echo $row["NAMA_GENG"]; ?>
+                                </td>
+                                <td>
 									<?php echo $row["BIB_NUMBER"]; ?>
 								</td>
                                 <td>
-									<?php echo $row["status"]; ?>
+                                <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                <?php echo $row["status"]; ?>
+                                </a>
 								</td>
                             </tr>
                         	<?php endwhile; ?>

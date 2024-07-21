@@ -72,12 +72,14 @@ $(document).ready(function() {
 		$('#selectAllCheckbox').prop('checked', allChecked);
 	});
 
-    var table = new DataTable('#example', {
-        searching: true, // Aktifkan pencarian
-		"columnDefs": [
-			{ "orderable": false, "targets": [0] } // Disable ordering for the third column (index 2)
+	var table = new DataTable('#example', {
+		searching: true, // Aktifkan pencarian
+		order: [[1, 'asc']], // Urutkan berdasarkan kolom kedua (indeks 1), urutan ascending
+		columnDefs: [
+			{ "orderable": false, "targets": [0] } // Disable ordering for the first column (index 0)
 		]
-    });
+	});
+	
 	
 
     // Event listener untuk "Enter" pada #search-input

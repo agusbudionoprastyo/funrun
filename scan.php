@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code Scanner</title>
-    <!-- Include QuaggaJS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+    <!-- Include jsQR -->
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@2.0.1"></script>
     <style>
         /* Styling for video element */
         #scanner {
@@ -44,36 +44,46 @@
             alert("Sorry, your browser does not support video access");
         }
 
-        // Initialize QuaggaJS
-        Quagga.init({
-            inputStream: {
-                name: "Live",
-                type: "LiveStream",
-                target: document.querySelector('#scanner')
-            },
-            decoder: {
-                readers: ["code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader", "code_39_vin_reader", "codabar_reader", "upc_reader", "upc_e_reader", "i2of5_reader", "2of5_reader", "code_93_reader"],
-            }
-        }, function(err) {
-            if (err) {
-                console.log(err);
-                return;
-            }
-            console.log("Initialization finished. Ready to start");
-            Quagga.start();
-        });
+        // Function to process QR code
+        function decodeQRFromVideo(videoElement) {
+            var canvas = document.createElement('canvas');
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+            var context = canvas.getContext('2d');
 
-        // Process detected QR code
-        Quagga.onDetected(function(result) {
-            if (result.codeResult.code) {
-                console.log("Barcode detected and processed: ", result.codeResult.code);
+            // Draw video frame onto canvas
+            context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+
+            // Get image data from canvas
+            var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+
+            // Use jsQR library to decode QR code
+            var code = jsQR(imageData.data, imageData.width, imageData.height, {
+                inversionAttempts: "dontInvert",
+            });
+
+            if (code) {
+                console.log("QR code detected and processed:", code.data);
                 // Display result
-                document.getElementById("result").textContent = result.codeResult.code;
+                document.getElementById("result").textContent = code.data;
                 // Optionally, you can redirect or perform other actions based on the scanned result
-                // Example: window.location.href = result.codeResult.code;
-                // Stop Quagga to end scanning
-                Quagga.stop();
+                // Example: window.location.href = code.data;
+            } else {
+                console.log("No QR code detected");
             }
+
+            // Continue scanning
+            requestAnimationFrame(function() {
+                decodeQRFromVideo(videoElement);
+            });
+        }
+
+        // Start QR code decoding process
+        document.addEventListener('DOMContentLoaded', function() {
+            var video = document.getElementById("scanner");
+            video.addEventListener('loadedmetadata', function() {
+                decodeQRFromVideo(video);
+            });
         });
     </script>
 </body>

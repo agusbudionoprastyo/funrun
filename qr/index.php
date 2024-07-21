@@ -16,7 +16,7 @@
 </head>
 <body>
 <div id="reader"></div>
-<audio id="audio" src="beep.wav"></audio>
+<audio id="audio" src="success.mp3"></audio>
   <script>
     // Initialize
     let html5QrCode = new Html5Qrcode('reader');

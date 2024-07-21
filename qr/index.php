@@ -7,7 +7,7 @@
     <link rel="manifest" href="./manifest.json">
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
+    <!-- <style>
         body, html {
             margin: 0;
             padding: 0;
@@ -24,7 +24,7 @@
                 overflow: hidden;
             }
         }
-    </style>
+    </style> -->
 </head>
 <body>
 <div id="reader"></div>
@@ -52,7 +52,7 @@ function onScanSuccess(qrCodeMessage) {
                 // Display success result with timestamp
                 swal.fire({
                     title: 'Fun Run',
-                    html: `Registrasi ulang dengan nomor BIB <b>${qrCodeMessage}</b> berhasil<br><small>${timestamp}</small>`,
+                    html: `Check In dengan nomor BIB <b>${qrCodeMessage}</b> berhasil<br><small>${timestamp}</small>`,
                     icon: 'success',
                     timer: 10000,
                     timerProgressBar: true,
@@ -65,7 +65,7 @@ function onScanSuccess(qrCodeMessage) {
                 // Display error message
                 swal.fire({
                     title: 'Error',
-                    html: `Gagal memperbarui status untuk nomor BIB <b>${qrCodeMessage}</b><br><small>${error}</small>`,
+                    html: `Gagal Check In untuk nomor BIB <b>${qrCodeMessage}</b><br><small>${error}</small>`,
                     icon: 'error',
                     timer: 10000,
                     timerProgressBar: true,
@@ -126,28 +126,28 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Function to handle orientation change
-function handleOrientationChange() {
-    if (window.innerWidth > window.innerHeight) {
-        // Device is in landscape mode
-        document.body.style.transform = 'rotate(90deg)';
-        document.body.style.transformOrigin = 'left bottom';
-        document.body.style.width = '100vh';
-        document.body.style.height = '100vw';
-    } else {
-        // Device is in portrait mode
-        document.body.style.transform = '';
-        document.body.style.transformOrigin = '';
-        document.body.style.width = '';
-        document.body.style.height = '';
-    }
-}
+// // Function to handle orientation change
+// function handleOrientationChange() {
+//     if (window.innerWidth > window.innerHeight) {
+//         // Device is in landscape mode
+//         document.body.style.transform = 'rotate(90deg)';
+//         document.body.style.transformOrigin = 'left bottom';
+//         document.body.style.width = '100vh';
+//         document.body.style.height = '100vw';
+//     } else {
+//         // Device is in portrait mode
+//         document.body.style.transform = '';
+//         document.body.style.transformOrigin = '';
+//         document.body.style.width = '';
+//         document.body.style.height = '';
+//     }
+// }
 
-// Attach event listener to handle orientation change
-window.addEventListener('resize', handleOrientationChange);
+// // Attach event listener to handle orientation change
+// window.addEventListener('resize', handleOrientationChange);
 
-// Initial call to handle orientation on load
-handleOrientationChange();
+// // Initial call to handle orientation on load
+// handleOrientationChange();
 </script>
 
 <script>

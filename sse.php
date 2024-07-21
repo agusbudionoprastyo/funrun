@@ -19,15 +19,6 @@ header('Cache-Control: no-cache');
 function getData() {
     global $conn;
 
-    // Query untuk mengambil data dari tabel
-    $sql_data = "SELECT * FROM Funrun";
-    $result_data = $conn->query($sql_data);
-
-    $data = [];
-    while ($row = $result_data->fetch_assoc()) {
-        $data[] = $row;
-    }
-
     // Query untuk menghitung jumlah peserta
     $sql = "SELECT COUNT(*) AS total_peserta FROM Funrun";
     $result = $conn->query($sql);
@@ -45,7 +36,6 @@ function getData() {
 
 
     return [
-        'data' => $data,
         'total_peserta' => $total_peserta,
         'total_check' => $total_check,
         'total_uncheck' => $total_uncheck

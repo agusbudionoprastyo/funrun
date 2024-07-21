@@ -1,6 +1,6 @@
-<!-- <?php
+<?php
 	require_once 'fetch_data.php';
-?> -->
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -101,29 +101,29 @@
                 </li>
             </ul> -->
 
-<ul class="box-info">
-    <li>
-        <i class='bx bxs-group bx-lg' ></i>
-        <span class="text">
-            <h3 id="totalPeserta">0</h3>
-            <p>Peserta</p>
-        </span>
-    </li>
-    <li>
-        <i class='bx bxs-badge-check bx-lg' ></i>
-        <span class="text">
-            <h3 id="totalCheck">0</h3>
-            <p>Checked</p>
-        </span>
-    </li>
-    <li>
-        <i class='bx bxs-alarm-exclamation bx-lg'></i>
-        <span class="text">
-            <h3 id="totalUncheck">0</h3>
-            <p>Unchecked</p>
-        </span>
-    </li>
-</ul>
+            <ul class="box-info">
+                <li>
+                    <i class='bx bxs-group bx-lg' ></i>
+                    <span class="text">
+                        <h3 id="totalPeserta">0</h3>
+                        <p>Peserta</p>
+                    </span>
+                </li>
+                <li>
+                    <i class='bx bxs-badge-check bx-lg' ></i>
+                    <span class="text">
+                        <h3 id="totalCheck">0</h3>
+                        <p>Checked</p>
+                    </span>
+                </li>
+                <li>
+                    <i class='bx bxs-alarm-exclamation bx-lg'></i>
+                    <span class="text">
+                        <h3 id="totalUncheck">0</h3>
+                        <p>Unchecked</p>
+                    </span>
+                </li>
+            </ul>
 
 
 
@@ -150,9 +150,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-							<!-- <?php while($row = $result_data->fetch_assoc()): ?>
+							<?php while($row = $result_data->fetch_assoc()): ?>
                             <tr>
-                                
                                 <td>
                                     <input type="checkbox" class="print-checkbox">    
                                     <?php echo $row["NAMA_GENG"]; ?>
@@ -168,7 +167,7 @@
                                     <?php endif; ?>
 								</td>
                             </tr>
-                        	<?php endwhile; ?> -->
+                        	<?php endwhile; ?>
                             </tbody>
                         </table>
                     </div>

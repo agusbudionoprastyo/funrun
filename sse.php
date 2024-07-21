@@ -1,16 +1,23 @@
 <?php
-// sse.php
-
-// Sertakan koneksi database
-require 'qr/conn.php';
-
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
 
 // Fungsi untuk mendapatkan data terbaru dari database
 function getData() {
-    global $conn; // Gunakan koneksi dari conn.php
+    // Koneksi ke database
+    $servername = "localhost";
+    $username = "dafm5634_ag";
+    $password = "Ag7us777__";
+    $dbname = "dafm5634_funrun";
     
+    // Buat koneksi
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Periksa koneksi
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
     // Query untuk mengambil data dari tabel
     $sql_data = "SELECT * FROM Funrun";
     $result_data = $conn->query($sql_data);
@@ -34,6 +41,9 @@ function getData() {
     $sql_uncheck = "SELECT COUNT(*) AS total_uncheck FROM Funrun WHERE status = 'unchecked'";
     $result_uncheck = $conn->query($sql_uncheck);
     $total_uncheck = ($result_uncheck->num_rows > 0) ? $result_uncheck->fetch_assoc()["total_uncheck"] : 0;
+
+    // Tutup koneksi
+    $conn->close();
 
     return [
         'data' => $data,

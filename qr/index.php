@@ -7,28 +7,34 @@
     <link rel="manifest" href="./manifest.json">
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- <style>
+    <style>
         body, html {
             margin: 0;
             padding: 0;
             overflow: hidden;
         }
-
-        /* Lock orientation to portrait */
-        @media (orientation: landscape) {
-            body {
-                transform: rotate(90deg);
-                transform-origin: left bottom;
-                width: 100vh;
-                height: 100vw;
-                overflow: hidden;
-            }
-        }
-    </style> -->
+    </style>
 </head>
 <body>
 <div id="reader"></div>
 <audio id="audio" src="interface.wav"></audio>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if Screen Orientation API is available
+        if (screen.orientation && screen.orientation.lock) {
+            screen.orientation.lock('portrait')
+                .then(function() {
+                    console.log('Orientation locked to portrait.');
+                })
+                .catch(function(err) {
+                    console.error('Error locking orientation:', err);
+                });
+        } else {
+            console.log('Screen Orientation API is not supported.');
+        }
+    });
+</script>
 
 <script>
 // Initialize
@@ -125,29 +131,6 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Error initializing QR Code scanner: ' + err);
     });
 });
-
-// // Function to handle orientation change
-// function handleOrientationChange() {
-//     if (window.innerWidth > window.innerHeight) {
-//         // Device is in landscape mode
-//         document.body.style.transform = 'rotate(90deg)';
-//         document.body.style.transformOrigin = 'left bottom';
-//         document.body.style.width = '100vh';
-//         document.body.style.height = '100vw';
-//     } else {
-//         // Device is in portrait mode
-//         document.body.style.transform = '';
-//         document.body.style.transformOrigin = '';
-//         document.body.style.width = '';
-//         document.body.style.height = '';
-//     }
-// }
-
-// // Attach event listener to handle orientation change
-// window.addEventListener('resize', handleOrientationChange);
-
-// // Initial call to handle orientation on load
-// handleOrientationChange();
 </script>
 
 <script>

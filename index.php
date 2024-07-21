@@ -162,6 +162,7 @@
                                 <td>
                                     <?php if ($row["status"] === 'checked'): ?>
                                         <i class='bx bxs-badge-check bx-tada bx-md' style='color:#ffce26' ></i>
+									<?php echo $row["timestamp"]; ?>
                                     <?php else: ?>  
                                         <i class='bx bxs-alarm-exclamation bx-md' style='color:#fd7237'></i> 
                                     <?php endif; ?>

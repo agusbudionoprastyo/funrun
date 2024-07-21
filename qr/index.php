@@ -13,6 +13,17 @@
             padding: 0;
             overflow: hidden;
         }
+
+        /* Lock orientation to portrait */
+        @media (orientation: landscape) {
+            body {
+                transform: rotate(90deg);
+                transform-origin: left bottom;
+                width: 100vh;
+                height: 100vw;
+                overflow: hidden;
+            }
+        }
     </style>
 </head>
 <body>
@@ -43,9 +54,9 @@ function onScanSuccess(qrCodeMessage) {
                     title: 'Fun Run',
                     html: `Registrasi ulang dengan nomor BIB <b>${qrCodeMessage}</b> berhasil<br><small>${timestamp}</small>`,
                     icon: 'success',
-                    timer: 10000, // Optional, time in milliseconds after which the alert will be automatically closed
-                    timerProgressBar: true, // Optional, shows progress bar for the timer
-                    showConfirmButton: false // Optional, hides the confirm button
+                    timer: 10000,
+                    timerProgressBar: true,
+                    showConfirmButton: false
                 }).then(function() {
                     // Resume scanning after the alert is closed
                     scanningPaused = false;
@@ -56,9 +67,9 @@ function onScanSuccess(qrCodeMessage) {
                     title: 'Error',
                     html: `Gagal memperbarui status untuk nomor BIB <b>${qrCodeMessage}</b><br><small>${error}</small>`,
                     icon: 'error',
-                    timer: 10000, // Optional, time in milliseconds after which the alert will be automatically closed
-                    timerProgressBar: true, // Optional, shows progress bar for the timer
-                    showConfirmButton: false // Optional, hides the confirm button
+                    timer: 10000,
+                    timerProgressBar: true,
+                    showConfirmButton: false
                 }).then(function() {
                     // Resume scanning after the alert is closed
                     scanningPaused = false;
@@ -106,15 +117,37 @@ function updateStatus(bibNumber, callback) {
 document.addEventListener('DOMContentLoaded', function() {
     // Start the QR code scanner
     html5QrCode.start(
-        { facingMode: 'environment' }, // Use facingMode: 'environment' for back camera
-        { fps: 10, qrbox: 250, aspectRatio: 18/9 }, // Optional parameters
-        onScanSuccess // Callback function
+        { facingMode: 'environment' },
+        { fps: 10, qrbox: 250, aspectRatio: 18/9 },
+        onScanSuccess
     ).catch(function(err) {
-        // Catch any errors that occur during initialization
         console.error('Error initializing QR Code scanner:', err);
         alert('Error initializing QR Code scanner: ' + err);
     });
 });
+
+// Function to handle orientation change
+function handleOrientationChange() {
+    if (window.innerWidth > window.innerHeight) {
+        // Device is in landscape mode
+        document.body.style.transform = 'rotate(90deg)';
+        document.body.style.transformOrigin = 'left bottom';
+        document.body.style.width = '100vh';
+        document.body.style.height = '100vw';
+    } else {
+        // Device is in portrait mode
+        document.body.style.transform = '';
+        document.body.style.transformOrigin = '';
+        document.body.style.width = '';
+        document.body.style.height = '';
+    }
+}
+
+// Attach event listener to handle orientation change
+window.addEventListener('resize', handleOrientationChange);
+
+// Initial call to handle orientation on load
+handleOrientationChange();
 </script>
 
 <script>

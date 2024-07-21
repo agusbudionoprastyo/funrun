@@ -140,9 +140,9 @@
 								</td>
                                 <td>
                                     <?php if ($row["status"] === 'checked'): ?>
-                                        <i class='bx bxs-badge-check bx-tada' style='color:#3b82f6' ></i>
+                                        <i class='bx bxs-badge-check bx-tada bx-lg' style='color:#3b82f6' ></i>
                                     <?php else: ?>  
-                                        <i class='bx bxs-alarm-exclamation' style='color:#fd7237'></i> 
+                                        <i class='bx bxs-alarm-exclamation bx-lg' style='color:#fd7237'></i> 
                                     <?php endif; ?>
 								</td>
                             </tr>

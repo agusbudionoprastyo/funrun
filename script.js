@@ -59,24 +59,66 @@ switchMode.addEventListener('change', function () {
 	}
 })
 
-// Server-Side-Event
+// // Server-Side-Event
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     const eventSource = new EventSource('sse.php');
+
+//     eventSource.onmessage = function(event) {
+//         const data = JSON.parse(event.data);
+
+//         // Update statistik
+//         document.getElementById('totalPeserta').innerText = data.total_peserta;
+//         document.getElementById('totalCheck').innerText = data.total_check;
+//         document.getElementById('totalUncheck').innerText = data.total_uncheck;
+
+//     };
+
+//     eventSource.onerror = function(event) {
+//         console.error('Error with SSE:', event);
+//     };
+// });
 
 document.addEventListener('DOMContentLoaded', function() {
-    const eventSource = new EventSource('sse.php');
+	const eventSource = new EventSource('sse.php');
 
-    eventSource.onmessage = function(event) {
-        const data = JSON.parse(event.data);
+	let lastData = {
+		total_peserta: 0,
+		total_check: 0,
+		total_uncheck: 0
+	};
 
-        // Update statistik
-        document.getElementById('totalPeserta').innerText = data.total_peserta;
-        document.getElementById('totalCheck').innerText = data.total_check;
-        document.getElementById('totalUncheck').innerText = data.total_uncheck;
+	eventSource.onmessage = function(event) {
+		const data = JSON.parse(event.data);
 
-    };
+		// Update statistik di halaman
+		document.getElementById('totalPeserta').innerText = data.total_peserta;
+		document.getElementById('totalCheck').innerText = data.total_check;
+		document.getElementById('totalUncheck').innerText = data.total_uncheck;
 
-    eventSource.onerror = function(event) {
-        console.error('Error with SSE:', event);
-    };
+		// Bandingkan data lama dengan data baru
+		if (data.total_peserta !== lastData.total_peserta ||
+			data.total_check !== lastData.total_check ||
+			data.total_uncheck !== lastData.total_uncheck) {
+			
+			// Tampilkan notifikasi menggunakan SweetAlert2
+			Swal.fire({
+				title: 'Data Telah Diperbarui!',
+				text: `Total Peserta: ${data.total_peserta}\nTotal Check: ${data.total_check}\nTotal Uncheck: ${data.total_uncheck}`,
+				icon: 'info',
+				showConfirmButton: false, // Tidak ada tombol konfirmasi
+				timer: 5000, // Durasi notifikasi 5 detik
+				timerProgressBar: true // Tampilkan progress bar
+			});
+
+			// Simpan data terbaru
+			lastData = data;
+		}
+	};
+
+	eventSource.onerror = function(event) {
+		console.error('Error dengan SSE:', event);
+	};
 });
 
 $(document).ready(function() {

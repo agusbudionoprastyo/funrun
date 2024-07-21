@@ -155,13 +155,13 @@
 							<?php while($row = $result_data->fetch_assoc()): ?>
                             <tr>
                                 <td>
-                                    <input type="checkbox" class="print-checkbox">    
                                     <?php echo $row["NAMA_GENG"]; ?>
                                 </td>
                                 <td>
 									<?php echo $row["BIB_NUMBER"]; ?>
 								</td>
                                 <td>
+                                    <input type="checkbox" class="print-checkbox">    
                                     <?php if ($row["status"] === 'checked'): ?>
                                         <i class='bx bxs-badge-check bx-tada bx-md' style='color:#ffce26' ></i>
 									<?php echo $row["timestamp"]; ?>

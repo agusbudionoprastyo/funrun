@@ -59,7 +59,7 @@ switchMode.addEventListener('change', function () {
 	}
 })
 
-// script.js
+// Server-Side-Event
 
 document.addEventListener('DOMContentLoaded', function() {
     const eventSource = new EventSource('sse.php');
@@ -92,13 +92,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Reinitialize DataTables
         $('#example').DataTable().destroy();
-        $('#example').DataTable();
+        $('#example').DataTable({
+            searching: true, // Aktifkan pencarian
+            order: [[1, 'asc']], // Urutkan berdasarkan kolom kedua (indeks 1), urutan ascending
+            columnDefs: [
+                { "orderable": false, "targets": [0] } // Disable ordering for the first column (index 0)
+            ]
+        });
     };
 
     eventSource.onerror = function(event) {
         console.error('Error with SSE:', event);
     };
 });
+
 
 $(document).ready(function() {
 	// Select All functionality
@@ -113,15 +120,13 @@ $(document).ready(function() {
 		$('#selectAllCheckbox').prop('checked', allChecked);
 	});
 
-	var table = new DataTable('#example', {
-		searching: true, // Aktifkan pencarian
-		order: [[1, 'asc']], // Urutkan berdasarkan kolom kedua (indeks 1), urutan ascending
-		columnDefs: [
-			{ "orderable": false, "targets": [0] } // Disable ordering for the first column (index 0)
-		]
-	});
-	
-	
+	// var table = new DataTable('#example', {
+	// 	searching: true, // Aktifkan pencarian
+	// 	order: [[1, 'asc']], // Urutkan berdasarkan kolom kedua (indeks 1), urutan ascending
+	// 	columnDefs: [
+	// 		{ "orderable": false, "targets": [0] } // Disable ordering for the first column (index 0)
+	// 	]
+	// });
 
     // Event listener untuk "Enter" pada #search-input
     $('#search-input').keypress(function(event) {

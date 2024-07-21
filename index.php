@@ -144,7 +144,6 @@
                                         Nama Geng
                                     </th>
                                     <th>
-
 										Nomor BIB
 									</th>
                                     <th>Status</th>

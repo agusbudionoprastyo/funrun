@@ -86,14 +86,16 @@
                     </span>
                 </li>
                 <li>
-                    <i class='bx bxs-calendar-check' ></i>
+                    <!-- <i class='bx bxs-calendar-check' ></i> -->
+                    <i class='bx bxs-badge-check' ></i>
                     <span class="text">
                         <h3><?php echo $row_check["total_check"]; ?></h3>
                         <p>Checked</p>
                     </span>
                 </li>
                 <li>
-                    <i class='bx bx-calendar-exclamation' ></i>
+                    <!-- <i class='bx bx-calendar-exclamation' ></i> -->
+                    <i class='bx bxs-alarm-exclamation'></i>
                     <span class="text">
 						<h3><?php echo $row_uncheck["total_uncheck"]; ?></h3>
                         <p>Unchecked</p>
@@ -137,7 +139,7 @@
 									<?php echo $row["BIB_NUMBER"]; ?>
 								</td>
                                 <td>
-                                    <?php if ($status === 'checked'): ?>
+                                    <?php if ($row["status"] === 'checked'): ?>
                                         <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                                         <i class='bx bxs-badge-check' ></i>
                                         </a>

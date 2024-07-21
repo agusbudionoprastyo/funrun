@@ -82,7 +82,8 @@ switchMode.addEventListener('change', function () {
 document.addEventListener('DOMContentLoaded', function() {
 	const eventSource = new EventSource('sse.php');
 
-	let lastData = {
+	// Ambil data terakhir dari sessionStorage
+	const storedData = JSON.parse(sessionStorage.getItem('lastData')) || {
 		total_peserta: 0,
 		total_check: 0,
 		total_uncheck: 0
@@ -97,10 +98,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		document.getElementById('totalUncheck').innerText = data.total_uncheck;
 
 		// Bandingkan data lama dengan data baru
-		if (data.total_peserta !== lastData.total_peserta ||
-			data.total_check !== lastData.total_check ||
-			data.total_uncheck !== lastData.total_uncheck) {
-			
+		if (data.total_peserta !== storedData.total_peserta ||
+			data.total_check !== storedData.total_check ||
+			data.total_uncheck !== storedData.total_uncheck) {
+
 			// Tampilkan notifikasi menggunakan SweetAlert2
 			Swal.fire({
 				title: 'Data Telah Diperbarui!',
@@ -110,12 +111,11 @@ document.addEventListener('DOMContentLoaded', function() {
 				timer: 5000, // Durasi notifikasi 5 detik
 				timerProgressBar: true, // Tampilkan progress bar
 				willClose: () => {
+					// Simpan data terbaru di sessionStorage setelah notifikasi menghilang
+					sessionStorage.setItem('lastData', JSON.stringify(data));
 					window.location.reload(); // Reload halaman setelah notifikasi menghilang
 				}
 			});
-
-			// Simpan data terbaru
-			lastData = data;
 		}
 	};
 

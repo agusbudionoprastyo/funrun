@@ -9,23 +9,12 @@
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
             overflow: hidden;
-        }
-        #reader {
-            width: 80%;
-            height: 80%;
-        }
-        #result {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 24px;
         }
     </style>
 </head>
 <body>
 <div id="reader"></div>
-<div id="result"></div>
 <audio id="audio" src="beep.wav"></audio>
 <script>
     // Initialize
@@ -36,7 +25,7 @@
     function onScanSuccess(qrCodeMessage) {
         console.log('QR Code detected and processed:', qrCodeMessage);
         // Display result
-        document.getElementById('result').textContent = qrCodeMessage;
+        // document.getElementById('result').textContent = qrCodeMessage;
         playAudio();
     }
 
@@ -51,7 +40,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         html5QrCode.start(
             { facingMode: 'environment' }, // Use facingMode: 'environment' for back camera
-            { fps: 10, qrbox: 250 }, // Optional parameters
+            { fps: 10, qrbox: 250, aspectRatio: 16:9 }, // Optional parameters
             onScanSuccess // Callback function
         ).catch(function(err) {
             console.error('Error initializing QR Code scanner:', err);

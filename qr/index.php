@@ -29,7 +29,7 @@
             console.log('QR Code detected and processed:', qrCodeMessage);
             // Pause scanning
             scanningPaused = true;
-
+            playAudio();
             // Get current timestamp
             let timestamp = new Date().toLocaleString();
 
@@ -44,7 +44,6 @@
             }).then(function() {
                 // Resume scanning after the alert is closed
                 scanningPaused = false;
-                playAudio();
             });
         }
     }

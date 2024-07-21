@@ -138,7 +138,10 @@
 								</td>
                                 <td>
                                 <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                                <?php echo $row["status"]; ?>
+                                    <?php if ($status === 'checked'): ?>
+                                        <i class='bx bx-badge-check'></i>
+                                    <?php endif; ?>
+                                    <?php echo $status; ?>
                                 </a>
 								</td>
                             </tr>

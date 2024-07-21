@@ -13,11 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Memeriksa koneksi
     if ($conn->connect_error) {
-        die("Koneksi gagal: " . $conn->connect_error);
+        echo json_encode(['success' => false, 'error' => 'Koneksi gagal: ' . $conn->connect_error]);
+        exit();
     }
 
     // Mengupdate status dan timestamp berdasarkan bib_number
-    $stmt = $conn->prepare("UPDATE funrun SET status = ?, timestamp = ? WHERE bib_number = ?");
+    $stmt = $conn->prepare("UPDATE Funrun SET status = ?, timestamp = ? WHERE bib_number = ?");
     $stmt->bind_param('sss', $status, $timeStamp, $bibNumber);
 
     if ($stmt->execute()) {

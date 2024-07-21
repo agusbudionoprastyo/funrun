@@ -35,19 +35,24 @@ function onScanSuccess(qrCodeMessage) {
         let timestamp = new Date().toLocaleString();
 
         // Send AJAX request to update status
-        updateStatus(qrCodeMessage, 'registered'); // Assume 'registered' is the new status
-
-        // Display result with timestamp
-        swal.fire({
-            title: 'Fun Run',
-            html: `Registrasi ulang dengan nomor BIB <b>${qrCodeMessage}</b> berhasil<br><small>${timestamp}</small>`,
-            icon: 'success',
-            timer: 10000, // Optional, time in milliseconds after which the alert will be automatically closed
-            timerProgressBar: true, // Optional, shows progress bar for the timer
-            showConfirmButton: false // Optional, hides the confirm button
-        }).then(function() {
-            // Resume scanning after the alert is closed
-            scanningPaused = false;
+        updateStatus(qrCodeMessage, 'registered', function(success) {
+            if (success) {
+                // Display result with timestamp
+                swal.fire({
+                    title: 'Fun Run',
+                    html: `Registrasi ulang dengan nomor BIB <b>${qrCodeMessage}</b> berhasil<br><small>${timestamp}</small>`,
+                    icon: 'success',
+                    timer: 10000, // Optional, time in milliseconds after which the alert will be automatically closed
+                    timerProgressBar: true, // Optional, shows progress bar for the timer
+                    showConfirmButton: false // Optional, hides the confirm button
+                }).then(function() {
+                    // Resume scanning after the alert is closed
+                    scanningPaused = false;
+                });
+            } else {
+                // Handle error if needed
+                scanningPaused = false;
+            }
         });
     }
 }
@@ -60,7 +65,7 @@ function playAudio() {
 }
 
 // Function to send AJAX request
-function updateStatus(bibNumber, status) {
+function updateStatus(bibNumber, status, callback) {
     fetch('update_status.php', {
         method: 'POST',
         headers: {
@@ -70,12 +75,16 @@ function updateStatus(bibNumber, status) {
     })
     .then(response => response.json())
     .then(data => {
-        if (!data.success) {
+        if (data.success) {
+            callback(true);
+        } else {
             console.error('Error updating status:', data.error);
+            callback(false);
         }
     })
     .catch(error => {
         console.error('Error:', error);
+        callback(false);
     });
 }
 

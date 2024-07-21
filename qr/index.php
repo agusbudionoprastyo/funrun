@@ -9,6 +9,7 @@
 <body>
 <div id="reader" width="100%" heigh="100%"></div>
 <div id="result"></div>
+<audio id="audio" src="beep.wav"></audio>
     <script>
         // Initialize html5-qrcode
         let html5QrCode = new Html5Qrcode('reader');
@@ -18,9 +19,17 @@
             console.log('QR Code detected and processed:', qrCodeMessage);
             // Display result
             document.getElementById('result').textContent = qrCodeMessage;
+            playAudio()
             // Optionally, perform other actions based on the scanned result
             // Example: window.location.href = qrCodeMessage;
         }
+
+        function playAudio() {
+        let audio = document.getElementById('audio');
+        audio.play().catch(function(error) {
+            console.error('Error playing audio:', error);
+        });
+    }
 
         // Start scanning when document is loaded
         document.addEventListener('DOMContentLoaded', function() {

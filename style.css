@@ -595,3 +595,8 @@ body {
     .dt-search {
         display: none; /* This hides the default DataTables search input */
     }
+
+	.text-center {
+		text-align: center;
+	}
+	

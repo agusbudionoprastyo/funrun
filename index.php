@@ -146,7 +146,7 @@
                                     <th>
 										Nomor BIB
 									</th>
-                                    <th style="text-align: right;">Status</th>
+                                    <th style="text-align: center;">Status</th>
                                 </tr>
                             </thead>
                             <tbody>

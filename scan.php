@@ -7,7 +7,7 @@
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
 </head>
 <body>
-<div id="reader" width="600px"></div>
+<div id="reader" width="100%" heigh="100%"></div>
 <div id="result"></div>
     <script>
         // Initialize html5-qrcode

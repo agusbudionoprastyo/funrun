@@ -79,7 +79,7 @@
 
             <ul class="box-info">
                 <li>
-                    <i class='bx bxs-group' ></i>
+                    <i class='bx bxs-group bx-lg' ></i>
                     <span class="text">
                         <h3><?php echo $row["total_peserta"]; ?></h3>
                         <p>Peserta</p>
@@ -87,7 +87,7 @@
                 </li>
                 <li>
                     <!-- <i class='bx bxs-calendar-check' ></i> -->
-                    <i class='bx bxs-badge-check' ></i>
+                    <i class='bx bxs-badge-check bx-lg' ></i>
                     <span class="text">
                         <h3><?php echo $row_check["total_check"]; ?></h3>
                         <p>Checked</p>
@@ -95,7 +95,7 @@
                 </li>
                 <li>
                     <!-- <i class='bx bx-calendar-exclamation' ></i> -->
-                    <i class='bx bxs-alarm-exclamation'></i>
+                    <i class='bx bxs-alarm-exclamation bx-lg'></i>
                     <span class="text">
 						<h3><?php echo $row_uncheck["total_uncheck"]; ?></h3>
                         <p>Unchecked</p>
@@ -140,9 +140,9 @@
 								</td>
                                 <td>
                                     <?php if ($row["status"] === 'checked'): ?>
-                                        <i class='bx bxs-badge-check bx-tada bx-lg' style='color:#3b82f6' ></i>
+                                        <i class='bx bxs-badge-check bx-tada bx-md' style='color:#3b82f6' ></i>
                                     <?php else: ?>  
-                                        <i class='bx bxs-alarm-exclamation bx-lg' style='color:#fd7237'></i> 
+                                        <i class='bx bxs-alarm-exclamation bx-md' style='color:#fd7237'></i> 
                                     <?php endif; ?>
 								</td>
                             </tr>

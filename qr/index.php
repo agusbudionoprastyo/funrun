@@ -25,9 +25,17 @@
     function onScanSuccess(qrCodeMessage) {
         console.log('QR Code detected and processed:', qrCodeMessage);
         // Display result
+        swal.fire({
+            title: 'QR Code Detected',
+            text: qrCodeMessage,
+            icon: 'success',
+            timer: 3000, // Optional, time in milliseconds after which the alert will be automatically closed
+            timerProgressBar: true, // Optional, shows progress bar for the timer
+            showConfirmButton: false // Optional, hides the confirm button
+        });
         playAudio();
-        alert('QR Code detected: ' + qrCodeMessage);
     }
+
 
     // Function to play audio
     function playAudio() {

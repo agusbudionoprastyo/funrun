@@ -71,7 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('totalPeserta').innerText = data.total_peserta;
         document.getElementById('totalCheck').innerText = data.total_check;
         document.getElementById('totalUncheck').innerText = data.total_uncheck;
-		        // Tampilkan SweetAlert2 dengan informasi yang lebih spesifik dan timeout 10 detik
+			// Tampilkan SweetAlert2 hanya jika status adalah 'checked'
+			if (data.status === 'checked') {
 				Swal.fire({
 					title: 'Updated',
 					text: `Geng ${data.NAMA_GENG} Nomor BIB ${data.BIB_NUMBER}\nBerhasil Check IN`,
@@ -80,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					timer: 10000, // 10 detik
 					timerProgressBar: true // Menampilkan progress bar
 				});
+			}
 
     };
 

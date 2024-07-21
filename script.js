@@ -101,10 +101,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		if (data.total_peserta !== storedData.total_peserta ||
 			data.total_check !== storedData.total_check ||
 			data.total_uncheck !== storedData.total_uncheck) {
-
+			playAudio()
 			// Tampilkan notifikasi menggunakan SweetAlert2
 			Swal.fire({
-				title: 'Data Telah Diperbarui!',
+				title: 'Fun Run - Lari Antar Geng',
 				text: `Total Peserta: ${data.total_peserta}\nTotal Check: ${data.total_check}\nTotal Uncheck: ${data.total_uncheck}`,
 				icon: 'info',
 				showConfirmButton: false, // Tidak ada tombol konfirmasi
@@ -123,6 +123,15 @@ document.addEventListener('DOMContentLoaded', function() {
 		console.error('Error dengan SSE:', event);
 	};
 });
+
+let audio = document.getElementById('audio');
+
+// Function to play audio
+function playAudio() {
+	audio.play().catch(function(error) {
+		console.error('Error playing audio:', error);
+	});
+}
 
 $(document).ready(function() {
 	// table initialize

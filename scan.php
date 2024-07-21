@@ -3,21 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Scanner with Instascan</title>
-    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <title>QR Code Scanner with html5-qrcode</title>
+    <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
     <style>
         /* Styling for video element */
-        #scanner {
+        #qr-reader-video {
             width: 100%;
             max-width: 600px;
             margin: 0 auto;
             border-radius: 10px; /* Border radius */
-            /* Transform to flip video horizontally */
-            -webkit-transform: scaleX(-1);
-            transform: scaleX(-1);
-            /* Flip back to normal */
-            -webkit-transform: scaleX(1);
-            transform: scaleX(1);
         }
         /* Styling for result display */
         #result {
@@ -28,37 +22,32 @@
 </head>
 <body>
     <!-- Video element for camera feed -->
-    <video id="scanner"></video>
+    <video id="qr-reader-video"></video>
     <!-- Element to display scanned result -->
     <div id="result">Scanning...</div>
 
     <script>
-        // Initialize Instascan
-        let scanner = new Instascan.Scanner({ video: document.getElementById('scanner'), mirror: false });
+        // Initialize html5-qrcode
+        let html5QrCode = new Html5Qrcode('qr-reader-video');
 
-        // Function to start scanning
-        scanner.addListener('scan', function(content) {
-            console.log('QR Code detected and processed:', content);
+        // Function to handle QR code detection
+        function onScanSuccess(qrCodeMessage) {
+            console.log('QR Code detected and processed:', qrCodeMessage);
             // Display result
-            document.getElementById('result').textContent = content;
+            document.getElementById('result').textContent = qrCodeMessage;
             // Optionally, perform other actions based on the scanned result
-            // Example: window.location.href = content;
-        });
+            // Example: window.location.href = qrCodeMessage;
+        }
 
         // Start scanning when document is loaded
         document.addEventListener('DOMContentLoaded', function() {
-            Instascan.Camera.getCameras().then(function(cameras) {
-                if (cameras.length > 0) {
-                    // Use back camera (assuming last index is back camera)
-                    let selectedCamera = cameras[cameras.length - 1];
-                    scanner.start(selectedCamera);
-                } else {
-                    console.error('No cameras found.');
-                    alert('No cameras found.');
-                }
-            }).catch(function(e) {
-                console.error('Error initializing scanner:', e);
-                alert('Error initializing scanner: ' + e);
+            html5QrCode.start(
+                { facingMode: 'environment' }, // Use facingMode: 'environment' for back camera
+                { fps: 10, qrbox: 250 }, // Optional parameters
+                onScanSuccess // Callback function
+            ).catch(function(err) {
+                console.error('Error initializing QR Code scanner:', err);
+                alert('Error initializing QR Code scanner: ' + err);
             });
         });
     </script>

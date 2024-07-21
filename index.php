@@ -145,9 +145,11 @@
 										Nomor BIB
 									</th>
                                     <th style="text-align: center;">
+                                        Status
+                                    </th>
+                                    <th style="text-align: center;">
                                     <input type="checkbox" id="selectAllCheckbox" style="display:none">
 										<label for="selectAllCheckbox"  style="font-size:24px"><i class='bx bx-check-double'></i></label>
-                                    Status
                                     </th>
                                 </tr>
                             </thead>
@@ -161,7 +163,6 @@
 									<?php echo $row["BIB_NUMBER"]; ?>
 								</td>
                                 <td>
-                                    <input type="checkbox" class="print-checkbox">    
                                     <?php if ($row["status"] === 'checked'): ?>
                                         <i class='bx bxs-badge-check bx-tada bx-md' style='color:#ffce26' ></i>
 									<?php echo $row["timestamp"]; ?>
@@ -169,6 +170,9 @@
                                         <i class='bx bxs-alarm-exclamation bx-md' style='color:#fd7237'></i> 
                                     <?php endif; ?>
 								</td>
+                                <td>
+                                    <input type="checkbox" class="print-checkbox">    
+                                </td>
                             </tr>
                         	<?php endwhile; ?>
                             </tbody>

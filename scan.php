@@ -11,12 +11,10 @@
             width: 100%;
             max-width: 600px;
             margin: 0 auto;
-            border-radius: 10px; /* Border radius */
+            border-radius: 20px; /* Border radius */
             /* Transform to flip video horizontally */
-            transform: scaleX(-1);
             -webkit-transform: scaleX(-1);
-            -moz-transform: scaleX(-1);
-            -ms-transform: scaleX(-1);
+            transform: scaleX(-1);
         }
         /* Styling for result display */
         #result {

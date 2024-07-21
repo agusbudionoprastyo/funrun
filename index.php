@@ -140,13 +140,9 @@
 								</td>
                                 <td>
                                     <?php if ($row["status"] === 'checked'): ?>
-                                        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                                        <i class='bx bxs-badge-check' ></i>
-                                        </a>
-                                    <?php else: ?>
-                                        <a class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                                        <i class='bx bxs-alarm-exclamation'></i>
-                                        </a>
+                                        <i class='bx bxs-badge-check bx-tada' style='color:#3b82f6' ></i>
+                                    <?php else: ?>  
+                                        <i class='bx bxs-alarm-exclamation' style='color:#fd7237'></i> 
                                     <?php endif; ?>
 								</td>
                             </tr>

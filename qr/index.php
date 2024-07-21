@@ -120,7 +120,7 @@ function onScanSuccess(qrCodeMessage) {
         let timestamp = new Date().toLocaleString();
 
         // Send AJAX request to update status
-        updateStatus(qrCodeMessage, 'registered', function(success, error) {
+        updateStatus(qrCodeMessage, function(success, error) {
             if (success) {
                 // Display result with timestamp
                 swal.fire({
@@ -160,7 +160,7 @@ function playAudio() {
 }
 
 // Function to send AJAX request
-function updateStatus(bibNumber, status, callback) {
+function updateStatus(bibNumber, callback) {
     fetch('update_status.php', {
         method: 'POST',
         headers: {
@@ -209,6 +209,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 </script>
-
 </body>
 </html>

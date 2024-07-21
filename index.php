@@ -81,30 +81,6 @@
                 </div>
             </div>
 
-            <!-- <ul class="box-info">
-                <li>
-                    <i class='bx bxs-group bx-lg' ></i>
-                    <span class="text">
-                        <h3><?php echo $row["total_peserta"]; ?></h3>
-                        <p>Peserta</p>
-                    </span>
-                </li>
-                <li>
-                    <i class='bx bxs-badge-check bx-lg' ></i>
-                    <span class="text">
-                        <h3><?php echo $row_check["total_check"]; ?></h3>
-                        <p>Checked</p>
-                    </span>
-                </li>
-                <li>
-                    <i class='bx bxs-alarm-exclamation bx-lg'></i>
-                    <span class="text">
-						<h3><?php echo $row_uncheck["total_uncheck"]; ?></h3>
-                        <p>Unchecked</p>
-                    </span>
-                </li>
-            </ul> -->
-
             <ul class="box-info">
                 <li>
                     <i class='bx bxs-group bx-lg' ></i>
@@ -121,7 +97,7 @@
                     </span>
                 </li>
                 <li>
-                    <i class='bx bxs-alarm-exclamation bx-lg'></i>
+                    <i class='bx bxs-info-circle bx-lg'></i>
                     <span class="text">
                         <h3 id="totalUncheck">0</h3>
                         <p>Unchecked</p>
@@ -168,10 +144,9 @@
 								</td>
                                 <td>
                                     <?php if ($row["status"] === 'checked'): ?>
-                                        <i class='bx bxs-badge-check bx-tada bx-md' style='color:#ffce26' ></i>
 									<?php echo $row["timestamp"]; ?>
                                     <?php else: ?>  
-                                        <i class='bx bxs-alarm-exclamation bx-md' style='color:#fd7237'></i> 
+                                        <i class='bx bxs-info-circle'></i>
                                     <?php endif; ?>
 								</td>
                                 <td>

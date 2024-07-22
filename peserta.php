@@ -88,7 +88,7 @@
         <main>
             <div class="head-title">
                 <div class="left">
-                    <h1>Daftar Peserta</h1>
+                    <h1>Fun Run - Lari Antar Geng</h1>
                     <ul class="breadcrumb">
                         <li>
                             <a href="#">Daftar Peserta</a>
@@ -119,9 +119,6 @@
 										Nomor BIB
 									</th>
                                     <th style="text-align: center;">
-                                        Status
-                                    </th>
-                                    <th style="text-align: center;">
                                     <input type="checkbox" id="selectAllCheckbox" style="display:none">
 										<label for="selectAllCheckbox"  style="font-size:24px"><i class='bx bx-check-double'></i></label>
                                     </th>
@@ -135,13 +132,6 @@
                                 </td>
                                 <td>
 									<?php echo $row["BIB_NUMBER"]; ?>
-								</td>
-                                <td>
-                                    <?php if ($row["status"] === 'checked'): ?>
-									<?php echo $row["timestamp"]; ?>
-                                    <?php else: ?>  
-                                        <i class='bx bxs-info-circle'></i>
-                                    <?php endif; ?>
 								</td>
                                 <td>
                                     <input type="checkbox" class="print-checkbox">    

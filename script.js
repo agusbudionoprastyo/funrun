@@ -234,7 +234,7 @@ $(document).ready(function() {
 		columnDefs: [
 			{ 
 				"orderable": false, 
-				"targets": [3] // Disable ordering for the fourth column (index 0)
+				"targets": [2] // Disable ordering for the third column (index 0)
 			},
 			{ 
 				"targets": 1,  // Kolom ke-2 (indeks mulai dari 0)
@@ -242,10 +242,6 @@ $(document).ready(function() {
 			},
 			{ 
 				"targets": 2,  // Kolom ke-3 (indeks mulai dari 0)
-				"className": "text-center" 
-			},
-			{ 
-				"targets": 3,  // Kolom ke-3 (indeks mulai dari 0)
 				"className": "text-center" 
 			}
 		]

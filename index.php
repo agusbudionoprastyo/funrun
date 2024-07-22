@@ -88,7 +88,7 @@
         <main>
             <div class="head-title">
                 <div class="left">
-                    <h1>Dashboard</h1>
+                    <h1>Fun Run - Lari Antar Geng</h1>
                     <ul class="breadcrumb">
                         <li>
                             <a href="#">Dashboard</a>

@@ -484,6 +484,21 @@ body {
 #content main .table-data .order table tr td .status.pending {
 	background: var(--orange);
 }
+#content main .table-data .order table tr td .status.first {
+	background: #92C7CF;
+}
+#content main .table-data .order table tr td .status.second {
+	background: #AAD7D9;
+}
+#content main .table-data .order table tr td .status.third {
+	background: #FBF9F1;
+}
+#content main .table-data .order table tr td .status.fourth {
+	background: #E5E1DA;
+}
+#content main .table-data .order table tr td .status.fifth {
+	background: #B4B4B8;
+}
 
 
 #content main .table-data .todo {

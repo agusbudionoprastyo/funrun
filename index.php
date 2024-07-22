@@ -178,25 +178,26 @@
                             <i class='bx bx-filter' ></i> -->
                         </div>
                         <ul class="todo-list">
-                            <li class="completed">
+                            <li class="first">
                                 <p>1.</p>
                                 <i class='bx bx-dots-vertical-rounded' ></i>
                             </li>
-                            <li class="completed">
+                            <li class="second">
                                 <p>2.</p>
                                 <i class='bx bx-dots-vertical-rounded' ></i>
                             </li>
-                            <li class="not-completed">
+                            <li class="third">
                                 <p>3.</p>
                                 <i class='bx bx-dots-vertical-rounded' ></i>
                             </li>
-                            <li class="completed">
+                            <li class="fourth">
                                 <p>4.</p>
                                 <i class='bx bx-dots-vertical-rounded' ></i>
                             </li>
-                            <li class="not-completed">
+                            <li class="fifth">
                                 <p>5.</p>
-                                <i class='bx bx-dots-vertical-rounded' ></i>
+                                <!-- <i class='bx bx-dots-vertical-rounded' ></i> -->
+                                <i class='bx bx-medal'></i> 
                             </li>
                         </ul>
                     </div>

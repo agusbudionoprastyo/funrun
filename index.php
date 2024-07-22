@@ -174,8 +174,8 @@
                         <div class="todo">
                         <div class="head">
                             <h3>Fastest Check In</h3>
-                            <i class='bx bx-plus' ></i>
-                            <i class='bx bx-filter' ></i>
+                            <!-- <i class='bx bx-plus' ></i>
+                            <i class='bx bx-filter' ></i> -->
                         </div>
                         <ul class="todo-list">
                             <li class="completed">

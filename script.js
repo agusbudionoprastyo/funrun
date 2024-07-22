@@ -378,6 +378,7 @@ $(document).ready(function() {
 		  .container {
 			height: 145mm; /* Ketinggian halaman */
 			width: 200mm; /* Lebar halaman */
+			border : 1px;
 			position: relative;
 			page-break-after: always; /* Force page break after each container */
 		  }

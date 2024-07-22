@@ -173,29 +173,29 @@
                     </div>
                         <div class="todo">
                         <div class="head">
-                            <h3>Todos</h3>
+                            <h3>Fastest Check In</h3>
                             <i class='bx bx-plus' ></i>
                             <i class='bx bx-filter' ></i>
                         </div>
                         <ul class="todo-list">
                             <li class="completed">
-                                <p>Todo List</p>
+                                <p>1.</p>
                                 <i class='bx bx-dots-vertical-rounded' ></i>
                             </li>
                             <li class="completed">
-                                <p>Todo List</p>
+                                <p>2.</p>
                                 <i class='bx bx-dots-vertical-rounded' ></i>
                             </li>
                             <li class="not-completed">
-                                <p>Todo List</p>
+                                <p>3.</p>
                                 <i class='bx bx-dots-vertical-rounded' ></i>
                             </li>
                             <li class="completed">
-                                <p>Todo List</p>
+                                <p>4.</p>
                                 <i class='bx bx-dots-vertical-rounded' ></i>
                             </li>
                             <li class="not-completed">
-                                <p>Todo List</p>
+                                <p>5.</p>
                                 <i class='bx bx-dots-vertical-rounded' ></i>
                             </li>
                         </ul>

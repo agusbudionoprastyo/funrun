@@ -180,19 +180,23 @@
                         <ul class="todo-list">
                             <li class="first">
                                 <p>1.</p>
-                                <i class='bx bx-dots-vertical-rounded' ></i>
+                                <!-- <i class='bx bx-dots-vertical-rounded' ></i> -->
+                                <i class='bx bx-medal'></i> 
                             </li>
                             <li class="second">
                                 <p>2.</p>
-                                <i class='bx bx-dots-vertical-rounded' ></i>
+                                <!-- <i class='bx bx-dots-vertical-rounded' ></i> -->
+                                <i class='bx bx-medal'></i> 
                             </li>
                             <li class="third">
                                 <p>3.</p>
-                                <i class='bx bx-dots-vertical-rounded' ></i>
+                                <!-- <i class='bx bx-dots-vertical-rounded' ></i> -->
+                                <i class='bx bx-medal'></i> 
                             </li>
                             <li class="fourth">
                                 <p>4.</p>
-                                <i class='bx bx-dots-vertical-rounded' ></i>
+                                <!-- <i class='bx bx-dots-vertical-rounded' ></i> -->
+                                <i class='bx bx-medal'></i> 
                             </li>
                             <li class="fifth">
                                 <p>5.</p>

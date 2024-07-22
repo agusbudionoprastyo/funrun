@@ -29,6 +29,11 @@ li {
 	--light-yellow: #FFF2C6;
 	--orange: #FD7238;
 	--light-orange: #FFE0D3;
+	--first: #92C7CF;
+	--second: #AAD7D9;
+	--third: #FBF9F1; 
+	--fourth:#E5E1DA; 
+	--fifth: #B4B4B8;
 }
 
 html {
@@ -484,22 +489,6 @@ body {
 #content main .table-data .order table tr td .status.pending {
 	background: var(--orange);
 }
-#content main .table-data .order table tr td .status.first {
-	background: #92C7CF;
-}
-#content main .table-data .order table tr td .status.second {
-	background: #AAD7D9;
-}
-#content main .table-data .order table tr td .status.third {
-	background: #FBF9F1;
-}
-#content main .table-data .order table tr td .status.fourth {
-	background: #E5E1DA;
-}
-#content main .table-data .order table tr td .status.fifth {
-	background: #B4B4B8;
-}
-
 
 #content main .table-data .todo {
 	flex-grow: 1;
@@ -527,18 +516,26 @@ body {
 #content main .table-data .todo .todo-list li.not-completed {
 	border-left: 10px solid var(--orange);
 }
+#content main .table-data .todo .todo-list li.first {
+	border-left: 10px solid var(--first);
+}
+#content main .table-data .todo .todo-list li.second {
+	border-left: 10px solid var(--second);
+}
+#content main .table-data .todo .todo-list li.third {
+	border-left: 10px solid var(--third);
+}
+#content main .table-data .todo .todo-list li.fourth {
+	border-left: 10px solid var(--fourth);
+}
+#content main .table-data .todo .todo-list li.fifth {
+	border-left: 10px solid var(--fifth);
+}
 #content main .table-data .todo .todo-list li:last-child {
 	margin-bottom: 0;
 }
 /* MAIN */
 /* CONTENT */
-
-
-
-
-
-
-
 
 
 @media screen and (max-width: 768px) {

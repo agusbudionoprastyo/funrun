@@ -380,7 +380,6 @@ $(document).ready(function() {
 			width: 200mm; /* Lebar halaman */
 			position: relative;
 			border: 1px solid #000;
-    		padding: 1mm; 
 			page-break-after: always; /* Force page break after each container */
 		  }
 

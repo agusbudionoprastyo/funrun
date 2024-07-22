@@ -229,6 +229,7 @@
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.tailwindcss.js"></script>
 
     <script src="script.js"></script>
+    <script src="sse.js"></script>
 	<script src="qrcode.min.js"></script>
 
 </body>

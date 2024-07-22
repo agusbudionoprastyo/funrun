@@ -18,6 +18,16 @@ if ($conn->connect_error) {
 
 // Fungsi untuk mendapatkan data terbaru dari database
 function getData($conn) {
+
+   // Query untuk mengambil data dari tabel
+   $sql_data = "SELECT * FROM Funrun WHERE status = 'checked'";
+   $result_data = $conn->query($sql_data);
+
+   $data = [];
+   while ($row = $result_data->fetch_assoc()) {
+       $data[] = $row;
+   }
+
     // Query untuk menghitung jumlah peserta
     $sql = "SELECT COUNT(*) AS total_peserta FROM Funrun";
     $result = $conn->query($sql);
@@ -34,6 +44,7 @@ function getData($conn) {
     $total_uncheck = ($result_uncheck && $result_uncheck->num_rows > 0) ? $result_uncheck->fetch_assoc()["total_uncheck"] : 0;
 
     return [
+        'data' => $data
         'total_peserta' => $total_peserta,
         'total_check' => $total_check,
         'total_uncheck' => $total_uncheck

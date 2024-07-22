@@ -20,23 +20,118 @@
 <audio id="audio" src="interface.wav"></audio>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Check if Screen Orientation API is available
-        if (screen.orientation && screen.orientation.lock) {
-            screen.orientation.lock('portrait')
-                .then(function() {
-                    console.log('Orientation locked to portrait.');
-                })
-                .catch(function(err) {
-                    console.error('Error locking orientation:', err);
-                });
-        } else {
-            console.log('Screen Orientation API is not supported.');
-        }
-    });
-</script>
+        // Initialize
+        let html5QrCode = new Html5Qrcode('reader');
+        let audio = document.getElementById('audio');
+        let scanningPaused = false;
 
-<script>
+        // Function to handle QR code detection
+        function onScanSuccess(qrCodeMessage) {
+            if (!scanningPaused) {
+                console.log('QR Code detected and processed:', qrCodeMessage);
+                // Pause scanning
+                scanningPaused = true;
+                playAudio();
+                // Get current timestamp
+                let timestamp = new Date().toLocaleString();
+
+                // Send AJAX request to update status
+                updateStatus(qrCodeMessage, function(success, error) {
+                    if (success) {
+                        // Display success result with timestamp
+                        Swal.fire({
+                            title: 'Fun Run',
+                            html: `Check In dengan nomor BIB <b>${qrCodeMessage}</b> berhasil<br><small>${timestamp}</small>`,
+                            icon: 'success',
+                            timer: 10000,
+                            timerProgressBar: true,
+                            showConfirmButton: false
+                        }).then(function() {
+                            // Resume scanning after the alert is closed
+                            scanningPaused = false;
+                        });
+                    } else {
+                        // Display error message
+                        Swal.fire({
+                            title: 'Error',
+                            html: `Gagal Check In untuk nomor BIB <b>${qrCodeMessage}</b><br><small>${error}</small>`,
+                            icon: 'error',
+                            timer: 10000,
+                            timerProgressBar: true,
+                            showConfirmButton: false
+                        }).then(function() {
+                            // Resume scanning after the alert is closed
+                            scanningPaused = false;
+                        });
+                    }
+                });
+            }
+        }
+
+        // Function to play audio
+        function playAudio() {
+            audio.play().catch(function(error) {
+                console.error('Error playing audio:', error);
+            });
+        }
+
+        // Function to send AJAX request
+        function updateStatus(bibNumber, callback) {
+            fetch('update_status.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `bib_number=${encodeURIComponent(bibNumber)}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Call callback with success = true
+                    callback(true);
+                } else {
+                    // Call callback with success = false and error message
+                    console.error('Error updating status:', data.error);
+                    callback(false, data.error);
+                }
+            })
+            .catch(error => {
+                // Call callback with success = false and error message
+                console.error('Error:', error);
+                callback(false, error.message);
+            });
+        }
+
+        // Function to start the QR code scanner with the appropriate aspect ratio
+        function startQrScanner() {
+            let aspectRatio = (window.orientation === 90 || window.orientation === -90) ? 9/18 : 18/9;
+            html5QrCode.start(
+                { facingMode: 'environment' },
+                { fps: 10, qrbox: 250, aspectRatio: aspectRatio },
+                onScanSuccess
+            ).catch(function(err) {
+                console.error('Error initializing QR Code scanner:', err);
+                alert('Error initializing QR Code scanner: ' + err);
+            });
+        }
+
+        // Start scanning when document is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            startQrScanner();
+        });
+
+        // Handle orientation change
+        window.addEventListener('orientationchange', function() {
+            html5QrCode.stop().then(() => {
+                startQrScanner();
+            }).catch(err => {
+                console.error('Error stopping QR Code scanner:', err);
+                alert('Error stopping QR Code scanner: ' + err);
+            });
+        });
+    </script>
+
+<!-- <script>
 // Initialize
 let html5QrCode = new Html5Qrcode('reader');
 let audio = document.getElementById('audio');
@@ -131,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Error initializing QR Code scanner: ' + err);
     });
 });
-</script>
+</script> -->
 
 <script>
     if ('serviceWorker' in navigator) {

@@ -44,7 +44,7 @@
                 </a>
             </li>
             <li class="active">
-            <a href="#">
+            <a href="peserta.php">
                     <i class='bx bxs-group' ></i>
                     <span class="text">Daftar Peserta</span>
                 </a>

@@ -388,7 +388,7 @@ $(document).ready(function() {
 				height: auto;
 				display: block;
 				position: absolute;
-				top: 50%;
+				top: 51%;
 				left: 50%;
 				transform: translate(-50%, -50%);
 				z-index: -1; /* Letakkan di belakang konten utama */

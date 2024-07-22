@@ -310,6 +310,7 @@ entries.forEach(function(entry, index) {
 	qrCodeDiv.style.position = 'absolute'; // atau 'relative' tergantung dari kebutuhan layout
 	qrCodeDiv.style.top = '88mm'; // Atur posisi dari atas
 	qrCodeDiv.style.right = '2mm'; // Atur posisi dari left
+	qrCodeDiv.style.pageBreakAfter = 'always'; /* Force page break after each container */
 
     new QRCode(qrCodeDiv, {
         text: entry.nomorBIB,
@@ -332,12 +333,12 @@ entries.forEach(function(entry, index) {
 
 	iframeDoc.body.appendChild(containerDiv);
 
-    // Tambahkan page break setelah setiap dua konten
-    if ((index + 1) % 2 === 0 && index !== entries.length - 1) {
-        var pageBreakDiv = document.createElement('div');
-        pageBreakDiv.style.pageBreakAfter = 'always';
-        iframeDoc.body.appendChild(pageBreakDiv);
-    }
+    // // Tambahkan page break setelah setiap dua konten
+    // if ((index + 1) % 2 === 0 && index !== entries.length - 1) {
+    //     var pageBreakDiv = document.createElement('div');
+    //     pageBreakDiv.style.pageBreakAfter = 'always';
+    //     iframeDoc.body.appendChild(pageBreakDiv);
+    // }
 });
 
 

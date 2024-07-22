@@ -146,12 +146,10 @@ document.addEventListener('DOMContentLoaded', function() {
             var listItem = medalList.children[i];
             if (data.fastest_checkin[i]) {
                 listItem.innerHTML = '<p>' + (i + 1) + '.</p>' +
-                                     '<i class="bx bx-medal"></i>' +
-                                     '<span>' + data.fastest_checkin[i].NAMA_GENG + '</span>';
+                                     '<span>' + data.fastest_checkin[i].NAMA_GENG + '<i class="bx bx-medal"></i>' +'</span>';
             } else {
                 listItem.innerHTML = '<p>' + (i + 1) + '.</p>' +
-                                     '<i class="bx bx-medal"></i>' +
-                                     '<span>No data</span>';
+                                     '<span>-</span>';
             }
         }
 

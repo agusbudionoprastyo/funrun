@@ -20,15 +20,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(255, 255, 255, 0.8);
             z-index: 10000;
             justify-content: center;
             align-items: center;
             text-align: center;
         }
         #landscapeBlocker img {
-            max-width: 30%;
-            max-height: 30%;
+            max-width: 20%;
+            max-height: 20%;
         }
     </style>
 </head>

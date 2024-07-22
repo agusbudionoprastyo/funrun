@@ -121,13 +121,7 @@
 
             <div class="table-data">
                 <div class="order">
-                    <div class="head">
-                        <h3>Daftar Peserta</h3>
-						<button type="button" id="printSelectedBtn" class="btn-download">
-							<i class='bx bxs-printer' style="font-size:24px"></i>
-						</button>
-                    </div>
-                    <div class="todo">
+                <div class="todo">
                         <div class="head">
                             <h3>Todos</h3>
                             <i class='bx bx-plus' ></i>
@@ -155,6 +149,12 @@
                                 <i class='bx bx-dots-vertical-rounded' ></i>
                             </li>
                         </ul>
+                    </div>
+                    <div class="head">
+                        <h3>Daftar Peserta</h3>
+						<button type="button" id="printSelectedBtn" class="btn-download">
+							<i class='bx bxs-printer' style="font-size:24px"></i>
+						</button>
                     </div>
                     <table id="example" class="display" style="width:100%">
                             <thead>

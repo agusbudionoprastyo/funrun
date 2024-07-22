@@ -438,7 +438,7 @@ entries.forEach(function(entry, index) {
 
     // Membuat container untuk setiap entri
     var containerDiv = document.createElement('div');
-    // containerDiv.classList.add('container');
+    containerDiv.classList.add('container');
     containerDiv.innerHTML = `
         <img src="assets/bg.png" class="img">
         <div class="NameGroup">${entry.namaGeng}</div>

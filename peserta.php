@@ -38,9 +38,15 @@
         </a>
         <ul class="side-menu top">
             <li class="active">
-                <a href="#">
+                <a href="index.php">
                     <i class='bx bxs-dashboard' ></i>
                     <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li class="active">
+            <a href="peserta.php">
+                    <i class='bx bxs-group' ></i>
+                    <span class="text">Daftar Peserta</span>
                 </a>
             </li>
         </ul>
@@ -82,20 +88,20 @@
         <main>
             <div class="head-title">
                 <div class="left">
-                    <h1>Dashboard</h1>
+                    <h1>Daftar Peserta</h1>
                     <ul class="breadcrumb">
                         <li>
-                            <a href="#">Dashboard</a>
+                            <a href="#">Daftar Peserta</a>
                         </li>
                         <li><i class='bx bx-chevron-right' ></i></li>
                         <li>
-                            <a class="active" href="#">Home</a>
+                            <a class="active" href="index.php">Home</a>
                         </li>
                     </ul>
                 </div>
             </div>
 
-            <ul class="box-info">
+            <!-- <ul class="box-info">
                 <li>
                     <i class='bx bxs-group bx-lg' ></i>
                     <span class="text">
@@ -117,7 +123,7 @@
                         <p>Unchecked</p>
                     </span>
                 </li>
-            </ul>
+            </ul> -->
 
 
 
@@ -169,45 +175,13 @@
                             </tr>
                         	<?php endwhile; ?>
                             </tbody>
-                        </table>
-                    </div>
-                        <div class="todo">
-                        <div class="head">
-                            <h3>Fastest Check In</h3>
-                            <!-- <i class='bx bx-plus' ></i>
-                            <i class='bx bx-filter' ></i> -->
-                        </div>
-                        <ul id="medal-list" class="todo-list">
-                        <li class="first">
-                            <!-- <p>1<sup>st</sup>.</p>
-                            <i class='bx bx-medal'></i>  -->
-                        </li>
-                        <li class="second">
-                            <!-- <p>2<sup>nd</sup>.</p>
-                            <i class='bx bx-medal'></i>  -->
-                        </li>
-                        <li class="third">
-                            <!-- <p>3<sup>rd</sup>.</p>
-                            <i class='bx bx-medal'></i>  -->
-                        </li>
-                        <li class="fourth">
-                            <!-- <p>4<sup>th</sup>.</p>
-                            <i class='bx bx-medal'></i>  -->
-                        </li>
-                        <li class="fifth">
-                            <!-- <p>5<sup>th</sup>.</p>
-                            <i class='bx bx-medal'></i>  -->
-                        </li>
-                    </ul>
-
+                    </table>
                 </div>
             </div>
         </main>
         <!-- MAIN -->
     </section>
-    <!-- CONTENT -->
-    <audio id="audio" src="assets/magic.wav"></audio>
-    
+    <!-- CONTENT -->    
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

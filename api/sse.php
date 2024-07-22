@@ -37,7 +37,7 @@ function getData($conn) {
     }
  
     // Query untuk mendapatkan max timestamp dari data yang statusnya 'checked'
-    $sql_max_timestamp = "SELECT MAX(timestamp) AS max_timestamp FROM Funrun WHERE status = 'checked'";
+    $sql_max_timestamp = "SELECT MAX(timestamp) AS max_timestamp, NAMA_GENG, BIB_NUMBER FROM Funrun WHERE status = 'checked'";
     $result_max_timestamp = $conn->query($sql_max_timestamp);
     $max_timestamp = ($result_max_timestamp && $result_max_timestamp->num_rows > 0) ? $result_max_timestamp->fetch_assoc()["max_timestamp"] : null;
  

@@ -175,7 +175,7 @@ function groupDataByGeng(data) {
     return groupedData;
 }
 
-// Fungsi untuk mengupdate struktur HTML dengan urutan grup tercepat
+// Fungsi untuk memperbarui struktur HTML dengan urutan grup tercepat
 function updateMedalList(fastestGroups) {
     const medalList = document.getElementById('medal-list');
     const listItems = medalList.getElementsByTagName('li');
@@ -225,9 +225,6 @@ function playNotificationSound() {
     // Contoh:
     // const audio = new Audio('path/to/sound.mp3');
     // audio.play();
-		audio.play().catch(function(error) {
-		console.error('Error playing audio:', error);
-	});
 }
 
 // Fungsi untuk menampilkan notifikasi menggunakan SweetAlert2

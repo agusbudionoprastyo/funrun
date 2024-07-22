@@ -50,33 +50,56 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('totalCheck').innerText = data.total_check;
         document.getElementById('totalUncheck').innerText = data.total_uncheck;
 
-        // Bandingkan data lama dengan data baru untuk menampilkan notifikasi
-        const storedData = JSON.parse(sessionStorage.getItem('lastData')) || {
-            total_peserta: 0,
-            total_check: 0,
-            total_uncheck: 0
-        };
+        // // Bandingkan data lama dengan data baru untuk menampilkan notifikasi
+        // const storedData = JSON.parse(sessionStorage.getItem('lastData')) || {
+        //     total_peserta: 0,
+        //     total_check: 0,
+        //     total_uncheck: 0
+        // };
 
-        if (data.total_peserta !== storedData.total_peserta ||
-            data.total_check !== storedData.total_check ||
-            data.total_uncheck !== storedData.total_uncheck) {
+        // if (data.total_peserta !== storedData.total_peserta ||
+        //     data.total_check !== storedData.total_check ||
+        //     data.total_uncheck !== storedData.total_uncheck) {
+        //     playAudio();
+
+        //     // Tampilkan notifikasi menggunakan SweetAlert2
+        //     Swal.fire({
+        //         title: 'Fun Run - Lari Antar Geng',
+        //         html: `Total Peserta: ${data.total_peserta}<br>Total Check: ${data.total_check}<br>Total Uncheck: ${data.total_uncheck}`,
+        //         icon: 'info',
+        //         showConfirmButton: false, // Tidak ada tombol konfirmasi
+        //         timer: 5000, // Durasi notifikasi 5 detik
+        //         timerProgressBar: true, // Tampilkan progress bar
+        //         willClose: () => {
+        //             // Simpan data terbaru di sessionStorage setelah notifikasi menghilang
+        //             sessionStorage.setItem('lastData', JSON.stringify(data));
+        //             window.location.reload(); // Reload halaman setelah notifikasi menghilang
+        //         }
+        //     });
+        // }
+        // Bandingkan data lama dengan data baru untuk menampilkan notifikasi
+        const storedData = JSON.parse(sessionStorage.getItem('lastData')) || {};
+
+        if (data.max_timestamp !== storedData.max_timestamp ||
+            data.nama_geng !== storedData.nama_geng ||
+            data.bib_number !== storedData.bib_number) {
             playAudio();
 
             // Tampilkan notifikasi menggunakan SweetAlert2
             Swal.fire({
                 title: 'Fun Run - Lari Antar Geng',
-                html: `Total Peserta: ${data.total_peserta}<br>Total Check: ${data.total_check}<br>Total Uncheck: ${data.total_uncheck}`,
+                html: `Geng's ${data.nama_geng}<br>BIB Number ${data.bib_number} Telah Check In<br>Timestamp: ${data.max_timestamp}`,
                 icon: 'info',
                 showConfirmButton: false, // Tidak ada tombol konfirmasi
                 timer: 5000, // Durasi notifikasi 5 detik
                 timerProgressBar: true, // Tampilkan progress bar
                 willClose: () => {
-                    // Simpan data terbaru di sessionStorage setelah notifikasi menghilang
-                    sessionStorage.setItem('lastData', JSON.stringify(data));
-                    window.location.reload(); // Reload halaman setelah notifikasi menghilang
+                // Simpan data terbaru di sessionStorage setelah notifikasi menghilang
+                sessionStorage.setItem('lastData', JSON.stringify(data));
                 }
             });
         }
+
     };
 
     eventSource.onerror = function(event) {

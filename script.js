@@ -268,6 +268,7 @@ $(document).ready(function() {
 			height: 145mm; /* Ketinggian halaman */
 			width: 200mm; /* Lebar halaman */
 			position: relative;
+			page-break-after: always; /* Force page break after each container */
 		  }
 
 		  .img{
@@ -310,7 +311,6 @@ entries.forEach(function(entry, index) {
 	qrCodeDiv.style.position = 'absolute'; // atau 'relative' tergantung dari kebutuhan layout
 	qrCodeDiv.style.top = '88mm'; // Atur posisi dari atas
 	qrCodeDiv.style.right = '2mm'; // Atur posisi dari left
-	qrCodeDiv.style.pageBreakAfter = 'always'; /* Force page break after each container */
 
     new QRCode(qrCodeDiv, {
         text: entry.nomorBIB,

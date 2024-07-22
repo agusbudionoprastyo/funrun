@@ -164,17 +164,17 @@ document.addEventListener('DOMContentLoaded', function() {
 		
 			// Aturan dasar:
 			if (secondLastDigit === 1) {
-				return "th";
+				return "<sup>th</sup>";
 			} else {
 				switch (lastDigit) {
 					case 1:
-						return "st";
+						return "<sup>st</sup>";
 					case 2:
-						return "nd";
+						return "<sup>nd</sup>";
 					case 3:
-						return "rd";
+						return "<sup>rd</sup>";
 					default:
-						return "th";
+						return "<sup>th</sup>";
 				}
 			}
 		}

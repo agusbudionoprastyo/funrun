@@ -28,7 +28,7 @@ function getData($conn) {
     
     $max_timestamp_data = ($result_max_timestamp && $result_max_timestamp->num_rows > 0) ? $result_max_timestamp->fetch_assoc() : null;
 
-    $max_timestamp = $max_timestamp_data['max_timestamp'] ?? null;
+    $max_timestamp = $max_timestamp_data['timestamp'] ?? null;
     $nama_geng = $max_timestamp_data['NAMA_GENG'] ?? null;
     $bib_number = $max_timestamp_data['BIB_NUMBER'] ?? null;
 

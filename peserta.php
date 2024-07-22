@@ -79,8 +79,8 @@
 					<!-- <button type="button" class="clear-btn"><i class='bx bx-reset' ></i></button> -->
                 </div>
             </form>
-            <input type="checkbox" id="switch-mode" hidden>
-            <label for="switch-mode" class="switch-mode"></label>
+            <!-- <input type="checkbox" id="switch-mode" hidden>
+            <label for="switch-mode" class="switch-mode"></label> -->
         </nav>
         <!-- NAVBAR -->
 

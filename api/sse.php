@@ -65,6 +65,17 @@ function getData($conn) {
      ];
  } 
 
+ // Kirim data setiap beberapa detik
+while (true) {
+    $data = getData($conn);
+    echo "data: " . json_encode($data) . "\n\n";
+    ob_flush(); // Pastikan output buffer dikirim ke browser
+    flush();    // Pastikan output dikirim ke browser
+
+    // Tunggu beberapa detik sebelum mengirim data lagi
+    sleep(10); // Sesuaikan interval sesuai kebutuhan
+}
+
 // Tutup koneksi (meskipun ini tidak akan pernah dieksekusi dalam loop tak berujung)
 $conn->close();
 ?>

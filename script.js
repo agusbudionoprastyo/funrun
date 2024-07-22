@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
 						listItem.innerHTML = '<p>' + position + suffix + ' ' + data.fastest_checkin[i].NAMA_GENG + '</p>' +
 											 '<i class="bx bx-medal"></i>';
 					} else {
-						listItem.innerHTML = '<p>' + position + suffix + ' ' + '...' + '</p>' +
+						listItem.innerHTML = '<p>' + position + suffix + '</p>' +
 											 '<i class="bx bx-medal"></i>';
 
 					}

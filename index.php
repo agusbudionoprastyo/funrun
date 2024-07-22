@@ -119,6 +119,8 @@
                 </li>
             </ul>
 
+
+
             <div class="table-data">
                 <div class="order">
                     <div class="head">
@@ -168,6 +170,7 @@
                         	<?php endwhile; ?>
                             </tbody>
                         </table>
+                    </div>
                         <div class="todo">
                         <div class="head">
                             <h3>Todos</h3>
@@ -197,9 +200,9 @@
                             </li>
                         </ul>
                     </div>
-                    </div>
                 </div>
-            </main>
+            </div>
+        </main>
         <!-- MAIN -->
     </section>
     <!-- CONTENT -->

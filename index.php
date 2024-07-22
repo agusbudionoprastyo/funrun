@@ -43,7 +43,7 @@
                     <span class="text">Dashboard</span>
                 </a>
             </li>
-            <li class="active">
+            <li>
             <a href="peserta.php">
                     <i class='bx bxs-group' ></i>
                     <span class="text">Daftar Peserta</span>

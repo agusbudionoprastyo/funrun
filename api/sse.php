@@ -36,10 +36,15 @@ function getData($conn) {
         $fastest_checkin[] = $row;
     }
  
-    // Query untuk mendapatkan max timestamp dari data yang statusnya 'checked'
+    // Query untuk mendapatkan max timestamp dari data yang statusnya 'checked' beserta NAMA_GENG dan BIB_NUMBER
     $sql_max_timestamp = "SELECT MAX(timestamp) AS max_timestamp, NAMA_GENG, BIB_NUMBER FROM Funrun WHERE status = 'checked'";
     $result_max_timestamp = $conn->query($sql_max_timestamp);
-    $max_timestamp = ($result_max_timestamp && $result_max_timestamp->num_rows > 0) ? $result_max_timestamp->fetch_assoc()["max_timestamp"] : null;
+    $max_timestamp_data = ($result_max_timestamp && $result_max_timestamp->num_rows > 0) ? $result_max_timestamp->fetch_assoc() : null;
+
+    $max_timestamp = $max_timestamp_data['max_timestamp'] ?? null;
+    $nama_geng = $max_timestamp_data['NAMA_GENG'] ?? null;
+    $bib_number = $max_timestamp_data['BIB_NUMBER'] ?? null;
+
  
      // Query untuk menghitung jumlah peserta
      $sql = "SELECT COUNT(*) AS total_peserta FROM Funrun";

@@ -20,7 +20,15 @@ if ($conn->connect_error) {
 function getData($conn) {
 
    // Query untuk mengambil data dari tabel
-   $sql_data = "SELECT * FROM Funrun WHERE status = 'checked'";
+   $sql_data = "SELECT NAMA_GENG, last_timestamp
+   FROM (
+       SELECT NAMA_GENG, timestamp AS last_timestamp,
+           ROW_NUMBER() OVER (PARTITION BY NAMA_GENG ORDER BY timestamp ASC) AS row_num
+       FROM Funrun
+       WHERE status = 'checked'
+   ) AS ranked
+   WHERE row_num >= 5;";
+
    $result_data = $conn->query($sql_data);
 
    $data = [];

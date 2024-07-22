@@ -20,7 +20,7 @@ if ($conn->connect_error) {
 function getData($conn) {
 
    // Query untuk mengambil data dari tabel
-   $sql_data = "SELECT NAMA_GENG, last_timestamp
+   $sql_fastest_checkin = "SELECT NAMA_GENG, last_timestamp
    FROM (
        SELECT NAMA_GENG, timestamp AS last_timestamp,
            ROW_NUMBER() OVER (PARTITION BY NAMA_GENG ORDER BY timestamp ASC) AS row_num
@@ -29,11 +29,11 @@ function getData($conn) {
    ) AS ranked
    WHERE row_num >= 5;";
 
-   $result_data = $conn->query($sql_data);
+   $result_fastest_checkin = $conn->query($sql_fastest_checkin);
 
-   $data = [];
-   while ($row = $result_data->fetch_assoc()) {
-       $data[] = $row;
+   $fastest_checkin = [];
+   while ($row = $result_fastest_checkin->fetch_assoc()) {
+       $fastest_checkin[] = $row;
    }
 
     // Query untuk menghitung jumlah peserta
@@ -52,7 +52,7 @@ function getData($conn) {
     $total_uncheck = ($result_uncheck && $result_uncheck->num_rows > 0) ? $result_uncheck->fetch_assoc()["total_uncheck"] : 0;
 
     return [
-        'data' => $data,
+        'fastest_checkin' => $fastest_checkin,
         'total_peserta' => $total_peserta,
         'total_check' => $total_check,
         'total_uncheck' => $total_uncheck

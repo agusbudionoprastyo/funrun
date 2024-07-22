@@ -1,5 +1,5 @@
 <?php
-	require_once 'fetch_data.php';
+	require_once 'api/fetch_data.php';
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- My CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- sweetalert2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
@@ -151,9 +151,9 @@
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.tailwindcss.js"></script>
 
-    <script src="script.js"></script>
-    <script src="print.js"></script>
-	<script src="qrcode.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/print.js"></script>
+	<script src="js/qrcode.min.js"></script>
 
     <script>
         const searchButton = document.querySelector('#content nav form .form-input button');

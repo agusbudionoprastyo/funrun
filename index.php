@@ -8,7 +8,7 @@
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- My CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- sweetalert2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
@@ -188,20 +188,18 @@
                             <li class="fifth">
                             </li>
                                 </ul>
-                    </div>
-                    </div>
-                </main>
-        <!-- MAIN -->
-    </section>
+                            </div>
+                        </div>
+                    </main>
+            <!-- MAIN -->
+        </section>
     <!-- CONTENT -->
     <audio id="audio" src="assets/magic.wav"></audio>
     
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <script src="script.js"></script>
-    <script src="sse.js"></script>
-	<script src="qrcode.min.js"></script>
-
+    <script src="js/script.js"></script>
+    <script src="js/sse.js"></script>
 </body>
 </html>

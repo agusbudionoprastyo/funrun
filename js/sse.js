@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const eventSource = new EventSource('sse.php');
+    const eventSource = new EventSource('../api/sse.php');
     const audio = document.getElementById('audio'); // Pastikan audio sudah didefinisikan di halaman HTML
 
     eventSource.onmessage = function(event) {

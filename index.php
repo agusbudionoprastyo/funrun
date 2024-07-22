@@ -42,7 +42,9 @@
                     <i class='bx bxs-dashboard' ></i>
                     <span class="text">Dashboard</span>
                 </a>
-                <a href="#">
+            </li>
+            <li class="active">
+            <a href="#">
                     <i class='bx bxs-group' ></i>
                     <span class="text">Daftar Peserta</span>
                 </a>

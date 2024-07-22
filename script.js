@@ -388,7 +388,7 @@ $(document).ready(function() {
 				height: auto;
 				display: block;
 				position: absolute;
-				top: 51%;
+				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%);
 				z-index: -1; /* Letakkan di belakang konten utama */
@@ -438,7 +438,7 @@ entries.forEach(function(entry, index) {
 
     // Membuat container untuk setiap entri
     var containerDiv = document.createElement('div');
-    containerDiv.classList.add('container');
+    // containerDiv.classList.add('container');
     containerDiv.innerHTML = `
         <img src="assets/bg.png" class="img">
         <div class="NameGroup">${entry.namaGeng}</div>

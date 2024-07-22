@@ -19,9 +19,11 @@ if ($conn->connect_error) {
 // Fungsi untuk mendapatkan data terbaru dari database
 function getData($conn) {
     // Query untuk mendapatkan max timestamp dari data yang statusnya 'checked' beserta NAMA_GENG dan BIB_NUMBER
-    $sql_max_timestamp = "SELECT NAMA_GENG, BIB_NUMBER, MAX(timestamp) AS max_timestamp 
-                          FROM Funrun 
-                          WHERE status = 'checked'";
+    $sql_max_timestamp = "SELECT NAMA_GENG, BIB_NUMBER, timestamp
+                            FROM Funrun 
+                            WHERE status = 'checked'
+                            ORDER BY timestamp DESC
+                            LIMIT 1";
     $result_max_timestamp = $conn->query($sql_max_timestamp);
     
     $max_timestamp_data = ($result_max_timestamp && $result_max_timestamp->num_rows > 0) ? $result_max_timestamp->fetch_assoc() : null;
@@ -29,6 +31,8 @@ function getData($conn) {
     $max_timestamp = $max_timestamp_data['max_timestamp'] ?? null;
     $nama_geng = $max_timestamp_data['NAMA_GENG'] ?? null;
     $bib_number = $max_timestamp_data['BIB_NUMBER'] ?? null;
+
+    
  
     // Query untuk mengambil fastest_checkin
     $sql_fastest_checkin = "SELECT NAMA_GENG, last_timestamp

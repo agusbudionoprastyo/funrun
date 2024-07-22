@@ -612,3 +612,19 @@ body {
 		text-align: center;
 	}
 	
+	#medal-list {
+		list-style-type: none; /* Menghilangkan bullet point */
+		padding-left: 0; /* Menghilangkan padding kiri bawaan */
+	}
+	
+	#medal-list li {
+		display: flex; /* Menggunakan flexbox untuk mengatur posisi isi */
+		align-items: center; /* Mengatur konten vertikal di tengah */
+		justify-content: flex-start; /* Mengatur konten horizontal dari kiri ke kanan */
+		margin-bottom: 10px; /* Jarak antara setiap item */
+	}
+	
+	#medal-list li p {
+		margin-right: 10px; /* Jarak antara nomor urut dan ikon medal */
+	}
+	

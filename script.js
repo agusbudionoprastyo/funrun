@@ -384,13 +384,16 @@ $(document).ready(function() {
 			page-break-after: always; /* Force page break after each container */
 		  }
 
-		  .img{
-			max-width: 100%;
-			height: auto;
-			display: block;
-			position: absolute;
-			z-index: -1; /* Letakkan di belakang konten utama */
-		  }
+		  .img {
+				max-width: 100%;
+				height: auto;
+				display: block;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				z-index: -1; /* Letakkan di belakang konten utama */
+			}		
 
 		  .NameGroup {
 			position: absolute;

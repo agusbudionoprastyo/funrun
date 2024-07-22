@@ -79,59 +79,173 @@ switchMode.addEventListener('change', function () {
 //     };
 // });
 
-document.addEventListener('DOMContentLoaded', function() {
-	const audio = document.getElementById('audio');
+// document.addEventListener('DOMContentLoaded', function() {
+// 	const audio = document.getElementById('audio');
 
-	// Function to play audio
-	function playAudio() {
+// 	const eventSource = new EventSource('sse.php');
+// 	// Ambil data terakhir dari sessionStorage
+// 	const storedData = JSON.parse(sessionStorage.getItem('lastData')) || {
+// 		total_peserta: 0,
+// 		total_check: 0,
+// 		total_uncheck: 0
+// 	};
+
+// 	eventSource.onmessage = function(event) {
+		
+// 		const data = JSON.parse(event.data);
+
+// 		// Update statistik di halaman
+// 		document.getElementById('totalPeserta').innerText = data.total_peserta;
+// 		document.getElementById('totalCheck').innerText = data.total_check;
+// 		document.getElementById('totalUncheck').innerText = data.total_uncheck;
+
+// 		// Bandingkan data lama dengan data baru
+// 		if (data.total_peserta !== storedData.total_peserta ||
+// 			data.total_check !== storedData.total_check ||
+// 			data.total_uncheck !== storedData.total_uncheck) {
+// 			playAudio()
+// 			// Tampilkan notifikasi menggunakan SweetAlert2
+// 			Swal.fire({
+// 				title: 'Fun Run - Lari Antar Geng',
+// 				text: `Total Peserta: ${data.total_peserta}\nTotal Check: ${data.total_check}\nTotal Uncheck: ${data.total_uncheck}`,
+// 				icon: 'info',
+// 				showConfirmButton: false, // Tidak ada tombol konfirmasi
+// 				timer: 5000, // Durasi notifikasi 5 detik
+// 				timerProgressBar: true, // Tampilkan progress bar
+// 				willClose: () => {
+// 					// Simpan data terbaru di sessionStorage setelah notifikasi menghilang
+// 					sessionStorage.setItem('lastData', JSON.stringify(data));
+// 					window.location.reload(); // Reload halaman setelah notifikasi menghilang
+// 				}
+// 			});
+// 		}
+// 	};
+
+// 	eventSource.onerror = function(event) {
+// 		console.error('Error dengan SSE:', event);
+// 	};
+// });
+
+// // Function to play audio
+// function playAudio() {
+// 	audio.play().catch(function(error) {
+// 		console.error('Error playing audio:', error);
+// 	});
+// }
+
+const eventSource = new EventSource('sse.php');  // Sesuaikan dengan URL SSE server Anda
+
+eventSource.onmessage = function(event) {
+    const data = JSON.parse(event.data);
+
+    // Panggil fungsi untuk mengelompokkan data berdasarkan 'NAMA_GENG'
+    const groupedData = groupDataByGeng(data.data);
+
+    // Lakukan sorting untuk setiap kelompok berdasarkan 'timestamp' paling pertama
+    for (let geng in groupedData) {
+        groupedData[geng].sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+    }
+
+    // Ambil lima grup tercepat
+    const fastestGroups = Object.keys(groupedData).slice(0, 5);
+
+    // Update struktur HTML dengan urutan grup tercepat
+    updateMedalList(fastestGroups);
+    
+    // Update statistik di halaman
+    updateStatistics(data);
+};
+
+eventSource.onerror = function(event) {
+    console.error('Error receiving SSE: ', event);
+};
+
+// Fungsi untuk mengelompokkan data berdasarkan 'NAMA_GENG'
+function groupDataByGeng(data) {
+    const groupedData = {};
+
+    data.forEach(entry => {
+        const { NAMA_GENG } = entry;
+        if (!groupedData[NAMA_GENG]) {
+            groupedData[NAMA_GENG] = [];
+        }
+        groupedData[NAMA_GENG].push(entry);
+    });
+
+    return groupedData;
+}
+
+// Fungsi untuk mengupdate struktur HTML dengan urutan grup tercepat
+function updateMedalList(fastestGroups) {
+    const medalList = document.getElementById('medal-list');
+    const listItems = medalList.getElementsByTagName('li');
+
+    fastestGroups.forEach((groupName, index) => {
+        const listItem = listItems[index];
+        listItem.classList.add(groupName);  // Tambahkan kelas 'first', 'second', 'third', dst.
+        listItem.querySelector('p').innerText = `${index + 1}. ${groupName}`;  // Update teks urutan
+    });
+}
+
+// Fungsi untuk memperbarui statistik di halaman
+function updateStatistics(data) {
+    document.getElementById('totalPeserta').innerText = data.total_peserta;
+    document.getElementById('totalCheck').innerText = data.total_check;
+    document.getElementById('totalUncheck').innerText = data.total_uncheck;
+
+    // Bandingkan data lama dengan data baru jika diperlukan untuk menampilkan notifikasi
+    const storedData = JSON.parse(sessionStorage.getItem('lastData')) || {
+        total_peserta: 0,
+        total_check: 0,
+        total_uncheck: 0
+    };
+
+    if (!isEqualData(data, storedData)) {
+        playNotificationSound(); // Memanggil fungsi untuk memainkan suara notifikasi
+        showNotification(data); // Menampilkan notifikasi dengan data baru
+    }
+
+    // Simpan data terbaru di sessionStorage
+    sessionStorage.setItem('lastData', JSON.stringify(data));
+}
+
+// Fungsi untuk membandingkan data lama dan baru
+function isEqualData(newData, oldData) {
+    return (
+        newData.total_peserta === oldData.total_peserta &&
+        newData.total_check === oldData.total_check &&
+        newData.total_uncheck === oldData.total_uncheck
+        // Tambahkan pembandingan data lain jika diperlukan
+    );
+}
+
+// Fungsi untuk memainkan suara atau efek audio notifikasi
+function playNotificationSound() {
+    // Tambahkan logika untuk memainkan suara atau efek audio
+    // Contoh:
+    // const audio = new Audio('path/to/sound.mp3');
+    // audio.play();
 		audio.play().catch(function(error) {
-			console.error('Error playing audio:', error);
-		});
-	}
+		console.error('Error playing audio:', error);
+	});
+}
 
-	const eventSource = new EventSource('sse.php');
+// Fungsi untuk menampilkan notifikasi menggunakan SweetAlert2
+function showNotification(data) {
+    Swal.fire({
+        title: 'Fun Run - Lari Antar Geng',
+        html: `
+            <p>Total Peserta: ${data.total_peserta}</p>
+            <p>Total Check: ${data.total_check}</p>
+            <p>Total Uncheck: ${data.total_uncheck}</p>
+        `,
+        icon: 'info',
+        showConfirmButton: false, // Tidak ada tombol konfirmasi
+        timer: 5000, // Durasi notifikasi 5 detik
+        timerProgressBar: true // Tampilkan progress bar
+    });
+}
 
-	// Ambil data terakhir dari sessionStorage
-	const storedData = JSON.parse(sessionStorage.getItem('lastData')) || {
-		total_peserta: 0,
-		total_check: 0,
-		total_uncheck: 0
-	};
-
-	eventSource.onmessage = function(event) {
-		const data = JSON.parse(event.data);
-
-		// Update statistik di halaman
-		document.getElementById('totalPeserta').innerText = data.total_peserta;
-		document.getElementById('totalCheck').innerText = data.total_check;
-		document.getElementById('totalUncheck').innerText = data.total_uncheck;
-
-		// Bandingkan data lama dengan data baru
-		if (data.total_peserta !== storedData.total_peserta ||
-			data.total_check !== storedData.total_check ||
-			data.total_uncheck !== storedData.total_uncheck) {
-			playAudio()
-			// Tampilkan notifikasi menggunakan SweetAlert2
-			Swal.fire({
-				title: 'Fun Run - Lari Antar Geng',
-				text: `Total Peserta: ${data.total_peserta}\nTotal Check: ${data.total_check}\nTotal Uncheck: ${data.total_uncheck}`,
-				icon: 'info',
-				showConfirmButton: false, // Tidak ada tombol konfirmasi
-				timer: 5000, // Durasi notifikasi 5 detik
-				timerProgressBar: true, // Tampilkan progress bar
-				willClose: () => {
-					// Simpan data terbaru di sessionStorage setelah notifikasi menghilang
-					sessionStorage.setItem('lastData', JSON.stringify(data));
-					window.location.reload(); // Reload halaman setelah notifikasi menghilang
-				}
-			});
-		}
-	};
-
-	eventSource.onerror = function(event) {
-		console.error('Error dengan SSE:', event);
-	};
-});
 
 $(document).ready(function() {
 	// table initialize

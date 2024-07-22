@@ -63,6 +63,22 @@ switchMode.addEventListener('change', function () {
 
 document.addEventListener('DOMContentLoaded', function() {
     const eventSource = new EventSource('sse.php');
+	var fastest_checkin = data.fastest_checkin;
+
+    // Update UI for top 5 fastest check-ins
+    var medalList = document.getElementById('medal-list');
+    for (var i = 0; i < 5; i++) {
+        var listItem = medalList.children[i];
+        if (fastest_checkin[i]) {
+            listItem.innerHTML = '<p>' + (i + 1) + '.</p>' +
+                                 '<i class="bx bx-medal"></i>' +
+                                 '<span>' + fastest_checkin[i].NAMA_GENG + '</span>';
+        } else {
+            listItem.innerHTML = '<p>' + (i + 1) + '.</p>' +
+                                 '<i class="bx bx-medal"></i>' +
+                                 '<span>No data</span>';
+        }
+    }
 
     eventSource.onmessage = function(event) {
         const data = JSON.parse(event.data);

@@ -1,26 +1,14 @@
-<?php
-	require_once 'fetch_data.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
-    <!-- DataTables CSS -->
-    <link href="https://cdn.datatables.net/2.0.8/css/dataTables.tailwindcss.css" rel="stylesheet">
-
     <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- My CSS -->
     <link rel="stylesheet" href="style.css">
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
 
     <!-- sweetalert2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
@@ -184,38 +172,25 @@
 					</table>
                 </div>
 
-                        <div class="todo">
+                    <div class="todo">
                         <div class="head">
                             <h3>Fastest Check In</h3>
-                            <!-- <i class='bx bx-plus' ></i>
-                            <i class='bx bx-filter' ></i> -->
                         </div>
-                        <ul id="medal-list" class="todo-list">
-                        <li class="first">
-                            <!-- <p>1<sup>st</sup>.</p>
-                            <i class='bx bx-medal'></i>  -->
-                        </li>
+                                <ul id="medal-list" class="todo-list">
+                            <li class="first">
+                            </li>
                         <li class="second">
-                            <!-- <p>2<sup>nd</sup>.</p>
-                            <i class='bx bx-medal'></i>  -->
                         </li>
-                        <li class="third">
-                            <!-- <p>3<sup>rd</sup>.</p>
-                            <i class='bx bx-medal'></i>  -->
-                        </li>
+                    <li class="third">
+                    </li>
                         <li class="fourth">
-                            <!-- <p>4<sup>th</sup>.</p>
-                            <i class='bx bx-medal'></i>  -->
                         </li>
-                        <li class="fifth">
-                            <!-- <p>5<sup>th</sup>.</p>
-                            <i class='bx bx-medal'></i>  -->
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </main>
+                            <li class="fifth">
+                            </li>
+                                </ul>
+                    </div>
+                    </div>
+                </main>
         <!-- MAIN -->
     </section>
     <!-- CONTENT -->
@@ -223,10 +198,6 @@
     
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!-- DataTables JS -->
-    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
-    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.tailwindcss.js"></script>
 
     <script src="script.js"></script>
     <script src="sse.js"></script>

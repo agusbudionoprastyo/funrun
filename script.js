@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var listItem = medalList.children[i];
             if (data.fastest_checkin[i]) {
                 listItem.innerHTML = '<p>' + (i + 1) + '.</p>' +
-                                     '<span>' + data.fastest_checkin[i].NAMA_GENG + '<i class="bx bx-medal"></i>' +'</span>';
+                                     '<span>' + data.fastest_checkin[i].NAMA_GENG + '</span>';
             } else {
                 listItem.innerHTML = '<p>' + (i + 1) + '.</p>' +
                                      '<span>-</span>';

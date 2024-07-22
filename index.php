@@ -178,28 +178,28 @@
                             <i class='bx bx-filter' ></i> -->
                         </div>
                         <ul id="medal-list" class="todo-list">
-                            <li class="first">
-                                <p>1.</p>
-                                <!-- <i class='bx bx-dots-vertical-rounded' ></i> -->
-                            </li>
-                            <li class="second">
-                                <p>2.</p>
-                                <!-- <i class='bx bx-dots-vertical-rounded' ></i> -->
-                            </li>
-                            <li class="third">
-                                <p>3.</p>
-                                <!-- <i class='bx bx-dots-vertical-rounded' ></i> -->
-                            </li>
-                            <li class="fourth">
-                                <p>4.</p>
-                                <!-- <i class='bx bx-dots-vertical-rounded' ></i> -->
-                            </li>
-                            <li class="fifth">
-                                <p>5.</p>
-                                <!-- <i class='bx bx-dots-vertical-rounded' ></i> -->
-                            </li>
-                        </ul>
-                    </div>
+                        <li class="first">
+                            <p>1<sup>st</sup>.</p>
+                            <i class='bx bx-medal'></i> 
+                        </li>
+                        <li class="second">
+                            <p>2<sup>nd</sup>.</p>
+                            <i class='bx bx-medal'></i> 
+                        </li>
+                        <li class="third">
+                            <p>3<sup>rd</sup>.</p>
+                            <i class='bx bx-medal'></i> 
+                        </li>
+                        <li class="fourth">
+                            <p>4<sup>th</sup>.</p>
+                            <i class='bx bx-medal'></i> 
+                        </li>
+                        <li class="fifth">
+                            <p>5<sup>th</sup>.</p>
+                            <i class='bx bx-medal'></i> 
+                        </li>
+                    </ul>
+
                 </div>
             </div>
         </main>

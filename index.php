@@ -177,7 +177,7 @@
                             <!-- <i class='bx bx-plus' ></i>
                             <i class='bx bx-filter' ></i> -->
                         </div>
-                        <ul class="todo-list">
+                        <ul id="medal-list" class="todo-list">
                             <li class="first">
                                 <p>1.</p>
                                 <!-- <i class='bx bx-dots-vertical-rounded' ></i> -->

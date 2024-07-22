@@ -293,7 +293,7 @@ $(document).ready(function() {
 		  .BIBText {
 			position: absolute;
 			top: 95mm; /* Adjust vertically */
-			left: 5mm;
+			left: 2mm;
 			text-align: center;
 			font-size: 45px;
 			font-family: 'Adumu';
@@ -309,7 +309,7 @@ entries.forEach(function(entry, index) {
     // Setting style for qrCodeDiv...
 	qrCodeDiv.style.position = 'absolute'; // atau 'relative' tergantung dari kebutuhan layout
 	qrCodeDiv.style.top = '88mm'; // Atur posisi dari atas
-	qrCodeDiv.style.right = '5mm'; // Atur posisi dari left
+	qrCodeDiv.style.right = '2mm'; // Atur posisi dari left
 
     new QRCode(qrCodeDiv, {
         text: entry.nomorBIB,

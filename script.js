@@ -142,16 +142,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Update UI for top 5 fastest check-ins
         var medalList = document.getElementById('medal-list');
-        for (var i = 0; i < 5; i++) {
-            var listItem = medalList.children[i];
-            if (data.fastest_checkin[i]) {
-                listItem.innerHTML = '<p>' + (i + 1) + '.</p>' +
-                                     '<span>' + data.fastest_checkin[i].NAMA_GENG + '</span>';
-            } else {
-                listItem.innerHTML = '<p>' + (i + 1) + '.</p>' +
-                                     '<span>-</span>';
-            }
-        }
+				// Contoh penggunaan:
+				for (var i = 0; i < 5; i++) {
+					var position = i + 1;
+					var suffix = getRankSuffix(position);
+					var listItem = medalList.children[i];
+				
+					if (data.fastest_checkin[i]) {
+						listItem.innerHTML = '<p>' + position + suffix + ' ' + data.fastest_checkin[i].NAMA_GENG + '</p>' +
+											 '<i class="bx bx-medal"></i>';
+					} else {
+						listItem.innerHTML = '<p>' + position + suffix + '</p>' +
+											 '<span>-</span>';
+					}
+				}	
+
+		function getRankSuffix(position) {
+			// Mendapatkan angka terakhir dari posisi (misalnya 1, 2, 3, dst)
+			var lastDigit = position % 10;
+			var secondLastDigit = Math.floor(position / 10) % 10;
+		
+			// Aturan dasar:
+			if (secondLastDigit === 1) {
+				return "th";
+			} else {
+				switch (lastDigit) {
+					case 1:
+						return "st";
+					case 2:
+						return "nd";
+					case 3:
+						return "rd";
+					default:
+						return "th";
+				}
+			}
+		}
 
         // Update statistik
         document.getElementById('totalPeserta').innerText = data.total_peserta;

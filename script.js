@@ -59,95 +59,147 @@ switchMode.addEventListener('change', function () {
 	}
 })
 
-// Server-Side-Event
+// // Server-Side-Event
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     const eventSource = new EventSource('sse.php');
+
+//     eventSource.onmessage = function(event) {
+//         const data = JSON.parse(event.data);
+
+//         // Update statistik
+//         document.getElementById('totalPeserta').innerText = data.total_peserta;
+//         document.getElementById('totalCheck').innerText = data.total_check;
+//         document.getElementById('totalUncheck').innerText = data.total_uncheck;
+
+//     };
+
+//     eventSource.onerror = function(event) {
+//         console.error('Error with SSE:', event);
+//     };
+// });
+
+// document.addEventListener('DOMContentLoaded', function() {
+// 	const audio = document.getElementById('audio');
+
+// 	const eventSource = new EventSource('sse.php');
+// 	// Ambil data terakhir dari sessionStorage
+// 	const storedData = JSON.parse(sessionStorage.getItem('lastData')) || {
+// 		total_peserta: 0,
+// 		total_check: 0,
+// 		total_uncheck: 0
+// 	};
+
+// 	eventSource.onmessage = function(event) {
+		
+// 		const data = JSON.parse(event.data);
+
+// 		// Update statistik di halaman
+// 		document.getElementById('totalPeserta').innerText = data.total_peserta;
+// 		document.getElementById('totalCheck').innerText = data.total_check;
+// 		document.getElementById('totalUncheck').innerText = data.total_uncheck;
+
+// 		// Bandingkan data lama dengan data baru
+// 		if (data.total_peserta !== storedData.total_peserta ||
+// 			data.total_check !== storedData.total_check ||
+// 			data.total_uncheck !== storedData.total_uncheck) {
+// 			playAudio()
+// 			// Tampilkan notifikasi menggunakan SweetAlert2
+// 			Swal.fire({
+// 				title: 'Fun Run - Lari Antar Geng',
+// 				text: `Total Peserta: ${data.total_peserta}\nTotal Check: ${data.total_check}\nTotal Uncheck: ${data.total_uncheck}`,
+// 				icon: 'info',
+// 				showConfirmButton: false, // Tidak ada tombol konfirmasi
+// 				timer: 5000, // Durasi notifikasi 5 detik
+// 				timerProgressBar: true, // Tampilkan progress bar
+// 				willClose: () => {
+// 					// Simpan data terbaru di sessionStorage setelah notifikasi menghilang
+// 					sessionStorage.setItem('lastData', JSON.stringify(data));
+// 					window.location.reload(); // Reload halaman setelah notifikasi menghilang
+// 				}
+// 			});
+// 		}
+// 	};
+
+// 	eventSource.onerror = function(event) {
+// 		console.error('Error dengan SSE:', event);
+// 	};
+// });
+
+// // Function to play audio
+// function playAudio() {
+// 	audio.play().catch(function(error) {
+// 		console.error('Error playing audio:', error);
+// 	});
+// }
 
 document.addEventListener('DOMContentLoaded', function() {
     const eventSource = new EventSource('sse.php');
-	var fastest_checkin = data.fastest_checkin;
-
-    // Update UI for top 5 fastest check-ins
-    var medalList = document.getElementById('medal-list');
-    for (var i = 0; i < 5; i++) {
-        var listItem = medalList.children[i];
-        if (fastest_checkin[i]) {
-            listItem.innerHTML = '<p>' + (i + 1) + '.</p>' +
-                                 '<i class="bx bx-medal"></i>' +
-                                 '<span>' + fastest_checkin[i].NAMA_GENG + '</span>';
-        } else {
-            listItem.innerHTML = '<p>' + (i + 1) + '.</p>' +
-                                 '<i class="bx bx-medal"></i>' +
-                                 '<span>No data</span>';
-        }
-    }
+    const audio = document.getElementById('audio'); // Pastikan audio sudah didefinisikan di halaman HTML
 
     eventSource.onmessage = function(event) {
         const data = JSON.parse(event.data);
+
+        // Update UI for top 5 fastest check-ins
+        var medalList = document.getElementById('medal-list');
+        for (var i = 0; i < 5; i++) {
+            var listItem = medalList.children[i];
+            if (data.fastest_checkin[i]) {
+                listItem.innerHTML = '<p>' + (i + 1) + '.</p>' +
+                                     '<i class="bx bx-medal"></i>' +
+                                     '<span>' + data.fastest_checkin[i].NAMA_GENG + '</span>';
+            } else {
+                listItem.innerHTML = '<p>' + (i + 1) + '.</p>' +
+                                     '<i class="bx bx-medal"></i>' +
+                                     '<span>No data</span>';
+            }
+        }
 
         // Update statistik
         document.getElementById('totalPeserta').innerText = data.total_peserta;
         document.getElementById('totalCheck').innerText = data.total_check;
         document.getElementById('totalUncheck').innerText = data.total_uncheck;
 
+        // Bandingkan data lama dengan data baru untuk menampilkan notifikasi
+        const storedData = JSON.parse(sessionStorage.getItem('lastData')) || {
+            total_peserta: 0,
+            total_check: 0,
+            total_uncheck: 0
+        };
+
+        if (data.total_peserta !== storedData.total_peserta ||
+            data.total_check !== storedData.total_check ||
+            data.total_uncheck !== storedData.total_uncheck) {
+            playAudio();
+
+            // Tampilkan notifikasi menggunakan SweetAlert2
+            Swal.fire({
+                title: 'Fun Run - Lari Antar Geng',
+                html: `Total Peserta: ${data.total_peserta}<br>Total Check: ${data.total_check}<br>Total Uncheck: ${data.total_uncheck}`,
+                icon: 'info',
+                showConfirmButton: false, // Tidak ada tombol konfirmasi
+                timer: 5000, // Durasi notifikasi 5 detik
+                timerProgressBar: true, // Tampilkan progress bar
+                willClose: () => {
+                    // Simpan data terbaru di sessionStorage setelah notifikasi menghilang
+                    sessionStorage.setItem('lastData', JSON.stringify(data));
+                    window.location.reload(); // Reload halaman setelah notifikasi menghilang
+                }
+            });
+        }
     };
 
     eventSource.onerror = function(event) {
-        console.error('Error with SSE:', event);
+        console.error('Error dengan SSE:', event);
     };
+
+    // Function to play audio
+    function playAudio() {
+        audio.play().catch(function(error) {
+            console.error('Error playing audio:', error);
+        });
+    }
 });
-
-document.addEventListener('DOMContentLoaded', function() {
-	const audio = document.getElementById('audio');
-
-	const eventSource = new EventSource('sse.php');
-	// Ambil data terakhir dari sessionStorage
-	const storedData = JSON.parse(sessionStorage.getItem('lastData')) || {
-		total_peserta: 0,
-		total_check: 0,
-		total_uncheck: 0
-	};
-
-	eventSource.onmessage = function(event) {
-		
-		const data = JSON.parse(event.data);
-
-		// Update statistik di halaman
-		document.getElementById('totalPeserta').innerText = data.total_peserta;
-		document.getElementById('totalCheck').innerText = data.total_check;
-		document.getElementById('totalUncheck').innerText = data.total_uncheck;
-
-		// Bandingkan data lama dengan data baru
-		if (data.total_peserta !== storedData.total_peserta ||
-			data.total_check !== storedData.total_check ||
-			data.total_uncheck !== storedData.total_uncheck) {
-			playAudio()
-			// Tampilkan notifikasi menggunakan SweetAlert2
-			Swal.fire({
-				title: 'Fun Run - Lari Antar Geng',
-				text: `Total Peserta: ${data.total_peserta}\nTotal Check: ${data.total_check}\nTotal Uncheck: ${data.total_uncheck}`,
-				icon: 'info',
-				showConfirmButton: false, // Tidak ada tombol konfirmasi
-				timer: 5000, // Durasi notifikasi 5 detik
-				timerProgressBar: true, // Tampilkan progress bar
-				willClose: () => {
-					// Simpan data terbaru di sessionStorage setelah notifikasi menghilang
-					sessionStorage.setItem('lastData', JSON.stringify(data));
-					window.location.reload(); // Reload halaman setelah notifikasi menghilang
-				}
-			});
-		}
-	};
-
-	eventSource.onerror = function(event) {
-		console.error('Error dengan SSE:', event);
-	};
-});
-
-// Function to play audio
-function playAudio() {
-	audio.play().catch(function(error) {
-		console.error('Error playing audio:', error);
-	});
-}
 
 $(document).ready(function() {
 	// table initialize

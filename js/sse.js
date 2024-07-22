@@ -80,26 +80,25 @@ document.addEventListener('DOMContentLoaded', function() {
         // Bandingkan data lama dengan data baru untuk menampilkan notifikasi
         const storedData = JSON.parse(sessionStorage.getItem('lastData')) || {};
 
-        if (data.max_timestamp !== storedData.max_timestamp ||
-            data.nama_geng !== storedData.nama_geng ||
-            data.bib_number !== storedData.bib_number) {
+        if (data.max_timestamp_data && data.max_timestamp_data.max_timestamp !== storedData.max_timestamp ||
+            data.max_timestamp_data.nama_geng !== storedData.nama_geng ||
+            data.max_timestamp_data.BIB_NUMBER !== storedData.bib_number) {
             playAudio();
-
+        
             // Tampilkan notifikasi menggunakan SweetAlert2
             Swal.fire({
                 title: 'Fun Run - Lari Antar Geng',
-                html: `Geng's ${data.nama_geng}<br>BIB Number ${data.bib_number} Telah Check In<br>Timestamp: ${data.max_timestamp}`,
+                html: `Geng's ${data.max_timestamp_data.nama_geng}<br>BIB Number ${data.max_timestamp_data.BIB_NUMBER} Telah Check In<br>Timestamp: ${data.max_timestamp_data.max_timestamp}`,
                 icon: 'info',
                 showConfirmButton: false, // Tidak ada tombol konfirmasi
                 timer: 5000, // Durasi notifikasi 5 detik
                 timerProgressBar: true, // Tampilkan progress bar
                 willClose: () => {
-                // Simpan data terbaru di sessionStorage setelah notifikasi menghilang
-                sessionStorage.setItem('lastData', JSON.stringify(data));
+                    // Simpan data terbaru di sessionStorage setelah notifikasi menghilang
+                    sessionStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
                 }
             });
-        }
-
+        }        
     };
 
     eventSource.onerror = function(event) {

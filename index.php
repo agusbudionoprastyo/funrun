@@ -125,58 +125,66 @@
                 </li>
             </ul>
 
-
-
             <div class="table-data">
-                <div class="order">
-                    <div class="head">
-                        <h3>Daftar Peserta</h3>
-						<button type="button" id="printSelectedBtn" class="btn-download">
-							<i class='bx bxs-printer' style="font-size:24px"></i>
-						</button>
-                    </div>
-                    <table id="example" class="display" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th style="text-align: left;">
-                                        Nama Geng
-                                    </th>
-                                    <th style="text-align: center;">
-										Nomor BIB
-									</th>
-                                    <th style="text-align: center;">
-                                        Status
-                                    </th>
-                                    <th style="text-align: center;">
-                                    <input type="checkbox" id="selectAllCheckbox" style="display:none">
-										<label for="selectAllCheckbox"  style="font-size:24px"><i class='bx bx-check-double'></i></label>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-							<?php while($row = $result_data->fetch_assoc()): ?>
-                            <tr>
-                                <td>
-                                    <?php echo $row["NAMA_GENG"]; ?>
-                                </td>
-                                <td>
-									<?php echo $row["BIB_NUMBER"]; ?>
+				<div class="order">
+					<div class="head">
+						<h3>Recent Orders</h3>
+						<i class='bx bx-search' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>User</th>
+								<th>Date Order</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>John Doe</p>
 								</td>
-                                <td>
-                                    <?php if ($row["status"] === 'checked'): ?>
-									<?php echo $row["timestamp"]; ?>
-                                    <?php else: ?>  
-                                        <i class='bx bxs-info-circle'></i>
-                                    <?php endif; ?>
+								<td>01-10-2021</td>
+								<td><span class="status completed">Completed</span></td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>John Doe</p>
 								</td>
-                                <td>
-                                    <input type="checkbox" class="print-checkbox">    
-                                </td>
-                            </tr>
-                        	<?php endwhile; ?>
-                            </tbody>
-                        </table>
-                    </div>
+								<td>01-10-2021</td>
+								<td><span class="status pending">Pending</span></td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status process">Process</span></td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status pending">Pending</span></td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status completed">Completed</span></td>
+							</tr>
+						</tbody>
+					</table>
+                </div>
+
                         <div class="todo">
                         <div class="head">
                             <h3>Fastest Check In</h3>

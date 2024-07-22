@@ -44,7 +44,7 @@ function getData($conn) {
     $total_uncheck = ($result_uncheck && $result_uncheck->num_rows > 0) ? $result_uncheck->fetch_assoc()["total_uncheck"] : 0;
 
     return [
-        'data' => $data
+        'data' => $data,
         'total_peserta' => $total_peserta,
         'total_check' => $total_check,
         'total_uncheck' => $total_uncheck

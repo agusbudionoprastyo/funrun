@@ -179,24 +179,24 @@
                         </div>
                         <ul id="medal-list" class="todo-list">
                         <li class="first">
-                            <p>1<sup>st</sup>.</p>
-                            <i class='bx bx-medal'></i> 
+                            <!-- <p>1<sup>st</sup>.</p>
+                            <i class='bx bx-medal'></i>  -->
                         </li>
                         <li class="second">
-                            <p>2<sup>nd</sup>.</p>
-                            <i class='bx bx-medal'></i> 
+                            <!-- <p>2<sup>nd</sup>.</p>
+                            <i class='bx bx-medal'></i>  -->
                         </li>
                         <li class="third">
-                            <p>3<sup>rd</sup>.</p>
-                            <i class='bx bx-medal'></i> 
+                            <!-- <p>3<sup>rd</sup>.</p>
+                            <i class='bx bx-medal'></i>  -->
                         </li>
                         <li class="fourth">
-                            <p>4<sup>th</sup>.</p>
-                            <i class='bx bx-medal'></i> 
+                            <!-- <p>4<sup>th</sup>.</p>
+                            <i class='bx bx-medal'></i>  -->
                         </li>
                         <li class="fifth">
-                            <p>5<sup>th</sup>.</p>
-                            <i class='bx bx-medal'></i> 
+                            <!-- <p>5<sup>th</sup>.</p>
+                            <i class='bx bx-medal'></i>  -->
                         </li>
                     </ul>
 

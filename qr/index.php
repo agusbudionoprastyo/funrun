@@ -8,11 +8,11 @@
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-        body, html {
+        /* body, html {
             margin: 0;
             padding: 0;
             overflow: hidden;
-        }
+        } */
         #landscapeBlocker {
             display: none;
             position: fixed;
@@ -33,7 +33,7 @@
     </style>
 </head>
 <body>
-<div id="reader"></div>
+<div id="reader" width="600px"></div>
 <audio id="audio" src="interface.wav"></audio>
 <div id="landscapeBlocker">
     <img src="block.gif" alt="Please rotate your device to portrait mode">
@@ -41,7 +41,14 @@
 
     <script>
         // Initialize
-        let html5QrCode = new Html5Qrcode('reader');
+        // let html5QrCode = new Html5Qrcode('reader');
+
+        let html5QrcodeScanner = new Html5QrcodeScanner(
+        "reader",
+        { fps: 10, qrbox: {width: 250, height: 250} },
+        /* verbose= */ false);
+        html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+        
         let audio = document.getElementById('audio');
         let scanningPaused = false;
 
@@ -122,17 +129,17 @@
             });
         }
 
-        // Function to start the QR code scanner
-        function startQrScanner() {
-            html5QrCode.start(
-                { facingMode: 'environment' },
-                { fps: 10, qrbox: 250 }, // Removed aspectRatio parameter
-                onScanSuccess
-            ).catch(function(err) {
-                console.error('Error initializing QR Code scanner:', err);
-                alert('Error initializing QR Code scanner: ' + err);
-            });
-        }
+        // // Function to start the QR code scanner
+        // function startQrScanner() {
+        //     html5QrCode.start(
+        //         { facingMode: 'environment' },
+        //         { fps: 10, qrbox: 250 }, // Removed aspectRatio parameter
+        //         onScanSuccess
+        //     ).catch(function(err) {
+        //         console.error('Error initializing QR Code scanner:', err);
+        //         alert('Error initializing QR Code scanner: ' + err);
+        //     });
+        // }
 
         // Function to show or hide the landscape blocker
         function updateLandscapeBlocker() {

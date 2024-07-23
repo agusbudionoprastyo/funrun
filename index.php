@@ -120,9 +120,9 @@
 					<table id="checkin-table">
 						<thead>
 							<tr>
-								<th>Timestamp</th>
-								<th>Geng's</th>
-								<th>BIB Number</th>
+								<th>TIMESTAMP</th>
+								<th>GENG's</th>
+								<th>BIB-NUMBER</th>
 							</tr>
 						</thead>
 						<tbody id="checkin-table-body">

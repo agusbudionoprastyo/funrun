@@ -74,46 +74,26 @@ document.addEventListener('DOMContentLoaded', function() {
         // Call the function to populate the table with initial data
         populateCheckinTable(data);
 
-        // Update statistik
-        document.getElementById('totalPeserta').innerText = data.total_peserta;
-        document.getElementById('totalCheck').innerText = data.total_check;
-        document.getElementById('totalUncheck').innerText = data.total_uncheck;
+   // Update statistik
+    document.getElementById('totalPeserta').innerText = data.total_peserta;
+    document.getElementById('totalCheck').innerText = data.total_check;
+    document.getElementById('totalUncheck').innerText = data.total_uncheck;
 
-        // // Bandingkan data lama dengan data baru untuk menampilkan notifikasi
-        // const storedData = JSON.parse(sessionStorage.getItem('lastData')) || {
-        //     total_peserta: 0,
-        //     total_check: 0,
-        //     total_uncheck: 0
-        // };
+    // Ambil data terakhir dari sessionStorage
+    const storedData = JSON.parse(sessionStorage.getItem('lastData'));
 
-        // if (data.total_peserta !== storedData.total_peserta ||
-        //     data.total_check !== storedData.total_check ||
-        //     data.total_uncheck !== storedData.total_uncheck) {
-        //     playAudio();
+    // Bandingkan dengan data saat ini
+    if (data.max_timestamp_data &&
+        (!storedData ||
+        data.max_timestamp_data.max_timestamp !== storedData.max_timestamp ||
+        data.max_timestamp_data.NAMA_GENG !== storedData.NAMA_GENG ||
+        data.max_timestamp_data.BIB_NUMBER !== storedData.BIB_NUMBER)) {
+        
+        // Update data terbaru di sessionStorage
+        sessionStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
 
-        //     // Tampilkan notifikasi menggunakan SweetAlert2
-        //     Swal.fire({
-        //         title: 'Fun Run - Lari Antar Geng',
-        //         html: `Total Peserta: ${data.total_peserta}<br>Total Check: ${data.total_check}<br>Total Uncheck: ${data.total_uncheck}`,
-        //         icon: 'info',
-        //         showConfirmButton: false, // Tidak ada tombol konfirmasi
-        //         timer: 5000, // Durasi notifikasi 5 detik
-        //         timerProgressBar: true, // Tampilkan progress bar
-        //         willClose: () => {
-        //             // Simpan data terbaru di sessionStorage setelah notifikasi menghilang
-        //             sessionStorage.setItem('lastData', JSON.stringify(data));
-        //             window.location.reload(); // Reload halaman setelah notifikasi menghilang
-        //         }
-        //     });
-        // }
-
-       const storedData = JSON.parse(sessionStorage.getItem('lastData')) || {};
-
-        if (data.max_timestamp_data && (
-            data.max_timestamp_data.max_timestamp !== storedData.max_timestamp ||
-            data.max_timestamp_data.NAMA_GENG !== storedData.NAMA_GENG ||
-            data.max_timestamp_data.BIB_NUMBER !== storedData.BIB_NUMBER
-        )) {
+        // Memastikan tidak menampilkan SweetAlert pada inisialisasi pertama kali
+        if (storedData && storedData.max_timestamp) {
             playAudio();
 
             // Tampilkan notifikasi menggunakan SweetAlert2
@@ -126,8 +106,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 timerProgressBar: true, // Tampilkan progress bar
             });
         }
+    }
     // Simpan data terbaru di sessionStorage
-    sessionStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
+    // sessionStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
     };
 
     eventSource.onerror = function(event) {

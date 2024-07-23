@@ -124,12 +124,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 showConfirmButton: false, // Tidak ada tombol konfirmasi
                 timer: 10000, // Durasi notifikasi 10 detik
                 timerProgressBar: true, // Tampilkan progress bar
-                willClose: () => {
-                    // Simpan data terbaru di sessionStorage setelah notifikasi menghilang
-                    sessionStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
-                }
             });
         }
+    // Simpan data terbaru di sessionStorage
+    sessionStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
     };
 
     eventSource.onerror = function(event) {

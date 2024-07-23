@@ -531,6 +531,9 @@ body {
 #content main .table-data .todo .todo-list li.fifth {
 	border-left: 10px solid var(--fifth);
 }
+#content main .table-data .todo .todo-list li.sixth {
+	border-left: 10px solid var(--dark-grey);
+}
 #content main .table-data .todo .todo-list li:last-child {
 	margin-bottom: 0;
 }

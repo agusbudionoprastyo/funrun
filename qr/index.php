@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FunRun</title>
     <link rel="manifest" href="./manifest.json">
-    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script src="https://raw.githubusercontent.com/zxing-js/library/main/zxing.min.js" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- <style>
-        /* body, html {
+    <style>
+        body, html {
             margin: 0;
             padding: 0;
             overflow: hidden;
-        } */
+        }
         #landscapeBlocker {
             display: none;
             position: fixed;
@@ -30,22 +30,18 @@
             max-width: 50%;
             max-height: 50%;
         }
-    </style> -->
+    </style>
 </head>
 <body>
-<div id="reader" width="600px"></div>
+<div id="reader"></div>
 <audio id="audio" src="interface.wav"></audio>
-<!-- <div id="landscapeBlocker">
+<div id="landscapeBlocker">
     <img src="block.gif" alt="Please rotate your device to portrait mode">
-</div> -->
+</div>
 
     <script>
-        // Initialize
-        let html5QrCode = new Html5Qrcode('reader');
-        // let html5QrcodeScanner = new Html5QrcodeScanner('reader');
-
-        let audio = document.getElementById('audio');
-        let scanningPaused = false;
+        // Initialize ZXing
+        let zxing = null;
 
         // Function to handle QR code detection
         function onScanSuccess(qrCodeMessage) {
@@ -126,39 +122,41 @@
 
         // Function to start the QR code scanner
         function startQrScanner() {
-            html5QrCode.start(
-                { facingMode: 'environment' },
-                { fps: 10, qrbox: 250 }, // Removed aspectRatio parameter
-                onScanSuccess
-            ).catch(function(err) {
-                console.error('Error initializing QR Code scanner:', err);
-                alert('Error initializing QR Code scanner: ' + err);
-            });
+            zxing = new ZXing.BrowserQRCodeReader();
+            zxing.getVideoInputDevices()
+                .then(devices => {
+                    let videoDeviceId = devices[0].deviceId;
+                    return zxing.decodeFromVideoDevice(videoDeviceId, 'reader', onScanSuccess);
+                })
+                .catch(function(err) {
+                    console.error('Error initializing QR Code scanner:', err);
+                    alert('Error initializing QR Code scanner: ' + err);
+                });
         }
 
-        // // Function to show or hide the landscape blocker
-        // function updateLandscapeBlocker() {
-        //     let landscapeBlocker = document.getElementById('landscapeBlocker');
-        //     if (window.orientation === 90 || window.orientation === -90) {
-        //         landscapeBlocker.style.display = 'flex';
-        //         html5QrCode.stop().catch(function(err) {
-        //             console.error('Error stopping QR Code scanner:', err);
-        //         });
-        //     } else {
-        //         landscapeBlocker.style.display = 'none';
-        //         startQrScanner();
-        //     }
-        // }
+        // Function to show or hide the landscape blocker
+        function updateLandscapeBlocker() {
+            let landscapeBlocker = document.getElementById('landscapeBlocker');
+            if (window.orientation === 90 || window.orientation === -90) {
+                landscapeBlocker.style.display = 'flex';
+                if (zxing) {
+                    zxing.stopAsyncDecode();
+                }
+            } else {
+                landscapeBlocker.style.display = 'none';
+                startQrScanner();
+            }
+        }
 
-        // // Start scanning when document is loaded
-        // document.addEventListener('DOMContentLoaded', function() {
-        //     updateLandscapeBlocker();
-        // });
+        // Start scanning when document is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            updateLandscapeBlocker();
+        });
 
-        // // Handle orientation change
-        // window.addEventListener('orientationchange', function() {
-        //     updateLandscapeBlocker();
-        // });
+        // Handle orientation change
+        window.addEventListener('orientationchange', function() {
+            updateLandscapeBlocker();
+        });
     </script>
 
 <script>

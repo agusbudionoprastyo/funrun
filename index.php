@@ -113,22 +113,26 @@
             </ul>
 
             <div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Recent</h3>
-					</div>
-					<table id="checkin-table">
-						<thead>
-							<tr>
-								<th>TIMESTAMP</th>
-								<th>GENG's</th>
-								<th>BIB-NUMBER</th>
-							</tr>
-						</thead>
-						<tbody id="checkin-table-body">
-						</tbody>
-					</table>
+                <div class="order">
+                    <div class="head">
+                        <h3>Recent</h3>
+                    </div>
+                    <div class="table-wrapper">
+                        <table id="checkin-table">
+                            <thead>
+                                <tr>
+                                    <th>TIMESTAMP</th>
+                                    <th>GENG's</th>
+                                    <th>BIB-NUMBER</th>
+                                </tr>
+                            </thead>
+                            <tbody id="checkin-table-body">
+                                <!-- Your table rows will be dynamically added here -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+            </div>
 
                     <div class="todo">
                         <div class="head">

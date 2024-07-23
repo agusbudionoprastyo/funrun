@@ -134,8 +134,6 @@
             });
         }
 
-
-
         // Function to show or hide the landscape blocker
         function updateLandscapeBlocker() {
             let landscapeBlocker = document.getElementById('landscapeBlocker');

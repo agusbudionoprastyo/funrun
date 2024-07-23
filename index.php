@@ -132,7 +132,7 @@
 
                     <div class="todo">
                         <div class="head">
-                            <h3>Fastest Check In</h3>
+                            <h3>Fastest Check-In Geng's</h3>
                         </div>
                                 <ul id="medal-list" class="todo-list">
                             <li class="first">

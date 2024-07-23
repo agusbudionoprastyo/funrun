@@ -138,7 +138,9 @@ function populateCheckinTable(data) {
 
         // Creating and appending cells for each data point
         const timestampCell = document.createElement('td');
-        timestampCell.textContent = entry.timestamp;
+        // Split timestamp to separate date and time, then take time part
+        const timePart = entry.timestamp.split(' ')[1]; // Assuming timestamp format is "YYYY-MM-DD HH:MM:SS"
+        timestampCell.textContent = timePart; // Display only the time part
         row.appendChild(timestampCell);
 
         const gengCell = document.createElement('td');

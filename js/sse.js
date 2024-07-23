@@ -45,15 +45,19 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		}
 
-        // Function to populate the table with checked data
-        function populateCheckinTable(data) {
-            const tableBody = document.getElementById('checkin-table-body');
-            tableBody.innerHTML = ''; // Clear existing rows
+        let currentIndex = 0;
+        const batchSize = 5;
+        const totalRows = data.checked_data.length;
 
-            data.checked_data.forEach(entry => {
+        function populateCheckinTable(data, startIndex, batchSize) {
+            const tableBody = document.getElementById('checkin-table-body');
+            tableBody.innerHTML = '';
+
+            const dataSlice = data.checked_data.slice(startIndex, startIndex + batchSize);
+
+            dataSlice.forEach(entry => {
                 const row = document.createElement('tr');
 
-                // Creating and appending cells for each data point
                 const timestampCell = document.createElement('td');
                 timestampCell.textContent = entry.timestamp;
                 row.appendChild(timestampCell);
@@ -66,13 +70,58 @@ document.addEventListener('DOMContentLoaded', function() {
                 bibCell.textContent = entry.BIB_NUMBER;
                 row.appendChild(bibCell);
 
-                // Append the row to the table body
                 tableBody.appendChild(row);
             });
         }
 
-        // Call the function to populate the table with initial data
-        populateCheckinTable(data);
+        function scrollUpAndLoadNext() {
+            const tableBody = document.getElementById('checkin-table-body');
+            tableBody.classList.add('scroll-up-animation');
+
+            setTimeout(() => {
+                populateCheckinTable(data, currentIndex, batchSize);
+                currentIndex += batchSize;
+
+                if (currentIndex >= totalRows) {
+                    currentIndex = 0; // Kembali ke indeks awal jika sudah mencapai akhir data
+                }
+
+                tableBody.classList.remove('scroll-up-animation');
+            }, 500); // Sesuaikan jeda sesuai kebutuhan
+        }
+
+        // Fungsi untuk autoscroll setiap 10 detik
+        setInterval(scrollUpAndLoadNext, 10000); // 10 detik
+
+
+        // // Function to populate the table with checked data
+        // function populateCheckinTable(data) {
+        //     const tableBody = document.getElementById('checkin-table-body');
+        //     tableBody.innerHTML = ''; // Clear existing rows
+
+        //     data.checked_data.forEach(entry => {
+        //         const row = document.createElement('tr');
+
+        //         // Creating and appending cells for each data point
+        //         const timestampCell = document.createElement('td');
+        //         timestampCell.textContent = entry.timestamp;
+        //         row.appendChild(timestampCell);
+
+        //         const gengCell = document.createElement('td');
+        //         gengCell.textContent = entry.NAMA_GENG;
+        //         row.appendChild(gengCell);
+
+        //         const bibCell = document.createElement('td');
+        //         bibCell.textContent = entry.BIB_NUMBER;
+        //         row.appendChild(bibCell);
+
+        //         // Append the row to the table body
+        //         tableBody.appendChild(row);
+        //     });
+        // }
+
+        // // Call the function to populate the table with initial data
+        // populateCheckinTable(data);
 
    // Update statistik
     document.getElementById('totalPeserta').innerText = data.total_peserta;

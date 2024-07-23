@@ -117,7 +117,7 @@
 					<div class="head">
 						<h3>Recent</h3>
 					</div>
-					<table>
+					<table id="checkin-table">
 						<thead>
 							<tr>
 								<th>Timestamp</th>
@@ -125,15 +125,7 @@
 								<th>BIB Number</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<p>Alpha Runners</p>
-								</td>
-								<td>01-10-2021 00:00:00</td>
-								<td><span>0001</span></td>
-							</tr>
-							<tr>
+						<tbody id="checkin-table-body">
 						</tbody>
 					</table>
                 </div>

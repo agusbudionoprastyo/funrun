@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Query to fetch data for table
-$sql_data = "SELECT * FROM Funrun";
+$sql_data = "SELECT * FROM Funrun WHERE status = 'checked' ORDER BY 'timestamp' ASC";
 $result_data = $conn->query($sql_data);
 
 $data = array();

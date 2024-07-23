@@ -115,7 +115,8 @@
             <div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3>Recent</h3>
+						<!-- <h3>Recent</h3> -->
+                        <h3 id="current-time"></h3>
 					</div>
 					<table id="checkin-table">
 						<thead>

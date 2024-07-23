@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update UI for top 5 fastest check-ins
         var medalList = document.getElementById('medal-list');
 				// Contoh penggunaan:
-				for (var i = 0; i < 5; i++) {
+				for (var i = 0; i < 6; i++) {
 					var position = i + 1;
 					var suffix = getRankSuffix(position);
 					var listItem = medalList.children[i];
@@ -125,13 +125,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Function to update current time
+function updateCurrentTime() {
+    var currentTimeElement = document.getElementById('current-time');
+    var currentTime = new Date().toLocaleTimeString();
+    currentTimeElement.textContent = currentTime;
+}
+
+// Update current time initially
+updateCurrentTime();
+
+// Update current time every second (1000 milliseconds)
+setInterval(updateCurrentTime, 1000);
+
 // Function to populate the table with checked data
 function populateCheckinTable(data) {
     const tableBody = document.getElementById('checkin-table-body');
     tableBody.innerHTML = ''; // Clear existing rows
 
     // Limit the number of rows to display to 5
-    const rowsToShow = data.slice(0, 5);
+    const rowsToShow = data.slice(0, 6);
 
     rowsToShow.forEach(entry => {
         const row = document.createElement('tr');

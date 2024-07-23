@@ -444,8 +444,6 @@ body {
 #content main .table-data .order {
 	flex-grow: 1;
 	flex-basis: 500px;
-	max-height: 250px; /* Adjust this value as needed */
-	overflow-y: auto;
 }
 #content main .table-data .order table {
 	width: 100%;

@@ -45,34 +45,67 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		}
 
-        // Function to populate the table with checked data
-        function populateCheckinTable(data) {
-            const tableBody = document.getElementById('checkin-table-body');
-            tableBody.innerHTML = ''; // Clear existing rows
+        // // Function to populate the table with checked data
+        // function populateCheckinTable(data) {
+        //     const tableBody = document.getElementById('checkin-table-body');
+        //     tableBody.innerHTML = ''; // Clear existing rows
 
-            data.checked_data.forEach(entry => {
-                const row = document.createElement('tr');
+        //     data.checked_data.forEach(entry => {
+        //         const row = document.createElement('tr');
 
-                // Creating and appending cells for each data point
-                const timestampCell = document.createElement('td');
-                timestampCell.textContent = entry.timestamp;
-                row.appendChild(timestampCell);
+        //         // Creating and appending cells for each data point
+        //         const timestampCell = document.createElement('td');
+        //         timestampCell.textContent = entry.timestamp;
+        //         row.appendChild(timestampCell);
 
-                const gengCell = document.createElement('td');
-                gengCell.textContent = entry.NAMA_GENG;
-                row.appendChild(gengCell);
+        //         const gengCell = document.createElement('td');
+        //         gengCell.textContent = entry.NAMA_GENG;
+        //         row.appendChild(gengCell);
 
-                const bibCell = document.createElement('td');
-                bibCell.textContent = entry.BIB_NUMBER;
-                row.appendChild(bibCell);
+        //         const bibCell = document.createElement('td');
+        //         bibCell.textContent = entry.BIB_NUMBER;
+        //         row.appendChild(bibCell);
 
-                // Append the row to the table body
-                tableBody.appendChild(row);
-            });
-        }
+        //         // Append the row to the table body
+        //         tableBody.appendChild(row);
+        //     });
+        // }
 
-        // Call the function to populate the table with initial data
-        populateCheckinTable(data);
+        // // Call the function to populate the table with initial data
+        // populateCheckinTable(data);
+
+    // Function to populate the table with checked data
+    function populateCheckinTable(data) {
+        const tableBody = document.getElementById('checkin-table-body');
+        tableBody.innerHTML = ''; // Clear existing rows
+
+        // Limit the number of rows to display to 5
+        const rowsToShow = data.checked_data.slice(0, 5);
+
+        rowsToShow.forEach(entry => {
+            const row = document.createElement('tr');
+
+            // Creating and appending cells for each data point
+            const timestampCell = document.createElement('td');
+            timestampCell.textContent = entry.timestamp;
+            row.appendChild(timestampCell);
+
+            const gengCell = document.createElement('td');
+            gengCell.textContent = entry.NAMA_GENG;
+            row.appendChild(gengCell);
+
+            const bibCell = document.createElement('td');
+            bibCell.textContent = entry.BIB_NUMBER;
+            row.appendChild(bibCell);
+
+            // Append the row to the table body
+            tableBody.appendChild(row);
+        });
+    }
+
+    // Call the function to populate the table with initial data
+    populateCheckinTable(data);
+
 
    // Update statistik
     document.getElementById('totalPeserta').innerText = data.total_peserta;

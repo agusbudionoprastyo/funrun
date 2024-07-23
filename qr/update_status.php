@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Memeriksa apakah BIB_NUMBER ada dalam tabel
-    $checkStmt = $conn->prepare("SELECT COUNT(*) FROM Funrun WHERE BIB_NUMBER = ?");
+    $checkStmt = $conn->prepare("SELECT COUNT(*) FROM Funrun WHERE BIB_NUMBER = ? AND timestamp IS NULL");
     $checkStmt->bind_param('s', $bibNumber);
     $checkStmt->execute();
     $checkStmt->bind_result($count);
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->close();
     } else {
         // BIB_NUMBER tidak ditemukan
-        echo json_encode(['success' => false, 'error' => 'Nomor BIB tidak ditemukan']);
+        echo json_encode(['success' => false, 'error' => 'NOMOR BIB sudah melakukan Check In atau tidak ditemukan']);
     }
 
     $conn->close();

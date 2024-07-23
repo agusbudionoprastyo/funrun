@@ -32,7 +32,16 @@ function getData($conn) {
     $nama_geng = $max_timestamp_data['NAMA_GENG'] ?? null;
     $bib_number = $max_timestamp_data['BIB_NUMBER'] ?? null;
 
-    
+    // Query SQL untuk mengambil data dari tabel Funrun
+    $sql_checked = "SELECT * FROM Funrun WHERE status = 'checked' ORDER BY timestamp ASC";
+    $result_checked = $conn->query($sql_checked);
+
+    $checked_data = ($result_checked && $result_checked->num_rows > 0) ? $result_checked->fetch_assoc() : null;
+
+    $timestamp = $checked_data['timestamp'] ?? null;
+    $nama_geng = $checked_data['NAMA_GENG'] ?? null;
+    $bib_number = $checked_data['BIB_NUMBER'] ?? null;
+    $status = $checked_data['status'] ?? null;
  
     // Query untuk mengambil fastest_checkin
     $sql_fastest_checkin = "SELECT NAMA_GENG, last_timestamp
@@ -71,6 +80,12 @@ function getData($conn) {
             'NAMA_GENG' => $nama_geng,
             'BIB_NUMBER' => $bib_number,
             'max_timestamp' => $max_timestamp
+        ],
+        'checked_data' => [
+            'timestamp' => $timestamp,
+            'NAMA_GENG' => $nama_geng,
+            'BIB_NUMBER' => $bib_number,
+            'status' => $status
         ],
         'fastest_checkin' => $fastest_checkin,
         'total_peserta' => $total_peserta,

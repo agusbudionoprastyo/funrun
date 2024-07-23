@@ -120,8 +120,8 @@
 					<table>
 						<thead>
 							<tr>
-								<th>Geng's</th>
 								<th>Timestamp</th>
+								<th>Geng's</th>
 								<th>BIB Number</th>
 							</tr>
 						</thead>

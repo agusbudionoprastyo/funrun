@@ -124,7 +124,7 @@
 
         // Function to start the QR code scanner with the appropriate aspect ratio
         function startQrScanner() {
-            let aspectRatio = (window.orientation === 90 || window.orientation === -90) ? 9/16 : 16/9;
+            let aspectRatio = window.matchMedia("(orientation: portrait)").matches ? 9/18 : 18/9;
             html5QrCode.start(
                 { facingMode: 'environment' },
                 { fps: 10, qrbox: 250, aspectRatio: aspectRatio },
@@ -134,6 +134,7 @@
                 alert('Error initializing QR Code scanner: ' + err);
             });
         }
+
 
         // Function to show or hide the landscape blocker
         function updateLandscapeBlocker() {

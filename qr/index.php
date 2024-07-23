@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FunRun</title>
     <link rel="manifest" href="./manifest.json">
-    <script src="https://raw.githubusercontent.com/zxing-js/library/main/zxing.min.js" type="text/javascript"></script>
+    <!-- loading ZXingBrowser via UNPKG -->
+    <script type="text/javascript" src="https://unpkg.com/@zxing/browser@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         body, html {

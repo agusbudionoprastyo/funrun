@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FunRun</title>
     <link rel="manifest" href="./manifest.json">
-    <!-- loading ZXingBrowser via UNPKG -->
-    <script type="text/javascript" src="https://unpkg.com/@zxing/browser@latest"></script>
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         body, html {
@@ -41,8 +40,10 @@
 </div>
 
     <script>
-        // Initialize ZXing
-        let zxing = null;
+        // Initialize
+        let html5QrCode = new Html5Qrcode('reader');
+        let audio = document.getElementById('audio');
+        let scanningPaused = false;
 
         // Function to handle QR code detection
         function onScanSuccess(qrCodeMessage) {
@@ -121,18 +122,17 @@
             });
         }
 
-        // Function to start the QR code scanner
+        // Function to start the QR code scanner with the appropriate aspect ratio
         function startQrScanner() {
-            zxing = new ZXing.BrowserQRCodeReader();
-            zxing.getVideoInputDevices()
-                .then(devices => {
-                    let videoDeviceId = devices[0].deviceId;
-                    return zxing.decodeFromVideoDevice(videoDeviceId, 'reader', onScanSuccess);
-                })
-                .catch(function(err) {
-                    console.error('Error initializing QR Code scanner:', err);
-                    alert('Error initializing QR Code scanner: ' + err);
-                });
+            let aspectRatio = (window.orientation === 90 || window.orientation === -90) ? 9/18 : 18/9;
+            html5QrCode.start(
+                { facingMode: 'environment' },
+                { fps: 10, qrbox: 250, aspectRatio: aspectRatio },
+                onScanSuccess
+            ).catch(function(err) {
+                console.error('Error initializing QR Code scanner:', err);
+                alert('Error initializing QR Code scanner: ' + err);
+            });
         }
 
         // Function to show or hide the landscape blocker
@@ -140,9 +140,9 @@
             let landscapeBlocker = document.getElementById('landscapeBlocker');
             if (window.orientation === 90 || window.orientation === -90) {
                 landscapeBlocker.style.display = 'flex';
-                if (zxing) {
-                    zxing.stopAsyncDecode();
-                }
+                html5QrCode.stop().catch(function(err) {
+                    console.error('Error stopping QR Code scanner:', err);
+                });
             } else {
                 landscapeBlocker.style.display = 'none';
                 startQrScanner();

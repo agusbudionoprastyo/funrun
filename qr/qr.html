@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+    <!-- Load ZXing library -->
+    <script src="node_modules/@zxing/library/umd/index.js"></script>
+</head>
+<body>
+    <h1>Web QR Code Scanner</h1>
+    <video id="preview" style="width:100%;max-width:600px;"></video>
+    <script>
+        // Run the scanner when the page is fully loaded
+        document.addEventListener("DOMContentLoaded", function(event) {
+            let video = document.getElementById('preview');
+            const codeReader = new ZXing.BrowserQRCodeReader();
+            
+            // Request permission to access the camera
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+                .then(function(stream) {
+                    video.srcObject = stream;
+                    video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+                    video.play();
+                    codeReader.decodeFromVideoDevice(undefined, 'preview', (result, err) => {
+                        if (result) {
+                            console.log('Found QR code:', result);
+                            alert('Found QR code: ' + result.text);
+                        }
+                        if (err && !(err instanceof ZXing.NotFoundException)) {
+                            console.error(err);
+                            alert('Error decoding QR code: ' + err);
+                        }
+                    });
+                })
+                .catch(function(err) {
+                    console.error('Error accessing camera:', err);
+                    alert('Error accessing camera: ' + err);
+                });
+        });
+    </script>
+</body>
+</html>

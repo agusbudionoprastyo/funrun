@@ -106,6 +106,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 timerProgressBar: true, // Tampilkan progress bar
             });
         }
+        // Call the fetchData function to initiate the data fetching and table population
+        fetchData();
     }
     // Simpan data terbaru di sessionStorage
     // sessionStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));

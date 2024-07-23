@@ -124,10 +124,9 @@
 
         // Function to start the QR code scanner with the appropriate aspect ratio
         function startQrScanner() {
-            let aspectRatio = (window.orientation === 90 || window.orientation === -90) ? 9/18 : 18/9;
             html5QrCode.start(
                 { facingMode: 'environment' },
-                { fps: 10, qrbox: 250, aspectRatio: aspectRatio },
+                { fps: 10, qrbox: 250, aspectRatio: 9/16 },
                 onScanSuccess
             ).catch(function(err) {
                 console.error('Error initializing QR Code scanner:', err);

@@ -98,8 +98,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Tampilkan notifikasi menggunakan SweetAlert2
             Swal.fire({
-                title: 'Fun Run - Lari Antar Geng',
-                html: `Geng's ${data.max_timestamp_data.NAMA_GENG}<br>BIB Number ${data.max_timestamp_data.BIB_NUMBER} Telah Check In<br>Timestamp: ${data.max_timestamp_data.max_timestamp}`,
+                title: data.max_timestamp_data.NAMA_GENG + 'BIB-NUMBER' + data.max_timestamp_data.BIB_NUMBER,
+                html: `Telah Check In<br>Timestamp: ${data.max_timestamp_data.max_timestamp}`,
                 icon: 'info',
                 showConfirmButton: false, // Tidak ada tombol konfirmasi
                 timer: 10000, // Durasi notifikasi 10 detik

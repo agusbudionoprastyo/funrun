@@ -27,8 +27,8 @@
             text-align: center;
         }
         #landscapeBlocker img {
-            max-width: 20%;
-            max-height: 20%;
+            max-width: 50%;
+            max-height: 50%;
         }
     </style>
 </head>

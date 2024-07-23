@@ -122,18 +122,18 @@
             });
         }
 
-        // Function to start the QR code scanner with the appropriate aspect ratio
+        // Function to start the QR code scanner
         function startQrScanner() {
-            let aspectRatio = window.matchMedia("(orientation: portrait)").matches ? 9/18 : 18/9;
             html5QrCode.start(
                 { facingMode: 'environment' },
-                { fps: 10, qrbox: 250, aspectRatio: aspectRatio },
+                { fps: 10, qrbox: 250 }, // Removed aspectRatio parameter
                 onScanSuccess
             ).catch(function(err) {
                 console.error('Error initializing QR Code scanner:', err);
                 alert('Error initializing QR Code scanner: ' + err);
             });
         }
+
 
 
         // Function to show or hide the landscape blocker

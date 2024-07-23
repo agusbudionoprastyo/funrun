@@ -136,11 +136,11 @@ function populateCheckinTable(data) {
 
         // Creating and appending cells for each data point
         const timestampCell = document.createElement('td');
-        timestampCell.textContent = entry.TIMESTAMP;
+        timestampCell.textContent = entry.timestamp;
         row.appendChild(timestampCell);
 
         const gengCell = document.createElement('td');
-        gengCell.textContent = entry.GENGs;
+        gengCell.textContent = entry.NAMA_GENG;
         row.appendChild(gengCell);
 
         const bibCell = document.createElement('td');

@@ -7,7 +7,7 @@
     <link rel="manifest" href="./manifest.json">
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
+    <!-- <style>
         /* body, html {
             margin: 0;
             padding: 0;
@@ -30,14 +30,14 @@
             max-width: 50%;
             max-height: 50%;
         }
-    </style>
+    </style> -->
 </head>
 <body>
 <div id="reader" width="600px"></div>
 <audio id="audio" src="interface.wav"></audio>
-<div id="landscapeBlocker">
+<!-- <div id="landscapeBlocker">
     <img src="block.gif" alt="Please rotate your device to portrait mode">
-</div>
+</div> -->
 
     <script>
         // Initialize
@@ -136,29 +136,29 @@
             });
         }
 
-        // Function to show or hide the landscape blocker
-        function updateLandscapeBlocker() {
-            let landscapeBlocker = document.getElementById('landscapeBlocker');
-            if (window.orientation === 90 || window.orientation === -90) {
-                landscapeBlocker.style.display = 'flex';
-                html5QrCode.stop().catch(function(err) {
-                    console.error('Error stopping QR Code scanner:', err);
-                });
-            } else {
-                landscapeBlocker.style.display = 'none';
-                startQrScanner();
-            }
-        }
+        // // Function to show or hide the landscape blocker
+        // function updateLandscapeBlocker() {
+        //     let landscapeBlocker = document.getElementById('landscapeBlocker');
+        //     if (window.orientation === 90 || window.orientation === -90) {
+        //         landscapeBlocker.style.display = 'flex';
+        //         html5QrCode.stop().catch(function(err) {
+        //             console.error('Error stopping QR Code scanner:', err);
+        //         });
+        //     } else {
+        //         landscapeBlocker.style.display = 'none';
+        //         startQrScanner();
+        //     }
+        // }
 
-        // Start scanning when document is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            updateLandscapeBlocker();
-        });
+        // // Start scanning when document is loaded
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     updateLandscapeBlocker();
+        // });
 
-        // Handle orientation change
-        window.addEventListener('orientationchange', function() {
-            updateLandscapeBlocker();
-        });
+        // // Handle orientation change
+        // window.addEventListener('orientationchange', function() {
+        //     updateLandscapeBlocker();
+        // });
     </script>
 
 <script>

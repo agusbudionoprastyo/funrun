@@ -155,7 +155,7 @@ function populateCheckinTable(data) {
 // AJAX request to fetch data from fetch_data.php
 function fetchData() {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'checked_data.php', true);
+    xhr.open('GET', '../api/checked_data.php', true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             var data = JSON.parse(xhr.responseText);

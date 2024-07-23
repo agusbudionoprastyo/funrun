@@ -41,8 +41,8 @@
 
     <script>
         // Initialize
-        // let html5QrCode = new Html5Qrcode('reader');
-        let html5QrcodeScanner = new Html5QrcodeScanner('reader');
+        let html5QrCode = new Html5Qrcode('reader');
+        // let html5QrcodeScanner = new Html5QrcodeScanner('reader');
 
         let audio = document.getElementById('audio');
         let scanningPaused = false;
@@ -126,7 +126,7 @@
 
         // Function to start the QR code scanner
         function startQrScanner() {
-            html5QrcodeScanner.start(
+            html5QrCode.start(
                 { facingMode: 'environment' },
                 { fps: 10, qrbox: 250 }, // Removed aspectRatio parameter
                 onScanSuccess

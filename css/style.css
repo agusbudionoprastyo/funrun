@@ -615,7 +615,18 @@ body {
 		text-align: center;
 	}
 
-	#checkin-table-body {
-		max-height: 300px; /* Atur ketinggian maksimum tabel di sini */
-		overflow-y: auto; /* Tambahkan scroll vertikal jika melebihi ketinggian maksimum */
-	}	
+/* CSS untuk efek transisi */
+#checkin-table-body {
+    transition: opacity 0.3s ease-in-out; /* Transisi opasitas selama 0.3 detik */
+}
+
+/* Optional: Efek transisi pada baris tabel */
+#checkin-table-body tr {
+    transition: all 0.3s ease-in-out; /* Transisi semua properti selama 0.3 detik */
+    opacity: 0; /* Awalnya atur opasitas menjadi 0 */
+}
+
+/* Opasitas kembali ke 1 ketika baris ditambahkan */
+#checkin-table-body tr.added {
+    opacity: 1;
+}

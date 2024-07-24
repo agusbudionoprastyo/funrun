@@ -628,5 +628,6 @@ body {
 
 /* Opasitas kembali ke 1 ketika baris ditambahkan */
 #checkin-table-body tr.added {
+	transition: all 0.3s ease-in-out; /* Transisi semua properti selama 0.3 detik */
     opacity: 0;
 }

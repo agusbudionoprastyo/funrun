@@ -279,16 +279,6 @@ function populateCheckinTable(data) {
 
         // Append the row to the table body
         tableBody.appendChild(row);
-                // Add 'added' class to apply transition effect
-                row.classList.add('added');
-
-                // Append the row to the table body
-                tableBody.appendChild(row);
-        
-                // Remove 'added' class after transition completes
-                setTimeout(() => {
-                    row.classList.remove('added');
-                }, 300); // Adjust timing to match transition duration (0.3s)
     });
 }
 
@@ -320,6 +310,17 @@ function updateTable() {
 
         // Append the row to the table body
         tableBody.appendChild(row);
+
+        // Add 'added' class to apply transition effect
+        row.classList.add('added');
+
+        // Append the row to the table body
+        tableBody.appendChild(row);
+
+        // Remove 'added' class after transition completes
+        setTimeout(() => {
+            row.classList.remove('added');
+        }, 300); // Adjust timing to match transition duration (0.3s)
     });
 
     // Move startIndex to the next set of rows

@@ -204,7 +204,7 @@ function fetchData() {
 // Call fetchData function to initiate data fetching and table population
 fetchData();
 
-let startIndex = 0; // Indeks dari baris pertama yang akan ditampilkan
+let startIndex = 6; // Indeks dari baris pertama yang akan ditampilkan
 const rowsToShowCount = 6; // Jumlah baris yang akan ditampilkan setiap kali pembaruan
 
 // Fungsi untuk memperbarui tabel dengan baris dari startIndex hingga endIndex
@@ -212,8 +212,8 @@ function updateTable() {
     const tableBody = document.getElementById('checkin-table-body');
     tableBody.innerHTML = ''; // Kosongkan tabel sebelum memasukkan baris baru
 
-    const endIndex = startIndex + rowsToShowCount - 6;
-    const rowsToShow = data.slice(startIndex, endIndex + 12);
+    const endIndex = startIndex + rowsToShowCount - 1;
+    const rowsToShow = data.slice(startIndex, endIndex + 1);
 
     rowsToShow.forEach(entry => {
         const row = document.createElement('tr');

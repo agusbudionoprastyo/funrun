@@ -156,6 +156,101 @@ setInterval(updateCurrentTime, 1000);
 // // Call the fetchData function to initiate the data fetching and table population
 // fetchData();
 
+// let data = []; // Variabel untuk menyimpan data dari server
+
+// // Function to populate the table with checked data
+// function populateCheckinTable(data) {
+//     const tableBody = document.getElementById('checkin-table-body');
+//     tableBody.innerHTML = ''; // Clear existing rows
+
+//         // Limit the number of rows to display to 5
+//     const rowsToShow = data.slice(0, 6);
+
+//     rowsToShow.forEach(entry => {
+//         const row = document.createElement('tr');
+
+//         // Creating and appending cells for each data point
+//         const timestampCell = document.createElement('td');
+//         const timePart = entry.timestamp.split(' ')[1]; // Assuming timestamp format is "YYYY-MM-DD HH:MM:SS"
+//         timestampCell.textContent = timePart; // Display only the time part
+//         row.appendChild(timestampCell);
+
+//         const gengCell = document.createElement('td');
+//         gengCell.textContent = entry.NAMA_GENG;
+//         row.appendChild(gengCell);
+
+//         const bibCell = document.createElement('td');
+//         bibCell.textContent = entry.BIB_NUMBER;
+//         row.appendChild(bibCell);
+
+//         // Append the row to the table body
+//         tableBody.appendChild(row);
+//     });
+// }
+
+// // Function to fetch data from server
+// function fetchData() {
+//     var xhr = new XMLHttpRequest();
+//     xhr.open('GET', '../api/checked_data.php', true); // Adjust URL based on your server endpoint
+//     xhr.onreadystatechange = function () {
+//         if (xhr.readyState === 4 && xhr.status === 200) {
+//             data = JSON.parse(xhr.responseText); // Update global variable 'data' with fetched data
+//             populateCheckinTable(data); // Populate the table with fetched data
+//         }
+//     };
+//     xhr.send();
+// }
+
+// // Call fetchData function to initiate data fetching and table population
+// fetchData();
+
+// let startIndex = 0; // Indeks dari baris pertama yang akan ditampilkan
+// const rowsToShowCount = 6; // Jumlah baris yang akan ditampilkan setiap kali pembaruan
+
+// // Fungsi untuk memperbarui tabel dengan baris dari startIndex hingga endIndex
+// function updateTable() {
+//     const tableBody = document.getElementById('checkin-table-body');
+//     tableBody.innerHTML = ''; // Kosongkan tabel sebelum memasukkan baris baru
+
+//     const endIndex = startIndex + rowsToShowCount - 1;
+//     const rowsToShow = data.slice(startIndex, endIndex + 1);
+
+//     rowsToShow.forEach(entry => {
+//         const row = document.createElement('tr');
+
+//         // Membuat dan menambahkan sel untuk setiap data
+//         const timestampCell = document.createElement('td');
+//         const timePart = entry.timestamp.split(' ')[1]; // Mengasumsikan format timestamp "YYYY-MM-DD HH:MM:SS"
+//         timestampCell.textContent = timePart; // Menampilkan bagian waktu saja
+//         row.appendChild(timestampCell);
+
+//         const gengCell = document.createElement('td');
+//         gengCell.textContent = entry.NAMA_GENG;
+//         row.appendChild(gengCell);
+
+//         const bibCell = document.createElement('td');
+//         bibCell.textContent = entry.BIB_NUMBER;
+//         row.appendChild(bibCell);
+
+//         // Menambahkan baris ke dalam badan tabel
+//         tableBody.appendChild(row);
+//     });
+
+//     // Menggeser indeks untuk baris pertama yang akan ditampilkan berikutnya
+//     startIndex += rowsToShowCount;
+//     if (startIndex >= data.length) {
+//         startIndex = 0; // Kembali ke awal jika sudah mencapai akhir data
+//     }
+// }
+
+// // Panggil fungsi updateTable untuk pertama kali
+// updateTable();
+
+
+// // Panggil updateTable setiap 5 detik
+// setInterval(updateTable, 1000); // 5000 milliseconds = 5 detik
+
+
 let data = []; // Variabel untuk menyimpan data dari server
 
 // Function to populate the table with checked data
@@ -163,8 +258,7 @@ function populateCheckinTable(data) {
     const tableBody = document.getElementById('checkin-table-body');
     tableBody.innerHTML = ''; // Clear existing rows
 
-        // Limit the number of rows to display to 5
-    const rowsToShow = data.slice(0, 6);
+    const rowsToShow = data.slice(startIndex, startIndex + rowsToShowCount);
 
     rowsToShow.forEach(entry => {
         const row = document.createElement('tr');
@@ -186,6 +280,43 @@ function populateCheckinTable(data) {
         // Append the row to the table body
         tableBody.appendChild(row);
     });
+}
+
+// Function to fetch data from server and update table
+function updateTable() {
+    fetchData(); // Fetch updated data from server
+
+    const tableBody = document.getElementById('checkin-table-body');
+    tableBody.innerHTML = ''; // Clear existing rows
+
+    const rowsToShow = data.slice(startIndex, startIndex + rowsToShowCount);
+
+    rowsToShow.forEach(entry => {
+        const row = document.createElement('tr');
+
+        // Creating and appending cells for each data point
+        const timestampCell = document.createElement('td');
+        const timePart = entry.timestamp.split(' ')[1]; // Assuming timestamp format is "YYYY-MM-DD HH:MM:SS"
+        timestampCell.textContent = timePart; // Display only the time part
+        row.appendChild(timestampCell);
+
+        const gengCell = document.createElement('td');
+        gengCell.textContent = entry.NAMA_GENG;
+        row.appendChild(gengCell);
+
+        const bibCell = document.createElement('td');
+        bibCell.textContent = entry.BIB_NUMBER;
+        row.appendChild(bibCell);
+
+        // Append the row to the table body
+        tableBody.appendChild(row);
+    });
+
+    // Move startIndex to the next set of rows
+    startIndex += rowsToShowCount;
+    if (startIndex >= data.length) {
+        startIndex = 0; // Reset startIndex if end of data is reached
+    }
 }
 
 // Function to fetch data from server
@@ -204,47 +335,11 @@ function fetchData() {
 // Call fetchData function to initiate data fetching and table population
 fetchData();
 
-let startIndex = 6; // Indeks dari baris pertama yang akan ditampilkan
-const rowsToShowCount = 6; // Jumlah baris yang akan ditampilkan setiap kali pembaruan
+let startIndex = 0; // Index of the first row to display
+const rowsToShowCount = 6; // Number of rows to display each time
 
-// Fungsi untuk memperbarui tabel dengan baris dari startIndex hingga endIndex
-function updateTable() {
-    const tableBody = document.getElementById('checkin-table-body');
-    tableBody.innerHTML = ''; // Kosongkan tabel sebelum memasukkan baris baru
-
-    const endIndex = startIndex + rowsToShowCount - 1;
-    const rowsToShow = data.slice(startIndex, endIndex + 1);
-
-    rowsToShow.forEach(entry => {
-        const row = document.createElement('tr');
-
-        // Creating and appending cells for each data point
-        const timestampCell = document.createElement('td');
-        const timePart = entry.timestamp.split(' ')[1]; // Assuming timestamp format is "YYYY-MM-DD HH:MM:SS"
-        timestampCell.textContent = timePart; // Display only the time part
-        row.appendChild(timestampCell);
-
-        const gengCell = document.createElement('td');
-        gengCell.textContent = entry.NAMA_GENG;
-        row.appendChild(gengCell);
-
-        const bibCell = document.createElement('td');
-        bibCell.textContent = entry.BIB_NUMBER;
-        row.appendChild(bibCell);
-
-        // Append the row to the table body
-        tableBody.appendChild(row);
-    });
-
-    // Menggeser indeks untuk baris pertama yang akan ditampilkan berikutnya
-    startIndex++;
-    if (startIndex + rowsToShowCount > data.length) {
-        startIndex = 0; // Kembali ke awal jika sudah mencapai akhir data
-    }
-}
-
-// Panggil fungsi updateTable untuk pertama kali
+// Call updateTable function initially
 updateTable();
 
-// Panggil updateTable setiap 5 detik
-setInterval(updateTable, 1000); // 5000 milliseconds = 5 detik
+// Call updateTable every 5 seconds
+setInterval(updateTable, 1000); // 5000 milliseconds = 5 seconds

@@ -109,22 +109,54 @@ updateCurrentTime();
 // Update current time every second (1000 milliseconds)
 setInterval(updateCurrentTime, 1000);
 
-// Function to populate the table with checked data
-function populateCheckinTable(data) {
-    const tableBody = document.getElementById('checkin-table-body');
-    tableBody.innerHTML = ''; // Clear existing rows
+// // Function to populate the table with checked data
+// function populateCheckinTable(data) {
+//     const tableBody = document.getElementById('checkin-table-body');
+//     tableBody.innerHTML = ''; // Clear existing rows
 
-    // Limit the number of rows to display to 5
-    const rowsToShow = data.slice(0, 6);
+//     // Limit the number of rows to display to 5
+//     const rowsToShow = data.slice(0, 6);
+
+//     rowsToShow.forEach(entry => {
+//         const row = document.createElement('tr');
+
+//         // Creating and appending cells for each data point
+//         const timestampCell = document.createElement('td');
+//         // Split timestamp to separate date and time, then take time part
+//         const timePart = entry.timestamp.split(' ')[1]; // Assuming timestamp format is "YYYY-MM-DD HH:MM:SS"
+//         timestampCell.textContent = timePart; // Display only the time part
+//         row.appendChild(timestampCell);
+
+//         const gengCell = document.createElement('td');
+//         gengCell.textContent = entry.NAMA_GENG;
+//         row.appendChild(gengCell);
+
+//         const bibCell = document.createElement('td');
+//         bibCell.textContent = entry.BIB_NUMBER;
+//         row.appendChild(bibCell);
+
+//         // Append the row to the table body
+//         tableBody.appendChild(row);
+//     });
+// }
+
+let startIndex = 1; // Indeks dari baris pertama yang ditampilkan
+
+// Fungsi untuk memperbarui tabel dengan baris dari startIndex hingga startIndex + 5
+function updateTable() {
+    const tableBody = document.getElementById('checkin-table-body');
+    tableBody.innerHTML = ''; // Kosongkan tabel sebelum memasukkan baris baru
+
+    // Ambil subset dari data mulai dari startIndex hingga startIndex + 5
+    const rowsToShow = data.slice(startIndex, startIndex + 6);
 
     rowsToShow.forEach(entry => {
         const row = document.createElement('tr');
 
-        // Creating and appending cells for each data point
+        // Membuat dan menambahkan sel untuk setiap data point
         const timestampCell = document.createElement('td');
-        // Split timestamp to separate date and time, then take time part
-        const timePart = entry.timestamp.split(' ')[1]; // Assuming timestamp format is "YYYY-MM-DD HH:MM:SS"
-        timestampCell.textContent = timePart; // Display only the time part
+        const timePart = entry.timestamp.split(' ')[1]; // Mengambil bagian waktu dari timestamp
+        timestampCell.textContent = timePart; // Hanya menampilkan bagian waktu
         row.appendChild(timestampCell);
 
         const gengCell = document.createElement('td');
@@ -138,7 +170,16 @@ function populateCheckinTable(data) {
         // Append the row to the table body
         tableBody.appendChild(row);
     });
+
+    // Menggeser indeks untuk baris pertama yang akan ditampilkan berikutnya
+    startIndex++;
+    if (startIndex + 6 > data.length) {
+        startIndex = 0; // Kembali ke awal jika sudah mencapai akhir data
+    }
 }
+
+// Panggil fungsi updateTable setiap 5 detik
+setInterval(updateTable, 5000); // 5000 milliseconds = 5 detik
 
 // AJAX request to fetch data from fetch_data.php
 function fetchData() {

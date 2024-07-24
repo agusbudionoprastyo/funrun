@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Tampilkan notifikasi menggunakan SweetAlert2
             Swal.fire({
-                title: data.max_timestamp_data.NAMA_GENG + ' BIB-NUMBER ' + data.max_timestamp_data.BIB_NUMBER,
+                title: data.max_timestamp_data.NAMA_GENG + '\n' + ' BIB-NUMBER ' + data.max_timestamp_data.BIB_NUMBER,
                 html: `Telah Check In<br>Timestamp: ${data.max_timestamp_data.max_timestamp}`,
                 icon: 'info',
                 showConfirmButton: false, // Tidak ada tombol konfirmasi

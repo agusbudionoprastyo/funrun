@@ -123,12 +123,6 @@ function populateCheckinTable(data) {
     rowsToShow.forEach(entry => {
         const row = document.createElement('tr');
 
-        // Creating and appending cells for each data point
-        const timestampCell = document.createElement('td');
-        const timePart = entry.timestamp.split(' ')[1]; // Assuming timestamp format is "YYYY-MM-DD HH:MM:SS"
-        timestampCell.textContent = timePart; // Display only the time part
-        row.appendChild(timestampCell);
-
         const gengCell = document.createElement('td');
         gengCell.textContent = entry.NAMA_GENG;
         row.appendChild(gengCell);
@@ -136,6 +130,12 @@ function populateCheckinTable(data) {
         const bibCell = document.createElement('td');
         bibCell.textContent = entry.BIB_NUMBER;
         row.appendChild(bibCell);
+
+        // Creating and appending cells for each data point
+        const timestampCell = document.createElement('td');
+        const timePart = entry.timestamp.split(' ')[1]; // Assuming timestamp format is "YYYY-MM-DD HH:MM:SS"
+        timestampCell.textContent = timePart; // Display only the time part
+        row.appendChild(timestampCell);
 
         // Add 'added' class to apply transition effect
         row.classList.add('added');
@@ -163,12 +163,6 @@ function updateTable() {
     rowsToShow.forEach(entry => {
         const row = document.createElement('tr');
 
-        // Creating and appending cells for each data point
-        const timestampCell = document.createElement('td');
-        const timePart = entry.timestamp.split(' ')[1]; // Assuming timestamp format is "YYYY-MM-DD HH:MM:SS"
-        timestampCell.textContent = timePart; // Display only the time part
-        row.appendChild(timestampCell);
-
         const gengCell = document.createElement('td');
         gengCell.textContent = entry.NAMA_GENG;
         row.appendChild(gengCell);
@@ -176,6 +170,12 @@ function updateTable() {
         const bibCell = document.createElement('td');
         bibCell.textContent = entry.BIB_NUMBER;
         row.appendChild(bibCell);
+
+        // Creating and appending cells for each data point
+        const timestampCell = document.createElement('td');
+        const timePart = entry.timestamp.split(' ')[1]; // Assuming timestamp format is "YYYY-MM-DD HH:MM:SS"
+        timestampCell.textContent = timePart; // Display only the time part
+        row.appendChild(timestampCell);
 
         // Append the row to the table body
         tableBody.appendChild(row);

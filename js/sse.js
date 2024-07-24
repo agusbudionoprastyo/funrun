@@ -143,7 +143,7 @@ setInterval(updateCurrentTime, 1000);
 let startIndex = 1; // Indeks dari baris pertama yang ditampilkan
 
 // Fungsi untuk memperbarui tabel dengan baris dari startIndex hingga startIndex + 5
-function updateTable() {
+function populateCheckinTable() {
     const tableBody = document.getElementById('checkin-table-body');
     tableBody.innerHTML = ''; // Kosongkan tabel sebelum memasukkan baris baru
 
@@ -179,7 +179,7 @@ function updateTable() {
 }
 
 // Panggil fungsi updateTable setiap 5 detik
-setInterval(updateTable, 5000); // 5000 milliseconds = 5 detik
+setInterval(populateCheckinTable, 5000); // 5000 milliseconds = 5 detik
 
 // AJAX request to fetch data from fetch_data.php
 function fetchData() {

@@ -213,7 +213,7 @@ function updateTable() {
     tableBody.innerHTML = ''; // Kosongkan tabel sebelum memasukkan baris baru
 
     const endIndex = startIndex + rowsToShowCount - 1;
-    const rowsToShow = data.slice(startIndex, endIndex + 1);
+    const rowsToShow = data.slice(startIndex, endIndex + 6);
 
     rowsToShow.forEach(entry => {
         const row = document.createElement('tr');

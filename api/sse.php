@@ -36,11 +36,11 @@ function getData($conn) {
     $sql_fastest_checkin = "SELECT NAMA_GENG, last_timestamp
                             FROM (
                                 SELECT NAMA_GENG, timestamp AS last_timestamp,
-                                    ROW_NUMBER() OVER (PARTITION BY NAMA_GENG ORDER BY timestamp ASC) AS row_num
+                                    ROW_NUMBER() OVER (PARTITION BY NAMA_GENG) AS row_num
                                 FROM Funrun
-                                WHERE status = 'checked'
+                                WHERE status = 'checked' ORDER BY timestamp ASC
                             ) AS ranked
-                            WHERE row_num >= 5;";
+                            WHERE row_num = 5;";
  
     $result_fastest_checkin = $conn->query($sql_fastest_checkin);
  

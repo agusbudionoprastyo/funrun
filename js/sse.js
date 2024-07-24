@@ -279,10 +279,20 @@ function populateCheckinTable(data) {
 
         // Append the row to the table body
         tableBody.appendChild(row);
+                // Add 'added' class to apply transition effect
+                row.classList.add('added');
+
+                // Append the row to the table body
+                tableBody.appendChild(row);
+        
+                // Remove 'added' class after transition completes
+                setTimeout(() => {
+                    row.classList.remove('added');
+                }, 300); // Adjust timing to match transition duration (0.3s)
     });
 }
 
-// Function to update table with new data
+// Function to fetch data from server and update table
 function updateTable() {
     fetchData(); // Fetch updated data from server
 
@@ -308,16 +318,8 @@ function updateTable() {
         bibCell.textContent = entry.BIB_NUMBER;
         row.appendChild(bibCell);
 
-        // Add 'added' class to apply transition effect
-        row.classList.add('added');
-
         // Append the row to the table body
         tableBody.appendChild(row);
-
-        // Remove 'added' class after transition completes
-        setTimeout(() => {
-            row.classList.remove('added');
-        }, 300); // Adjust timing to match transition duration (0.3s)
     });
 
     // Move startIndex to the next set of rows
@@ -350,4 +352,4 @@ const rowsToShowCount = 6; // Number of rows to display each time
 updateTable();
 
 // Call updateTable every 5 seconds
-setInterval(updateTable, 5000); // 5000 milliseconds = 5 seconds
+setInterval(updateTable, 1000); // 5000 milliseconds = 5 seconds

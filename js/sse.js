@@ -286,7 +286,7 @@ function populateCheckinTable(data) {
         // Remove 'added' class after transition completes
         setTimeout(() => {
             row.classList.remove('added');
-        }, 300); // Adjust timing to match transition duration (0.3s)
+        }, 5000); // Adjust timing to match transition duration (0.3s)
     });
 }
 

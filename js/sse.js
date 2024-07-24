@@ -163,7 +163,10 @@ function populateCheckinTable(data) {
     const tableBody = document.getElementById('checkin-table-body');
     tableBody.innerHTML = ''; // Clear existing rows
 
-    data.forEach(entry => {
+        // Limit the number of rows to display to 5
+    const rowsToShow = data.slice(0, 6);
+
+    rowsToShow.forEach(entry => {
         const row = document.createElement('tr');
 
         // Creating and appending cells for each data point

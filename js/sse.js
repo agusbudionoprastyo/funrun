@@ -109,6 +109,7 @@ updateCurrentTime();
 // Update current time every second (1000 milliseconds)
 setInterval(updateCurrentTime, 1000);
 
+let data = []; // Variabel untuk menyimpan data dari server
 // Function to populate the table with checked data
 function populateCheckinTable(data) {
     const tableBody = document.getElementById('checkin-table-body');

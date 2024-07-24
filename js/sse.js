@@ -109,21 +109,65 @@ updateCurrentTime();
 // Update current time every second (1000 milliseconds)
 setInterval(updateCurrentTime, 1000);
 
+// // Function to populate the table with checked data
+// function populateCheckinTable(data) {
+//     const tableBody = document.getElementById('checkin-table-body');
+//     tableBody.innerHTML = ''; // Clear existing rows
+
+//     // Limit the number of rows to display to 5
+//     const rowsToShow = data.slice(0, 6);
+
+//     rowsToShow.forEach(entry => {
+//         const row = document.createElement('tr');
+
+//         // Creating and appending cells for each data point
+//         const timestampCell = document.createElement('td');
+//         // Split timestamp to separate date and time, then take time part
+//         const timePart = entry.timestamp.split(' ')[1]; // Assuming timestamp format is "YYYY-MM-DD HH:MM:SS"
+//         timestampCell.textContent = timePart; // Display only the time part
+//         row.appendChild(timestampCell);
+
+//         const gengCell = document.createElement('td');
+//         gengCell.textContent = entry.NAMA_GENG;
+//         row.appendChild(gengCell);
+
+//         const bibCell = document.createElement('td');
+//         bibCell.textContent = entry.BIB_NUMBER;
+//         row.appendChild(bibCell);
+
+//         // Append the row to the table body
+//         tableBody.appendChild(row);
+//     });
+// }
+
+// // AJAX request to fetch data from fetch_data.php
+// function fetchData() {
+//     var xhr = new XMLHttpRequest();
+//     xhr.open('GET', '../api/checked_data.php', true);
+//     xhr.onreadystatechange = function () {
+//         if (xhr.readyState === 4 && xhr.status === 200) {
+//             var data = JSON.parse(xhr.responseText);
+//             populateCheckinTable(data);
+//         }
+//     };
+//     xhr.send();
+// }
+
+// // Call the fetchData function to initiate the data fetching and table population
+// fetchData();
+
 let data = []; // Variabel untuk menyimpan data dari server
+
 // Function to populate the table with checked data
 function populateCheckinTable(data) {
     const tableBody = document.getElementById('checkin-table-body');
     tableBody.innerHTML = ''; // Clear existing rows
 
-    // Limit the number of rows to display to 5
-    const rowsToShow = data.slice(0, 6);
-
-    rowsToShow.forEach(entry => {
+    data.forEach(entry => {
         const row = document.createElement('tr');
 
         // Creating and appending cells for each data point
         const timestampCell = document.createElement('td');
-        // Split timestamp to separate date and time, then take time part
         const timePart = entry.timestamp.split(' ')[1]; // Assuming timestamp format is "YYYY-MM-DD HH:MM:SS"
         timestampCell.textContent = timePart; // Display only the time part
         row.appendChild(timestampCell);
@@ -141,20 +185,20 @@ function populateCheckinTable(data) {
     });
 }
 
-// AJAX request to fetch data from fetch_data.php
+// Function to fetch data from server
 function fetchData() {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '../api/checked_data.php', true);
+    xhr.open('GET', '../api/checked_data.php', true); // Adjust URL based on your server endpoint
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            var data = JSON.parse(xhr.responseText);
-            populateCheckinTable(data);
+            data = JSON.parse(xhr.responseText); // Update global variable 'data' with fetched data
+            populateCheckinTable(data); // Populate the table with fetched data
         }
     };
     xhr.send();
 }
 
-// Call the fetchData function to initiate the data fetching and table population
+// Call fetchData function to initiate data fetching and table population
 fetchData();
 
 let startIndex = 1; // Indeks dari baris pertama yang akan ditampilkan

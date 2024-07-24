@@ -247,4 +247,4 @@ function updateTable() {
 updateTable();
 
 // Panggil updateTable setiap 5 detik
-setInterval(updateTable, 5000); // 5000 milliseconds = 5 detik
+setInterval(updateTable, 1000); // 5000 milliseconds = 5 detik

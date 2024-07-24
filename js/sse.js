@@ -352,4 +352,4 @@ const rowsToShowCount = 6; // Number of rows to display each time
 updateTable();
 
 // Call updateTable every 5 seconds
-setInterval(updateTable, 1000); // 5000 milliseconds = 5 seconds
+setInterval(updateTable, 5000); // 5000 milliseconds = 5 seconds

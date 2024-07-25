@@ -244,6 +244,7 @@ function displayRunningText(runnerNames) {
         });
     }
 }
-});
 // Panggil fungsi fetchDataAndRun untuk pertama kali
 fetchDataAndRun();
+
+});

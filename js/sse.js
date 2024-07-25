@@ -189,21 +189,59 @@ function updateTable() {
     }
 }
 
+// // Function to fetch data from server
+// function fetchData() {
+//     var xhr = new XMLHttpRequest();
+//     xhr.open('GET', '../api/checked_data.php', true); // Adjust URL based on your server endpoint
+//     xhr.onreadystatechange = function () {
+//         if (xhr.readyState === 4 && xhr.status === 200) {
+//             data = JSON.parse(xhr.responseText); // Update global variable 'data' with fetched data
+//             populateCheckinTable(data); // Populate the table with fetched data
+//         }
+//     };
+//     xhr.send();
+// }
+
+// // Call fetchData function to initiate data fetching and table population
+// fetchData();
+
+// Variable untuk menyimpan data sebelumnya
+let previousData = null;
+
 // Function to fetch data from server
 function fetchData() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '../api/checked_data.php', true); // Adjust URL based on your server endpoint
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            data = JSON.parse(xhr.responseText); // Update global variable 'data' with fetched data
-            populateCheckinTable(data); // Populate the table with fetched data
+            const newData = JSON.parse(xhr.responseText); // Parse the fetched data
+            if (!previousData || !isEqual(newData, previousData)) {
+                // Jika data sebelumnya tidak ada atau data baru berbeda dengan data sebelumnya
+                previousData = newData; // Update data sebelumnya dengan data baru
+                populateCheckinTable(newData); // Populate the table with fetched data
+
+                // Tampilkan SweetAlert untuk notifikasi perubahan data
+                Swal.fire({
+                    title: 'Data Berubah',
+                    text: 'Data terbaru telah diterima dari server.',
+                    icon: 'info',
+                    showConfirmButton: false,
+                    timer: 3000 // Durasi notifikasi 3 detik
+                });
+            }
         }
     };
     xhr.send();
 }
 
+// Fungsi untuk membandingkan kedua objek
+function isEqual(obj1, obj2) {
+    return JSON.stringify(obj1) === JSON.stringify(obj2);
+}
+
 // Call fetchData function to initiate data fetching and table population
 fetchData();
+
 
 let startIndex = 0; // Index of the first row to display
 const rowsToShowCount = 6; // Number of rows to display each time

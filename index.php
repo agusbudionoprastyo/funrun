@@ -151,10 +151,10 @@
                                 </ul>
                             </div>
                         </div>
+                    <div id="running-text">try</div>
                     </main>
             <!-- MAIN -->
         </section>
-        <div id="running-text">try</div>
     <!-- CONTENT -->
     <audio id="audio" src="assets/magic.wav"></audio>
     

@@ -235,7 +235,7 @@ function displayRunningText(runnerNames) {
     if (runningTextElement) {
         // Mengisi konten running text dengan nama-nama runner
         runnerNames.forEach(function(name) {
-            runningTextElement.innerHTML += "<span class='running-text'>" + name +     "</span>";
+            runningTextElement.innerHTML += "<span class='running-text'>• " + name + "     </span>";
         });
     }
 }

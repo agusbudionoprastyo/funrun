@@ -217,7 +217,7 @@ setInterval(updateTable, 15000); // 10000 milliseconds = 10 seconds
 // script.js
 
 document.addEventListener('DOMContentLoaded', function() {
-    var eventSource = new EventSource('running_text.php');
+    var eventSource = new EventSource('../api/running_text.php');
 
     eventSource.onmessage = function(event) {
         var data = JSON.parse(event.data);

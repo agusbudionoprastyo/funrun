@@ -45,48 +45,48 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		}
 
-   // Update statistik
-    document.getElementById('totalPeserta').innerText = data.total_peserta;
-    document.getElementById('totalCheck').innerText = data.total_check;
-    document.getElementById('totalUncheck').innerText = data.total_uncheck;
+        // Update statistik
+        document.getElementById('totalPeserta').innerText = data.total_peserta;
+        document.getElementById('totalCheck').innerText = data.total_check;
+        document.getElementById('totalUncheck').innerText = data.total_uncheck;
 
-    // Ambil data terakhir dari sessionStorage
-    const storedData = JSON.parse(sessionStorage.getItem('lastData'));
+        // Ambil data terakhir dari sessionStorage
+        const storedData = JSON.parse(sessionStorage.getItem('lastData'));
 
-    // Bandingkan dengan data saat ini
-    if (data.max_timestamp_data &&
-        (!storedData ||
-        data.max_timestamp_data.max_timestamp !== storedData.max_timestamp ||
-        data.max_timestamp_data.NAMA_GENG !== storedData.NAMA_GENG ||
-        data.max_timestamp_data.BIB_NUMBER !== storedData.BIB_NUMBER)) {
-        
-        // Update data terbaru di sessionStorage
-        sessionStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
+        // Bandingkan dengan data saat ini
+        if (data.max_timestamp_data &&
+            (!storedData ||
+            data.max_timestamp_data.max_timestamp !== storedData.max_timestamp ||
+            data.max_timestamp_data.NAMA_GENG !== storedData.NAMA_GENG ||
+            data.max_timestamp_data.BIB_NUMBER !== storedData.BIB_NUMBER)) {
+            
+            // Update data terbaru di sessionStorage
+            sessionStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
 
-        // Memastikan tidak menampilkan SweetAlert pada inisialisasi pertama kali
-        if (storedData && storedData.max_timestamp) {
-            playAudio();
+            // Memastikan tidak menampilkan SweetAlert pada inisialisasi pertama kali
+            if (storedData && storedData.max_timestamp) {
+                playAudio();
 
-            // Tampilkan notifikasi menggunakan SweetAlert2
-            Swal.fire({
-                title: data.max_timestamp_data.NAMA_GENG + '\n' + data.max_timestamp_data.BIB_NUMBER,
-                html: `Telah Check In<br>Timestamp: ${data.max_timestamp_data.max_timestamp}`,
-                icon: 'info',
-                showConfirmButton: false, // Tidak ada tombol konfirmasi
-                timer: 10000, // Durasi notifikasi 10 detik
-                timerProgressBar: true, // Tampilkan progress bar
-            });
+                // Tampilkan notifikasi menggunakan SweetAlert2
+                Swal.fire({
+                    title: data.max_timestamp_data.NAMA_GENG + '\n' + data.max_timestamp_data.BIB_NUMBER,
+                    html: `Telah Check In<br>Timestamp: ${data.max_timestamp_data.max_timestamp}`,
+                    icon: 'info',
+                    showConfirmButton: false, // Tidak ada tombol konfirmasi
+                    timer: 10000, // Durasi notifikasi 10 detik
+                    timerProgressBar: true, // Tampilkan progress bar
+                });
+            }
+            // Call the fetchData function to initiate the data fetching and table population
+            fetchData();
         }
-        // Call the fetchData function to initiate the data fetching and table population
-        fetchData();
-    }
-    // Simpan data terbaru di sessionStorage
-    // sessionStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
-    };
+        // Simpan data terbaru di sessionStorage
+        sessionStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
+        };
 
-    eventSource.onerror = function(event) {
-        console.error('Error dengan SSE:', event);
-    };
+        eventSource.onerror = function(event) {
+            console.error('Error dengan SSE:', event);
+        };
 
     // Function to play audio
     function playAudio() {

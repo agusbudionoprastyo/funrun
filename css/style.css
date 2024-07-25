@@ -637,7 +637,7 @@ body {
 /* CSS untuk running text */
 .running-text-container {
 	white-space: nowrap;
-	overflow: hidden;
+	/* overflow: hidden; */
 	position: relative;
 }
 

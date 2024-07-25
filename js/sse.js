@@ -235,7 +235,7 @@ function displayRunningText(runnerNames) {
     if (runningTextElement) {
         // Mengisi konten running text dengan nama-nama runner
         runnerNames.forEach(function(name) {
-            runningTextElement.innerHTML += "<span class='running-text'>• " + name + "     </span>";
+            runningTextElement.innerHTML += "<span class='running-text'>   • " + name + " </span>";
         });
     }
 }
@@ -244,4 +244,4 @@ function displayRunningText(runnerNames) {
 fetchDataAndRun();
 
 // Interval untuk memuat ulang data setiap 30 detik (sesuaikan sesuai kebutuhan)
-setInterval(fetchDataAndRun, 60000); // 30 detik
+setInterval(fetchDataAndRun, 90000); // 30 detik

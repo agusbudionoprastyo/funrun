@@ -242,6 +242,3 @@ function displayRunningText(runnerNames) {
 
 // Panggil fungsi fetchDataAndRun untuk pertama kali
 fetchDataAndRun();
-
-// Interval untuk memuat ulang data setiap 30 detik (sesuaikan sesuai kebutuhan)
-setInterval(fetchDataAndRun, 90000); // 30 detik

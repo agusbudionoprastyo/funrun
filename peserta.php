@@ -44,7 +44,7 @@
             <li class="active">
             <a href="#">
                     <i class='bx bxs-group' ></i>
-                    <span class="text">Daftar Peserta</span>
+                    <span class="text">List Runner's</span>
                 </a>
             </li>
         </ul>
@@ -89,7 +89,7 @@
                     <h1>Fun Run - Lari Antar Geng</h1>
                     <ul class="breadcrumb">
                         <li>
-                            <a href="#">Daftar Peserta</a>
+                            <a href="#">List Runner's</a>
                         </li>
                         <li><i class='bx bx-chevron-right' ></i></li>
                         <li>

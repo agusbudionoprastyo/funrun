@@ -216,22 +216,32 @@ setInterval(updateTable, 15000); // 10000 milliseconds = 10 seconds
 
 // script.js
 
-document.addEventListener('DOMContentLoaded', function() {
-    var eventSource = new EventSource('../api/running_text.php');
-
-    eventSource.onmessage = function(event) {
-        var data = JSON.parse(event.data);
-        updateRunningText(data.footer_text);
+// Fungsi untuk memuat data dari server menggunakan AJAX
+function fetchDataAndRun() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "fetch_runner_names.php", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var runnerNames = JSON.parse(xhr.responseText);
+            displayRunningText(runnerNames);
+        }
     };
+    xhr.send();
+}
 
-    eventSource.onerror = function(error) {
-        console.error('EventSource error: ', error);
-    };
-});
-
-function updateRunningText(text) {
+// Fungsi untuk menampilkan running text
+function displayRunningText(runnerNames) {
     var runningTextElement = document.getElementById('running-text');
     if (runningTextElement) {
-        runningTextElement.textContent = text;
+        // Mengisi konten running text dengan nama-nama runner
+        runnerNames.forEach(function(name) {
+            runningTextElement.innerHTML += "<span class='running-text'>" + name + " | </span>";
+        });
     }
 }
+
+// Panggil fungsi fetchDataAndRun untuk pertama kali
+fetchDataAndRun();
+
+// Interval untuk memuat ulang data setiap 30 detik (sesuaikan sesuai kebutuhan)
+setInterval(fetchDataAndRun, 30000); // 30 detik

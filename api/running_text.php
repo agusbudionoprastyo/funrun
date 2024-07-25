@@ -13,14 +13,15 @@ if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);
 }
 
-// Query untuk mengambil data dari tabel Funrun
+// Query untuk mengambil data NAMA_GENG dari tabel Funrun
 $sql_data = "SELECT DISTINCT(NAMA_GENG) FROM Funrun";
 $result_data = $conn->query($sql_data);
 
+$runnerNames = [];
 if ($result_data->num_rows > 0) {
-    // Output data dari setiap baris
+    // Memasukkan data ke dalam array $runnerNames
     while($row = $result_data->fetch_assoc()) {
-        echo "RUNNER'S " . $row["NAMA_GENG"];
+        $runnerNames[] = $row["NAMA_GENG"];
     }
 } else {
     echo "0 results";
@@ -28,4 +29,7 @@ if ($result_data->num_rows > 0) {
 
 // Menutup koneksi database
 $conn->close();
+
+// Mengirimkan data dalam format JSON
+echo json_encode($runnerNames);
 ?>

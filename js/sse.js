@@ -213,3 +213,25 @@ updateTable();
 
 // Call updateTable every 15 seconds
 setInterval(updateTable, 15000); // 10000 milliseconds = 10 seconds
+
+// script.js
+
+document.addEventListener('DOMContentLoaded', function() {
+    var eventSource = new EventSource('running_text.php');
+
+    eventSource.onmessage = function(event) {
+        var data = JSON.parse(event.data);
+        updateRunningText(data.footer_text);
+    };
+
+    eventSource.onerror = function(error) {
+        console.error('EventSource error: ', error);
+    };
+});
+
+function updateRunningText(text) {
+    var runningTextElement = document.getElementById('running-text');
+    if (runningTextElement) {
+        runningTextElement.textContent = text;
+    }
+}

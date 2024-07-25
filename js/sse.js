@@ -219,7 +219,7 @@ setInterval(updateTable, 15000); // 10000 milliseconds = 10 seconds
 // Fungsi untuk memuat data dari server menggunakan AJAX
 function fetchDataAndRun() {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "fetch_runner_names.php", true);
+    xhr.open("GET", "../api/running_text.php", true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             var runnerNames = JSON.parse(xhr.responseText);

@@ -216,8 +216,10 @@ setInterval(updateTable, 15000); // 10000 milliseconds = 10 seconds
 
 // script.js
 
-document.addEventListener('DOMContentLoaded', function() {
-// Fungsi untuk memuat data dari server menggunakan AJAX
+// Panggil fungsi fetchDataAndRun untuk pertama kali
+fetchDataAndRun();
+
+// Function to fetch data and run
 function fetchDataAndRun() {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "../api/running_text.php", true);
@@ -225,11 +227,13 @@ function fetchDataAndRun() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             var runnerNames = JSON.parse(xhr.responseText);
             displayRunningText(runnerNames);
+            previousRunnerNames = runnerNames.slice(); // Simpan data runnerNames sebelumnya
         }
     };
     xhr.send();
 }
 
+// Function to display running text
 function displayRunningText(runnerNames) {
     var runningTextElement = document.getElementById('running-text');
     if (runningTextElement) {
@@ -244,7 +248,5 @@ function displayRunningText(runnerNames) {
         });
     }
 }
-// Panggil fungsi fetchDataAndRun untuk pertama kali
-fetchDataAndRun();
 
-});
+setInterval(displayRunningText, 3000); // 10000 milliseconds = 10 seconds

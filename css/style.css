@@ -631,3 +631,17 @@ body {
 	transition: all 0.7s ease-in-out; /* Transisi semua properti selama 0.3 detik */
     opacity: 0.5;
 }
+
+/* style.css */
+
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+#running-text {
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    animation: marquee 20s linear infinite;
+}

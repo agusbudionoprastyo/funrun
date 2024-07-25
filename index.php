@@ -153,7 +153,7 @@
                         </div>
                     </main>
             <!-- MAIN -->
-            <div id="running-text">try</div>
+            <div id="running-text">abcdfghijklmnopqrstuvwxyz abcdfghijklmnopqrstuvwxyz abcdfghijklmnopqrstuvwxyz abcdfghijklmnopqrstuvwxyz abcdfghijklmnopqrstuvwxyz abcdfghijklmnopqrstuvwxyz</div>
         </section>
     <!-- CONTENT -->
     <audio id="audio" src="assets/magic.wav"></audio>

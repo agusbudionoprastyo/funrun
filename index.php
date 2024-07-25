@@ -34,7 +34,7 @@
             <li>
             <a href="peserta.php">
                     <i class='bx bxs-group' ></i>
-                    <span class="text">Daftar Peserta</span>
+                    <span class="text">List Runner's</span>
                 </a>
             </li>
         </ul>
@@ -93,7 +93,7 @@
                     <i class='bx bxs-group bx-lg' ></i>
                     <span class="text">
                         <h3 id="totalPeserta">0</h3>
-                        <p>Peserta</p>
+                        <p>Runner's</p>
                     </span>
                 </li>
                 <li>

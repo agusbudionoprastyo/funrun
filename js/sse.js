@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
             data.max_timestamp_data.BIB_NUMBER !== storedData.BIB_NUMBER)) {
             
             // Update data terbaru di sessionStorage
-            sessionStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
+            // sessionStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
 
             // Memastikan tidak menampilkan SweetAlert pada inisialisasi pertama kali
             if (storedData && storedData.max_timestamp) {

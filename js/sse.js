@@ -216,6 +216,7 @@ setInterval(updateTable, 15000); // 10000 milliseconds = 10 seconds
 
 // script.js
 
+document.addEventListener('DOMContentLoaded', function() {
 // Fungsi untuk memuat data dari server menggunakan AJAX
 function fetchDataAndRun() {
     var xhr = new XMLHttpRequest();
@@ -243,6 +244,6 @@ function displayRunningText(runnerNames) {
         });
     }
 }
-
+});
 // Panggil fungsi fetchDataAndRun untuk pertama kali
 fetchDataAndRun();

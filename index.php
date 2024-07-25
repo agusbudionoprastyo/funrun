@@ -153,10 +153,10 @@
                         </div>
                     </main>
             <!-- MAIN -->
-            <!-- <div id="running-text"></div> -->
-            <div class="running-text-container">
+            <div id="running-text"></div>
+            <!-- <div class="running-text-container">
         <div id="running-text"></div>
-    </div>
+    </div> -->
         </section>
     <!-- CONTENT -->
     <audio id="audio" src="assets/magic.wav"></audio>

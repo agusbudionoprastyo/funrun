@@ -229,13 +229,17 @@ function fetchDataAndRun() {
     xhr.send();
 }
 
-// Fungsi untuk menampilkan running text
 function displayRunningText(runnerNames) {
     var runningTextElement = document.getElementById('running-text');
     if (runningTextElement) {
+        // Kosongkan konten sebelum menambahkan data baru
+        runningTextElement.innerHTML = "";
+
         // Mengisi konten running text dengan nama-nama runner
-        runnerNames.forEach(function(name) {
-            runningTextElement.innerHTML += "<span class='running-text'> • " + name + "  </span>";
+        runnerNames.forEach(function(name, index) {
+            // Gunakan index untuk menambahkan karakter atau spasi yang sesuai
+            var separator = (index === runnerNames.length - 1) ? "" : " • ";
+            runningTextElement.innerHTML += "<span class='running-text'>" + name + separator + "</span>";
         });
     }
 }

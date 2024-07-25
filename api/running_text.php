@@ -28,10 +28,10 @@ function getData($conn) {
 
     if ($result_nama_geng && $result_nama_geng->num_rows > 0) {
         while ($row = $result_nama_geng->fetch_assoc()) {
-            $footer_text .= $row['NAMA_GENG'] . ' | '; // Format teks yang sesuai dengan kebutuhan running text
+            $footer_text .= $row['NAMA_GENG'] . '   👟  '; // Format teks yang sesuai dengan kebutuhan running text
         }
         // Hilangkan '|' di akhir
-        $footer_text = rtrim($footer_text, ' | ');
+        $footer_text = rtrim($footer_text, '    👟  ');
     }
 
     return [

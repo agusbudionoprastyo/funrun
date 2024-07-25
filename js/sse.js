@@ -21,7 +21,42 @@ document.addEventListener('DOMContentLoaded', function() {
 											 '<i class="bx bx-medal"></i>';
 
 					}
-				}	
+				}
+                
+                //
+                // Panggil fungsi fetchDataAndRun untuk pertama kali
+    fetchDataAndRun();
+
+    // Function to fetch data and run
+    function fetchDataAndRun() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "../api/running_text.php", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var runnerNames = JSON.parse(xhr.responseText);
+                displayRunningText(runnerNames);
+                previousRunnerNames = runnerNames.slice(); // Simpan data runnerNames sebelumnya
+            }
+        };
+        xhr.send();
+    }
+
+    // Function to display running text
+    function displayRunningText(runnerNames) {
+        var runningTextElement = document.getElementById('running-text');
+        if (runningTextElement) {
+            // Kosongkan konten sebelum menambahkan data baru
+            runningTextElement.innerHTML = "";
+
+            // Mengisi konten running text dengan nama-nama runner
+            runnerNames.forEach(function(name, index) {
+                // Gunakan index untuk menambahkan karakter atau spasi yang sesuai
+                var separator = (index === runnerNames.length - 1) ? "" : " • ";
+                runningTextElement.innerHTML += "<span class='running-text'>" + name + separator + "</span>";
+            });
+        }
+    }
+//
 
 		function getRankSuffix(position) {
 			// Mendapatkan angka terakhir dari posisi (misalnya 1, 2, 3, dst)
@@ -215,38 +250,3 @@ updateTable();
 setInterval(updateTable, 15000); // 10000 milliseconds = 10 seconds
 
 // script.js
-
-// Panggil fungsi fetchDataAndRun untuk pertama kali
-fetchDataAndRun();
-
-// Function to fetch data and run
-function fetchDataAndRun() {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "../api/running_text.php", true);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var runnerNames = JSON.parse(xhr.responseText);
-            displayRunningText(runnerNames);
-            previousRunnerNames = runnerNames.slice(); // Simpan data runnerNames sebelumnya
-        }
-    };
-    xhr.send();
-}
-
-// Function to display running text
-function displayRunningText(runnerNames) {
-    var runningTextElement = document.getElementById('running-text');
-    if (runningTextElement) {
-        // Kosongkan konten sebelum menambahkan data baru
-        runningTextElement.innerHTML = "";
-
-        // Mengisi konten running text dengan nama-nama runner
-        runnerNames.forEach(function(name, index) {
-            // Gunakan index untuk menambahkan karakter atau spasi yang sesuai
-            var separator = (index === runnerNames.length - 1) ? "" : " • ";
-            runningTextElement.innerHTML += "<span class='running-text'>" + name + separator + "</span>";
-        });
-    }
-}
-
-setInterval(displayRunningText, 3000); // 10000 milliseconds = 10 seconds

@@ -622,12 +622,12 @@ body {
 
 /* Optional: Efek transisi pada baris tabel */
 #checkin-table-body tr {
-    transition: all 0.5s ease-in-out; /* Transisi semua properti selama 0.3 detik */
+    transition: all 0.3s ease-in-out; /* Transisi semua properti selama 0.3 detik */
     opacity: 1; /* Awalnya atur opasitas menjadi 0 */
 }
 
 /* Opasitas kembali ke 1 ketika baris ditambahkan */
 #checkin-table-body tr.added {
-	transition: all 0.5s ease-in-out; /* Transisi semua properti selama 0.3 detik */
-    opacity: 0;
+	transition: all 0.7s ease-in-out; /* Transisi semua properti selama 0.3 detik */
+    opacity: 0.5;
 }

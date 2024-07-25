@@ -644,5 +644,5 @@ body {
     /* overflow: hidden; */
 	width: 100%; /* Sesuaikan dengan lebar yang diperlukan */
     position: relative;
-    animation: marquee 20s linear infinite;
+    animation: marquee 10s linear infinite;
 }

@@ -638,7 +638,7 @@ body {
 .running-text-container {
 	white-space: nowrap;
 	/* overflow: hidden; */
-	position: relative;
+	position: absolute;
 }
 
 .running-text {

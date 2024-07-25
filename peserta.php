@@ -102,7 +102,7 @@
             <div class="table-data">
                 <div class="order">
                     <div class="head">
-                        <h3>Daftar Peserta</h3>
+                        <h3>List Runner's</h3>
 						<button type="button" id="printSelectedBtn" class="btn-download">
 							<i class='bx bxs-printer' style="font-size:24px"></i>
 						</button>

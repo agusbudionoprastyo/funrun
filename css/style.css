@@ -637,7 +637,7 @@ body {
 	overflow: hidden;
 	font-family: "Pridi", sans-serif;
 	font-weight: 600;
-	font-size: 34px;
+	font-size: 30px;
 	color: var(--dark);
 	text-transform: uppercase;
 	z-index: 9999;
@@ -654,7 +654,7 @@ body {
 	min-width: 100%;
 	white-space: nowrap;
 	animation-name: marqueeLine;
-	animation-duration: 120s;
+	animation-duration: 180s;
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: infinite;
   }

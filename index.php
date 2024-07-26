@@ -17,12 +17,6 @@
     <title>FunRun - Lari Antar Geng</title>
 </head>
 <body>
-            <!-- <div id="running-text"></div> -->
-        <div class="marquee">
-    <div class="marquee__inner">
-<p class="marquee__line" id="running-text"></p>
-    </div>
-        </div>
     <!-- SIDEBAR -->
     <section id="sidebar">
         <a href="#" class="brand">
@@ -159,6 +153,12 @@
                     </main>
             <!-- MAIN -->
         </section>
+        <!-- <div id="running-text"></div> -->
+        <div class="marquee">
+    <div class="marquee__inner">
+<p class="marquee__line" id="running-text"></p>
+    </div>
+        </div>
     <!-- CONTENT -->
     <audio id="audio" src="assets/magic.wav"></audio>
     

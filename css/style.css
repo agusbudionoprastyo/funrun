@@ -632,7 +632,7 @@ body {
     opacity: 0.5;
 }
 
-/* line */ 
+/* line 
 .marquee {
 	overflow: hidden;
 	font-family: "Pridi", sans-serif;
@@ -667,4 +667,43 @@ body {
 	to {
 	  transform: translateX(100%);
 	}
-  }
+  } */
+
+  .marquee {
+	overflow: hidden;
+	font-family: "Pridi", sans-serif;
+	font-weight: 600;
+	font-size: 30px;
+	color: var(--dark);
+	text-transform: uppercase;
+	z-index: 9999;
+	position: relative; /* Ensures proper positioning */
+}
+
+.marquee__inner {
+	display: flex;
+}
+
+.marquee__line {
+	flex-shrink: 0;
+	margin: 0;
+	padding: 10px 15px;
+	min-width: 100%;
+	white-space: nowrap;
+	animation-name: marqueeLine;
+	animation-duration: 120s; /* Adjust if needed */
+	animation-timing-function: linear; /* Smoothes out the animation */
+	animation-iteration-count: infinite;
+	will-change: transform; /* Hint to the browser for optimization */
+	/* Optional: to enable GPU acceleration */
+	transform: translateZ(0);
+}
+
+@keyframes marqueeLine {
+	from {
+		transform: translateX(-100%);
+	}
+	to {
+		transform: translateX(100%);
+	}
+}

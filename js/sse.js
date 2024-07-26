@@ -96,10 +96,10 @@ document.addEventListener('DOMContentLoaded', function() {
             data.max_timestamp_data.BIB_NUMBER !== storedData.BIB_NUMBER)) {
             
             // Update data terbaru di localStorage
-            localStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
+            // localStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
 
             // Memastikan tidak menampilkan SweetAlert pada inisialisasi pertama kali
-            if (storedData && storedData.max_timestamp) {
+            // if (storedData && storedData.max_timestamp) {
                 playAudio();
 
                 // Tampilkan notifikasi menggunakan SweetAlert2
@@ -111,13 +111,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     timer: 10000, // Durasi notifikasi 10 detik
                     timerProgressBar: true, // Tampilkan progress bar
                 });
-            }
+            // }
             // Call the fetchData function to initiate the data fetching and table population
             fetchData();
         }
 
         // Simpan data terbaru di localStorage
-        // localStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
+        localStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
         };
 
         eventSource.onerror = function(event) {

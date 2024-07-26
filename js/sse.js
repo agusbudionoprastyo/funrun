@@ -85,8 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('totalCheck').innerText = data.total_check;
         document.getElementById('totalUncheck').innerText = data.total_uncheck;
 
-        // Ambil data terakhir dari sessionStorage
-        const storedData = JSON.parse(sessionStorage.getItem('lastData'));
+       // Ambil data terakhir dari localStorage
+        const storedData = JSON.parse(localStorage.getItem('lastData'));
 
         // Bandingkan dengan data saat ini
         if (data.max_timestamp_data &&
@@ -95,8 +95,8 @@ document.addEventListener('DOMContentLoaded', function() {
             data.max_timestamp_data.NAMA_GENG !== storedData.NAMA_GENG ||
             data.max_timestamp_data.BIB_NUMBER !== storedData.BIB_NUMBER)) {
             
-            // Update data terbaru di sessionStorage
-            sessionStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
+            // Update data terbaru di localStorage
+            localStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
 
             // Memastikan tidak menampilkan SweetAlert pada inisialisasi pertama kali
             if (storedData && storedData.max_timestamp) {
@@ -115,13 +115,15 @@ document.addEventListener('DOMContentLoaded', function() {
             // Call the fetchData function to initiate the data fetching and table population
             fetchData();
         }
-        // Simpan data terbaru di sessionStorage
-        // sessionStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
+
+        // Simpan data terbaru di localStorage
+        // localStorage.setItem('lastData', JSON.stringify(data.max_timestamp_data));
         };
 
         eventSource.onerror = function(event) {
             console.error('Error dengan SSE:', event);
         };
+
 
     // Function to play audio
     function playAudio() {

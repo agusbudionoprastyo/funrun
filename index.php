@@ -87,6 +87,12 @@
                 </div>
             </div>
 
+            <div class="marquee">
+                <div class="marquee__inner">
+                    <p class="marquee__line" id="running-text">Fun Run - Lari Antar Geng</p>
+                </div>
+            </div>
+            
             <ul class="box-info">
                 <li>
                     <i class='bx bxs-group bx-lg' ></i>
@@ -111,12 +117,7 @@
                 </li>
             </ul>
 
-            <div class="marquee">
-                    <div class="marquee__inner">
-                        <p class="marquee__line" id="running-text">Fun Run - Lari Antar Geng</p>
-                    </div>
-                </div>
-                
+
             <div class="table-data">
 				<div class="order">
 					<div class="head">

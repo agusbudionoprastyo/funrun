@@ -638,6 +638,7 @@ body {
 	font-family: "Pridi", sans-serif;
 	font-weight: 600;
 	font-size: 34px;
+	color: var(--dark);
 	text-transform: uppercase;
 	z-index: 9999;
   }

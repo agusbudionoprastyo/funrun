@@ -641,6 +641,7 @@ body {
 
 #running-text {
     white-space: nowrap;
+	overflow: hidden;
     width: 100%; /* Atur sesuai kebutuhan */
     position: relative;
     animation: marquee 30s linear infinite;

@@ -153,12 +153,12 @@
                     </main>
             <!-- MAIN -->
         </section>
-        <!-- <div id="running-text"></div> -->
-        <div class="marquee">
-    <div class="marquee__inner">
-<p class="marquee__line" id="running-text"></p>
-    </div>
-        </div>
+                            <!-- <div id="running-text"></div> -->
+                        <div class="marquee">
+                    <div class="marquee__inner">
+                <p class="marquee__line" id="running-text"></p>
+                    </div>
+                        </div>
     <!-- CONTENT -->
     <audio id="audio" src="assets/magic.wav"></audio>
     

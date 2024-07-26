@@ -640,7 +640,7 @@ body {
 	font-size: 34px;
 	text-transform: uppercase;
 	background-color: #f9f9f9;
-	z-index: 1;
+	z-index: 9999;
   }
   
   .marquee__inner {
@@ -658,8 +658,12 @@ body {
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: infinite;
   }
-  
+
   @keyframes marqueeLine {
-    100% { transform: translateX(100%); }
-    0% { transform: translateX(-100%); }
+	0% {
+	  transform: translateX(100%); /* Memulai dari luar kanan */
+	}
+	100% {
+	  transform: translateX(-100%); /* Berhenti di luar kiri */
+	}
   }

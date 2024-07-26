@@ -75,12 +75,6 @@
             <div class="head-title">
                 <div class="left">
                     <!-- <h1>Fun Run - Lari Antar Geng</h1> -->
-                    <!-- <div id="running-text"></div> -->
-                        <div class="marquee">
-                            <div class="marquee__inner">
-                                <p class="marquee__line" id="running-text">Fun Run - Lari Antar Geng</p>
-                            </div>
-                        </div>
                     <ul class="breadcrumb">
                         <li>
                             <a href="#">Dashboard</a>
@@ -92,6 +86,11 @@
                     </ul>
                 </div>
             </div>
+            <div class="marquee">
+                    <div class="marquee__inner">
+                        <p class="marquee__line" id="running-text">Fun Run - Lari Antar Geng</p>
+                    </div>
+                </div>
 
             <ul class="box-info">
                 <li>

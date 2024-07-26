@@ -660,7 +660,7 @@ body {
   
   @keyframes marqueeLine {
 	from {
-	  transform: translateX(100);
+	  transform: translateX(100%);
 	}
 	
 	to {

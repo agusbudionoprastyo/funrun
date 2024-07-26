@@ -635,14 +635,14 @@ body {
 /* style.css */
 
 @keyframes marquee {
-    0% { transform: translateX(200%); }
-    200% { transform: translateX(-200%); }
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
 }
 
 #running-text {
     white-space: nowrap;
 	overflow: hidden;
-    width: 200%; /* Atur sesuai kebutuhan */
+    width: 30%; /* Atur sesuai kebutuhan */
     position: relative;
     animation: marquee 30s linear infinite;
 }

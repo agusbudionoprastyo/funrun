@@ -40,7 +40,7 @@ function getData($conn) {
                                 FROM Funrun
                                 WHERE status = 'checked' ORDER BY timestamp ASC
                             ) AS ranked
-                            WHERE row_num = 5;";
+                            WHERE row_num = 3;";
  
     $result_fastest_checkin = $conn->query($sql_fastest_checkin);
  

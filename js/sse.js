@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         // Mengisi konten running text dengan nama-nama runner
                         runnerNames.forEach(function(name, index) {
                             // Gunakan index untuk menambahkan karakter atau spasi yang sesuai
-                            var separator = (index === runnerNames.length - 1) ? "" : " • ";
+                            var separator = (index === runnerNames.length - 1) ? "" : "   • ";
                             runningTextElement.innerHTML += "<span class='running-text'>" + name + separator + "</span>";
                         });
                     }

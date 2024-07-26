@@ -636,7 +636,7 @@ body {
 
 @keyframes marquee {
     0% { transform: translateX(200%); }
-    100% { transform: translateX(-200%); }
+    200% { transform: translateX(-200%); }
 }
 
 #running-text {

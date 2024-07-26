@@ -658,12 +658,12 @@ body {
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: infinite;
   }
-
+  
   @keyframes marqueeLine {
-	0% {
-	  transform: translateX(100%); /* Memulai dari luar kanan */
+    100% { 
+		transform: translateX(100%); 
 	}
-	100% {
-	  transform: translateX(-100%); /* Berhenti di luar kiri */
+    0% { 
+		transform: translateX(-100%); 
 	}
   }

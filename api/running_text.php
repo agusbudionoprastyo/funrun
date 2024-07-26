@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Query untuk mengambil data NAMA_GENG dari tabel Funrun
-$sql_data = "SELECT DISTINCT(NAMA_GENG) FROM Funrun";
+$sql_data = "SELECT DISTINCT(NAMA_GENG) FROM Funrun ORDER BY NAMA_GENG DESC";
 $result_data = $conn->query($sql_data);
 
 $runnerNames = [];

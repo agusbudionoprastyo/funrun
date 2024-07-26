@@ -691,7 +691,7 @@ body {
 	min-width: 100%;
 	white-space: nowrap;
 	animation-name: marqueeLine;
-	animation-duration: 120s; /* Adjust if needed */
+	animation-duration: 240s; /* Adjust if needed */
 	animation-timing-function: linear; /* Smoothes out the animation */
 	animation-iteration-count: infinite;
 	will-change: transform; /* Hint to the browser for optimization */

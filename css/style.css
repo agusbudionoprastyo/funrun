@@ -633,13 +633,13 @@ body {
 }
 
 /* line */ 
-  .marquee {
+.marquee {
 	overflow: hidden;
 	font-family: "Pridi", sans-serif;
 	font-weight: 600;
 	font-size: 34px;
 	text-transform: uppercase;
-	background-color: #FFDC00;
+	background-color: #f9f9f9;
   }
   
   .marquee__inner {
@@ -659,11 +659,6 @@ body {
   }
   
   @keyframes marqueeLine {
-	from {
-	  transform: translateX(100%);
-	}
-	
-	to {
-	  transform: translateX(-100%);
-	}
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
   }

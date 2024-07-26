@@ -643,7 +643,7 @@ body {
     white-space: nowrap;
 	overflow: hidden;
 	text-align: start;
-    width: 1000px; /* Atur sesuai kebutuhan */
+    width: 200%; /* Atur sesuai kebutuhan */
     position: relative;
     animation: marquee 30s linear infinite;
 }
